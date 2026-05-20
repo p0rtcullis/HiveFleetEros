@@ -101,7 +101,8 @@ func _on_end_turn_button_pressed() -> void:
 	print(current_turn)
 	for turn in %EventSystem.trigger_turns:
 		if turn == current_turn:
-			Events.emit_signal("trigger_event")
+			Events.emit_signal("trigger_event",current_turn)
 			break
 		else:
-			print("false")
+			#print("false")
+			pass

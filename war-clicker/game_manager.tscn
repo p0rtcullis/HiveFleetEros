@@ -396,7 +396,7 @@ offset_left = 32.0
 offset_top = 512.0
 offset_right = 175.0
 offset_bottom = 535.0
-text = "Hints Appear Here. This hint has appeared: 0 times."
+text = "Hints Appear Here. "
 
 [node name="EventSystem" type="Control" parent="."]
 unique_name_in_owner = true

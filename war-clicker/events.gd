@@ -1,3 +1,4 @@
 extends Node
 
-signal trigger_event()
+
+signal trigger_event(lookup_number)

@@ -9,7 +9,7 @@ extends Control
 func _production_update() -> void:
 	for worker in %ManagementScreen.worker_list:
 		if worker.production_queue.is_empty():
-			print("Nothing to Produce!")
+			#print("Nothing to Produce!")
 			continue
 		else:
 			if worker.stats.production_timer < worker.production_queue[0].stats.cook_time:
