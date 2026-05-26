@@ -406,6 +406,10 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("14_tmn8n")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+follow_viewport_enabled = true
+
 [connection signal="pressed" from="ManagementScreenGUI/SideBarGUI/ProductionScreenToggle" to="ManagementScreenGUI/SideBarGUI" method="_on_production_screen_toggle_pressed"]
 [connection signal="pressed" from="ManagementScreenGUI/SideBarGUI/UpgradeScreeenToggle" to="ManagementScreenGUI/SideBarGUI" method="_on_upgrade_screeen_toggle_pressed"]
 [connection signal="pressed" from="ManagementScreenGUI/SideBarGUI/CombatScreenToggle" to="ManagementScreenGUI/SideBarGUI" method="_on_combat_screen_toggle_pressed"]
