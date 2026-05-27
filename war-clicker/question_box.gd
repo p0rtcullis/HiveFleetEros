@@ -1,9 +1,9 @@
-extends Control
-
+extends CenterContainer
 
 
 func _on_button_pressed() -> void:
-	print("Option1 Picked")
-	
+	pass # Replace with function body.
+
+
 func _on_button_2_pressed() -> void:
-	print("option2 Picked")
+	pass # Replace with function body.
