@@ -1,5 +1,6 @@
 extends Node
 
+var can_click : bool = true
 var current_turn : int = 0
 
 var max_workers : int = 3:
@@ -56,10 +57,18 @@ var mass_spider : int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Events.connect("question_box_gone",_on_question_box_gone)
 	%MaxWorkersLabel.text = "Max Workers: " +str(max_workers)
 	worker_list.append(%Guard)
 	worker_list.append(%Spider)
 	pass
+	
+#func _unhandled_input(event: InputEvent) -> void:
+#	if Input.is_action_just_pressed("ui_click"):
+#		print("yay")
+
+func _on_question_box_gone():
+	%EndTurnButton.disabled = false
 
 #used for round ending totals
 func point_count(color : POINTS):
