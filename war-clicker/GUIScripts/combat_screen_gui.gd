@@ -15,7 +15,7 @@ func _on_battle_button_1_pressed() -> void:
 	if combat_num <= battle_1_diff:
 		print("Raid Successful!")
 		var captured = randi_range(1,3)
-		%ManagementScreen.mass_guard += captured
+		%ManagementScreen.mass_ranger += captured
 		print(str(captured) + " enemies captured!")
 	else:
 		print("Failure!")

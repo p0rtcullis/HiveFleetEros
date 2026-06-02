@@ -1,26 +1,25 @@
 extends Control
 
-var trigger_turns : Array = [2,5,8,10]
+var trigger_turns : Array = [5]
 @onready var canvas_layer : CanvasLayer = %CanvasLayer
 var current_event = 0
 
-var event_lookup_table : Dictionary = {2:_scout_encounter}
-var event_results_table : Dictionary = {2:_scout_results}
+var event_lookup_table : Dictionary = {5:_scout_encounter}
+var event_results_table : Dictionary = {5:_scout_results}
 	
 func _ready():
 	Events.connect("trigger_event",_on_event_triggered)
 	Events.connect("choice_made",_log_choice)
 #Look-Up Number is the needed value to trigger an event. 
 #Events 1-100 are reserved for turn-based events.
-	#var event2 = BinaryEvent.new()
 #Events 101-200 are reserved for random rolls.
 #subject to change.
 func _on_event_triggered(lookup_number):
 	#print(lookup_number)
-	%EndTurnButton.disabled= true
+	%EndTurnButton.disabled = true
 	current_event = lookup_number
 	event_lookup_table[current_event].call(lookup_number)
-	print("Looked Up Event")
+	#print("Looked Up Event")
 	
 func _log_choice(choice):
 	event_results_table[current_event].call(choice)

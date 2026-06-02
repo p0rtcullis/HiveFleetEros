@@ -46,12 +46,33 @@ var purple_mod : int = 0
 enum WORKERS {GUARD,REAPER,BANSHEE,SPIDER,DRAGON,AUTARCH,AVENGER,HAWK,SCORPION,SEER,WARLOCK}
 enum POINTS {GREEN,BROWN,MAGENTA,PURPLE}
 
+#How advanced your colony is
 var colony_level : int = 1
-var mass_guard : int = 0:
+
+#Determines how likely you are to be raided
+var colony_noise : int = 0
+
+var mass_ranger : int = 0:
 	set(value):
-		mass_guard = value
-		%MassGuardLabel.text = str(value)
-var mass_spider : int = 0
+		mass_ranger = value
+		%MassRangerLabel.text = str(value)
+var mass_spider : int = 0:
+	set(value):
+		mass_spider = value
+		%MassSpiderLabel.text = str(value)
+var mass_banshee : int = 0:
+	set(value):
+		mass_banshee = value
+		%MassBansheeLabel.text = str(value)
+var mass_scorpion : int = 0:
+	set(value):
+		mass_scorpion= value
+		%MassScorpionLabel.text = str(value)
+var mass_hawk : int = 0:
+	set(value):
+		mass_hawk = value
+		%MassHawkLabel.text = str(value)
+	
 				
 
 
@@ -59,7 +80,7 @@ var mass_spider : int = 0
 func _ready() -> void:
 	Events.connect("question_box_gone",_on_question_box_gone)
 	%MaxWorkersLabel.text = "Max Workers: " +str(max_workers)
-	worker_list.append(%Guard)
+	worker_list.append(%Ranger)
 	worker_list.append(%Spider)
 	pass
 	
@@ -74,15 +95,16 @@ func _on_question_box_gone():
 func point_count(color : POINTS):
 	var point_total : int = 0
 	for worker in worker_list:
-		match color:
-			POINTS.GREEN:
-				point_total += worker.stats.green
-			POINTS.BROWN:
-				point_total += worker.stats.brown
-			POINTS.MAGENTA:
-				point_total += worker.stats.magenta
-			POINTS.PURPLE:
-				point_total += worker.stats.purple			
+		if worker.stats.unlocked:
+			match color:
+				POINTS.GREEN:
+					point_total += worker.stats.green
+				POINTS.BROWN:
+					point_total += worker.stats.brown
+				POINTS.MAGENTA:
+					point_total += worker.stats.magenta
+				POINTS.PURPLE:
+					point_total += worker.stats.purple
 	return point_total
 	
 func update_max_workers(new_max: int):

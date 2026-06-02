@@ -2,7 +2,7 @@ extends Control
 
 var active_upgrades = []
 
-@onready var all_upgrades = [%Upgrade1,%Upgrade2]
+@onready var all_upgrades = [%Upgrade1,%Upgrade2,%StabberUpgrade]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

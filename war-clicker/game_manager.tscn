@@ -1,33 +1,75 @@
-[gd_scene load_steps=20 format=3 uid="uid://c0n6btegy48v1"]
+[gd_scene load_steps=32 format=3 uid="uid://c0n6btegy48v1"]
 
 [ext_resource type="PackedScene" uid="uid://bmg3wqjwo13dg" path="res://ManagementScreen/management_screen.tscn" id="1_70yv6"]
 [ext_resource type="PackedScene" uid="uid://b3nrf0a4v8gbs" path="res://Worker/guard.tscn" id="2_8jrwq"]
 [ext_resource type="Script" uid="uid://cckuthll68xey" path="res://GUIScripts/side_bar_gui.gd" id="2_dq8jp"]
 [ext_resource type="Script" uid="uid://ertesfb6senx" path="res://GUIScripts/upgrade_screen_gui.gd" id="2_smx3j"]
+[ext_resource type="Script" uid="uid://nwai5gntgmn1" path="res://info_bar_gui.gd" id="3_d246e"]
 [ext_resource type="Script" uid="uid://c8veevrjckqal" path="res://Util/Strategy/base_worker_strategy.gd" id="3_gth8u"]
 [ext_resource type="PackedScene" uid="uid://dya763ecg0nbu" path="res://Upgrades/upgrade_button.tscn" id="3_o2178"]
+[ext_resource type="PackedScene" uid="uid://cuo63ymo6ofmr" path="res://Worker/banshee.tscn" id="4_anra8"]
 [ext_resource type="Script" uid="uid://do7phg52jpppn" path="res://Util/Strategy/base_upgrade_strategy.gd" id="4_d5upp"]
 [ext_resource type="PackedScene" uid="uid://de7db0m0ymybd" path="res://Worker/spider.tscn" id="4_dq8jp"]
+[ext_resource type="PackedScene" uid="uid://c4qpmv2lpt1oj" path="res://Worker/ranger.tscn" id="4_es4nv"]
+[ext_resource type="PackedScene" uid="uid://d4gx5jc7e70ih" path="res://Worker/farseer.tscn" id="4_s6dek"]
 [ext_resource type="Texture2D" uid="uid://csddq02y724mh" path="res://layout1.png" id="5_vk86k"]
 [ext_resource type="Script" uid="uid://bb3p0qylaajkr" path="res://GUIScripts/debug_screen_gui.gd" id="9_gth8u"]
+[ext_resource type="PackedScene" uid="uid://buofiykkyg5yh" path="res://Worker/scorpion.tscn" id="10_d246e"]
 [ext_resource type="Script" uid="uid://l7c16c3ddux7" path="res://GUIScripts/combat_screen_gui.gd" id="10_le433"]
 [ext_resource type="Script" uid="uid://dn4pcxlmgm2lw" path="res://GUIScripts/production_screen_gui.gd" id="10_yawsv"]
+[ext_resource type="PackedScene" uid="uid://b36h6hgufjtnh" path="res://Worker/hawk.tscn" id="11_nvy02"]
 [ext_resource type="Script" uid="uid://37lyibncgijc" path="res://GUIScripts/hint_system.gd" id="13_2tadr"]
 [ext_resource type="Script" uid="uid://ke2r5ggj0cwr" path="res://GUIScripts/event_system.gd" id="14_tmn8n"]
+
+[sub_resource type="Resource" id="Resource_7bexq"]
+resource_local_to_scene = true
+script = ExtResource("3_gth8u")
+worker_name = "Farseer"
+purple = 5
+metadata/_custom_type_script = "uid://c8veevrjckqal"
+
+[sub_resource type="Resource" id="Resource_f0lch"]
+resource_local_to_scene = true
+script = ExtResource("3_gth8u")
+worker_name = "Howling Banshee"
+green = 0
+brown = 10
+metadata/_custom_type_script = "uid://c8veevrjckqal"
+
+[sub_resource type="Resource" id="Resource_anra8"]
+resource_local_to_scene = true
+script = ExtResource("3_gth8u")
+worker_name = "Ranger"
+unlocked = true
+metadata/_custom_type_script = "uid://c8veevrjckqal"
 
 [sub_resource type="Resource" id="Resource_yawsv"]
 resource_local_to_scene = true
 script = ExtResource("3_gth8u")
 worker_name = "Guardian"
-unlocked = true
 metadata/_custom_type_script = "uid://c8veevrjckqal"
 
 [sub_resource type="Resource" id="Resource_le433"]
 resource_local_to_scene = true
 script = ExtResource("3_gth8u")
 worker_name = "Warp Spider"
+green = 0
 brown = 5
-purple = 5
+magenta = 5
+metadata/_custom_type_script = "uid://c8veevrjckqal"
+
+[sub_resource type="Resource" id="Resource_424ju"]
+resource_local_to_scene = true
+script = ExtResource("3_gth8u")
+worker_name = "Striking Scorpion"
+green = 10
+metadata/_custom_type_script = "uid://c8veevrjckqal"
+
+[sub_resource type="Resource" id="Resource_agblk"]
+resource_local_to_scene = true
+script = ExtResource("3_gth8u")
+worker_name = "Swooping Hawk"
+brown = 5
 metadata/_custom_type_script = "uid://c8veevrjckqal"
 
 [sub_resource type="Resource" id="Resource_vk86k"]
@@ -51,6 +93,14 @@ resource_local_to_scene = true
 script = ExtResource("4_d5upp")
 upgrade_name = "Add Shooters"
 upgrade_text = " Add Shooter Bugs"
+green_cost = 100
+metadata/_custom_type_script = "uid://do7phg52jpppn"
+
+[sub_resource type="Resource" id="Resource_d246e"]
+resource_local_to_scene = true
+script = ExtResource("4_d5upp")
+upgrade_name = "Upgrade Max Workers +2"
+upgrade_text = " Add another worker slot. Cost: 100 Green"
 green_cost = 100
 metadata/_custom_type_script = "uid://do7phg52jpppn"
 
@@ -122,6 +172,7 @@ text = "Archive"
 anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 64.0
+script = ExtResource("3_d246e")
 
 [node name="PointsGUI" type="HBoxContainer" parent="ManagementScreenGUI/InfoBarGUI"]
 layout_mode = 0
@@ -202,14 +253,65 @@ offset_bottom = 40.0
 [node name="VBoxContainer" type="VBoxContainer" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers"]
 layout_mode = 2
 
-[node name="MassGuardTitle" type="Label" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/VBoxContainer"]
+[node name="MassRangerTitle" type="Label" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/VBoxContainer"]
 layout_mode = 2
-text = "Mass Guard:"
+tooltip_text = "Rangers give 5 Green"
+mouse_filter = 0
+text = "Rangers:"
+
+[node name="MassSpiderTitle" type="Label" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/VBoxContainer"]
+layout_mode = 2
+text = "Spiders:"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers"]
 layout_mode = 2
 
-[node name="MassGuardLabel" type="Label" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/VBoxContainer2"]
+[node name="MassRangerLabel" type="Label" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="MassSpiderLabel" type="Label" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers"]
+layout_mode = 2
+
+[node name="MassBansheeTitle" type="Label" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/VBoxContainer3"]
+layout_mode = 2
+text = "Banshees:"
+
+[node name="MassScorpionTitle" type="Label" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/VBoxContainer3"]
+layout_mode = 2
+text = "Scorpions:"
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers"]
+layout_mode = 2
+
+[node name="MassBansheeLabel" type="Label" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/VBoxContainer4"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="MassScorptionLabel" type="Label" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/VBoxContainer4"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers"]
+layout_mode = 2
+
+[node name="MassHawkTitle" type="Label" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/VBoxContainer5"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Hawks:"
+
+[node name="VBoxContainer6" type="VBoxContainer" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers"]
+layout_mode = 2
+
+[node name="MassHawkLabel" type="Label" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/VBoxContainer6"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
@@ -223,6 +325,18 @@ anchors_preset = 0
 offset_left = -64.0
 offset_bottom = 64.0
 
+[node name="Farseer" parent="ManagementScreenGUI/ManagementScreen/Control" instance=ExtResource("4_s6dek")]
+unique_name_in_owner = true
+stats = SubResource("Resource_7bexq")
+
+[node name="Banshee" parent="ManagementScreenGUI/ManagementScreen/Control" instance=ExtResource("4_anra8")]
+unique_name_in_owner = true
+stats = SubResource("Resource_f0lch")
+
+[node name="Ranger" parent="ManagementScreenGUI/ManagementScreen/Control" instance=ExtResource("4_es4nv")]
+unique_name_in_owner = true
+stats = SubResource("Resource_anra8")
+
 [node name="Guard" parent="ManagementScreenGUI/ManagementScreen/Control" instance=ExtResource("2_8jrwq")]
 unique_name_in_owner = true
 position = Vector2(8, 16)
@@ -232,6 +346,14 @@ stats = SubResource("Resource_yawsv")
 unique_name_in_owner = true
 position = Vector2(8, 32)
 stats = SubResource("Resource_le433")
+
+[node name="Scorpion" parent="ManagementScreenGUI/ManagementScreen/Control" instance=ExtResource("10_d246e")]
+unique_name_in_owner = true
+stats = SubResource("Resource_424ju")
+
+[node name="Hawk" parent="ManagementScreenGUI/ManagementScreen/Control" instance=ExtResource("11_nvy02")]
+unique_name_in_owner = true
+stats = SubResource("Resource_agblk")
 
 [node name="UpgradeScreenGUI" type="Control" parent="."]
 unique_name_in_owner = true
@@ -280,6 +402,12 @@ offset_right = 575.0
 offset_bottom = 95.0
 stats = SubResource("Resource_2tadr")
 
+[node name="StabberUpgrade" parent="UpgradeScreenGUI" instance=ExtResource("3_o2178")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+stats = SubResource("Resource_d246e")
+
 [node name="CombatScreenGUI" type="Control" parent="."]
 unique_name_in_owner = true
 layout_mode = 3
@@ -309,7 +437,7 @@ offset_right = 1152.0
 offset_bottom = 576.0
 script = ExtResource("10_yawsv")
 
-[node name="GuardProdctionButton" type="Button" parent="ProductionScreenGUI"]
+[node name="RangerProdctionButton" type="Button" parent="ProductionScreenGUI"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 64.0
@@ -331,18 +459,18 @@ text = "Spider"
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 384.0
-offset_top = 80.0
+offset_top = 136.0
 offset_right = 453.0
-offset_bottom = 111.0
+offset_bottom = 167.0
 text = "Shooter"
 
-[node name="SlasherProductionButton" type="Button" parent="ProductionScreenGUI"]
+[node name="StabberProductionButton" type="Button" parent="ProductionScreenGUI"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 384.0
-offset_top = 128.0
+offset_top = 80.0
 offset_right = 449.0
-offset_bottom = 159.0
+offset_bottom = 111.0
 text = "Slasher"
 
 [node name="ArchiveScreenGUI" type="Control" parent="."]
@@ -354,6 +482,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="DebugScreenGUI" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_top = 576.0
@@ -421,9 +550,10 @@ follow_viewport_enabled = true
 [connection signal="toggled" from="UpgradeScreenGUI/Upgrade1" to="UpgradeScreenGUI" method="_on_upgrade1_toggled"]
 [connection signal="toggled" from="UpgradeScreenGUI/Upgrade2" to="UpgradeScreenGUI" method="_on_upgrade_2_toggled"]
 [connection signal="pressed" from="CombatScreenGUI/BattleButton1" to="CombatScreenGUI" method="_on_battle_button_1_pressed"]
-[connection signal="pressed" from="ProductionScreenGUI/GuardProdctionButton" to="ProductionScreenGUI" method="_on_guard_prodction_button_pressed"]
+[connection signal="pressed" from="ProductionScreenGUI/RangerProdctionButton" to="ProductionScreenGUI" method="_on_guard_prodction_button_pressed"]
 [connection signal="pressed" from="ProductionScreenGUI/SpiderProductionButton" to="ProductionScreenGUI" method="_on_spider_production_button_pressed"]
 [connection signal="pressed" from="ProductionScreenGUI/ShooterProductionButton" to="ProductionScreenGUI" method="_on_shooter_production_button_pressed"]
+[connection signal="pressed" from="ProductionScreenGUI/StabberProductionButton" to="ProductionScreenGUI" method="_on_stabber_production_button_pressed"]
 [connection signal="toggled" from="DebugScreenGUI/ToggleGuard" to="DebugScreenGUI" method="_on_toggle_guard_toggled"]
 [connection signal="toggled" from="DebugScreenGUI/ToggleSpider" to="DebugScreenGUI" method="_on_toggle_spider_toggled"]
 [connection signal="timeout" from="HintSystem/HintTimer" to="HintSystem" method="_on_hint_timer_timeout"]

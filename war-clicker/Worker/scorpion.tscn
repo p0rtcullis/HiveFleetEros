@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://buofiykkyg5yh"]
+
+[ext_resource type="Script" uid="uid://c5dt5rewbf1bs" path="res://Worker/guard.gd" id="1_mfxyg"]
+[ext_resource type="Resource" uid="uid://bql53nutv1tl7" path="res://Resources/guard.tres" id="2_c4vjn"]
+
+[node name="Worker" type="Node2D"]
+script = ExtResource("1_mfxyg")
+stats = ExtResource("2_c4vjn")
