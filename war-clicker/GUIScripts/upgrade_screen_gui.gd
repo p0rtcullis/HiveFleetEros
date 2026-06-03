@@ -13,9 +13,11 @@ func price_check(upgrade_cost,total_points):
 
 
 func _on_reset_upgrades_button_pressed() -> void:
+	print("Resetting Upgrades...")
 	for upgrade in active_upgrades:
 		upgrade.button_pressed = false
 	active_upgrades.clear()
+	#disable_unafforable_techs()
 	
 func disable_unafforable_techs():
 	var cost_count = 0
@@ -42,13 +44,21 @@ func _on_upgrade1_toggled(toggled_on: bool) -> void:
 	#refactor this so that points are deducted/added for all costs dynamically, make it a function
 	if toggled_on:
 		%ManagementScreen.update_points(-100,%ManagementScreen.POINTS.GREEN)
-		%ManagementScreen.update_max_workers(1)
+		%ManagementScreen.update_max_workers(5)
 		active_upgrades.append(%Upgrade1)
 		%Upgrade1.disabled = true
 	else:
 		%ManagementScreen.update_points(100,%ManagementScreen.POINTS.GREEN)
-		%ManagementScreen.update_max_workers(-1)
+		%ManagementScreen.update_max_workers(-5)
 		%Upgrade1.disabled = false
 		
 func _on_upgrade_2_toggled(_toggled_on: bool) -> void:
-	pass # Replace with function body.
+	if _toggled_on:
+		%ManagementScreen.update_points(-200,%ManagementScreen.POINTS.GREEN)
+		%ManagementScreen.update_max_workers(10)
+		active_upgrades.append(%Upgrade2)
+		%Upgrade2.disabled = true
+	else:
+		%ManagementScreen.update_points(200,%ManagementScreen.POINTS.GREEN)
+		%ManagementScreen.update_max_workers(-10)
+		%Upgrade2.disabled = false

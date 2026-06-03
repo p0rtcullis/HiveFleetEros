@@ -3,7 +3,7 @@ extends Node
 var can_click : bool = true
 var current_turn : int = 0
 
-var max_workers : int = 3:
+var max_workers : int = 5:
 	set(value):
 		max_workers = value
 		%MaxWorkersLabel.text = "Max Workers: " +str(value)
@@ -54,28 +54,25 @@ var colony_noise : int = 0
 
 var mass_ranger : int = 0:
 	set(value):
-		mass_ranger = value
-		%MassRangerLabel.text = str(value)
+		mass_ranger = min(value,max_workers)
+		%MassRangerLabel.text = str(mass_ranger)
 var mass_spider : int = 0:
 	set(value):
-		mass_spider = value
-		%MassSpiderLabel.text = str(value)
+		mass_spider = min(value,max_workers)
+		%MassSpiderLabel.text = str(mass_spider)
 var mass_banshee : int = 0:
 	set(value):
-		mass_banshee = value
-		%MassBansheeLabel.text = str(value)
+		mass_banshee = min(value,max_workers)
+		%MassBansheeLabel.text = str(mass_banshee)
 var mass_scorpion : int = 0:
 	set(value):
-		mass_scorpion= value
-		%MassScorpionLabel.text = str(value)
+		mass_scorpion= min(value,max_workers)
+		%MassScorpionLabel.text = str(mass_scorpion)
 var mass_hawk : int = 0:
 	set(value):
-		mass_hawk = value
-		%MassHawkLabel.text = str(value)
+		mass_hawk = min(value,max_workers)
+		%MassHawkLabel.text = str(mass_hawk)
 	
-				
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Events.connect("question_box_gone",_on_question_box_gone)
@@ -87,12 +84,12 @@ func _ready() -> void:
 #func _unhandled_input(event: InputEvent) -> void:
 #	if Input.is_action_just_pressed("ui_click"):
 #		print("yay")
-
+#Future use
 func _on_question_box_gone():
 	%EndTurnButton.disabled = false
 
 #used for round ending totals
-func point_count(color : POINTS):
+func _worker_point_count(color : POINTS):
 	var point_total : int = 0
 	for worker in worker_list:
 		if worker.stats.unlocked:
@@ -122,14 +119,15 @@ func update_points(new_points: int, color : POINTS):
 			POINTS.PURPLE:
 				total_purple += new_points
 				
+#Process end of turn updates
 func _on_end_turn_button_pressed() -> void:
-	total_green += point_count(POINTS.GREEN)
-	total_brown += point_count(POINTS.BROWN)
-	total_magenta += point_count(POINTS.MAGENTA)
-	total_purple += point_count(POINTS.PURPLE)
+	total_green += _worker_point_count(POINTS.GREEN)
+	total_brown += _worker_point_count(POINTS.BROWN)
+	total_magenta += _worker_point_count(POINTS.MAGENTA)
+	total_purple += _worker_point_count(POINTS.PURPLE)
 	%ProductionScreenGUI._production_update()
 	current_turn +=1
-	print(current_turn)
+	#print(current_turn)
 	for turn in %EventSystem.trigger_turns:
 		if turn == current_turn:
 			Events.emit_signal("trigger_event",current_turn)

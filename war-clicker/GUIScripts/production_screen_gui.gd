@@ -2,6 +2,10 @@ extends Control
 
 @onready var shooter_template = preload("res://Unit/shooter_unit.tscn")
 @onready var stabber_template = preload("res://Unit/stabber_unit.tscn")
+@onready var warrior_template
+@onready var stalker_template
+@onready var ripple_template
+@onready var psy_template
 
 @onready var selected_worker = %Ranger
 
@@ -9,17 +13,17 @@ extends Control
 func _production_update() -> void:
 	for worker in %ManagementScreen.worker_list:
 		if worker.production_queue.is_empty():
-			print("Nothing to Produce!")
+			#print("Nothing to Produce!")
 			continue
 		else:
 			if worker.stats.production_timer < worker.production_queue[0].stats.cook_time:
-				print("Turns Remaining: " + str(worker.production_queue[0].stats.cook_time - worker.stats.production_timer))
+				#print("Turns Remaining: " + str(worker.production_queue[0].stats.cook_time - worker.stats.production_timer))
 				worker.stats.production_timer +=1
 			else:
-				print("Unit Produced")
+				#print("Unit Produced")
 				worker.stats.production_timer = 0
 				%ManagementScreen.unit_list.append(worker.production_queue.pop_front())
-				print(%ManagementScreen.unit_list)
+				#print(%ManagementScreen.unit_list)
 
 func _on_ranger_prodction_button_pressed() -> void:
 	selected_worker = %Ranger
@@ -43,4 +47,4 @@ func _on_stabber_production_button_pressed() -> void:
 	else:
 		var unit = stabber_template.instantiate()
 		selected_worker.production_queue.append(unit)
-		print(selected_worker.production_queue)
+		#print(selected_worker.production_queue)
