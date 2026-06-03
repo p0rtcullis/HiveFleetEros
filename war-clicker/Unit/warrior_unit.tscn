@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsqn4dr74buu4"]
+
+[ext_resource type="Script" uid="uid://boauwhw47hxns" path="res://Unit/warrior_unit.gd" id="1_dsu3e"]
+[ext_resource type="Resource" uid="uid://bo0minixt3swi" path="res://Resources/warrior_unit.tres" id="2_y8xft"]
+
+[node name="WarriorUnit" type="Node2D"]
+script = ExtResource("1_dsu3e")
+stats = ExtResource("2_y8xft")

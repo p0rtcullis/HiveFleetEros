@@ -1,10 +1,10 @@
 extends Control
 
-var trigger_turns : Array = [5]
+var trigger_turns : Array = [1,5]
 @onready var canvas_layer : CanvasLayer = %CanvasLayer
 var current_event = 0
 
-var event_lookup_table : Dictionary = {5:_scout_encounter}
+var event_lookup_table : Dictionary = {1:_first_event,5:_scout_encounter}
 var event_results_table : Dictionary = {5:_scout_results}
 	
 func _ready():
@@ -18,14 +18,25 @@ func _on_event_triggered(lookup_number):
 	#print(lookup_number)
 	%EndTurnButton.disabled = true
 	current_event = lookup_number
-	event_lookup_table[current_event].call(lookup_number)
+	event_lookup_table[current_event].call()
 	#print("Looked Up Event")
 	
 func _log_choice(choice):
-	event_results_table[current_event].call(choice)
+	if current_event in event_results_table:
+		event_results_table[current_event].call(choice)
 	pass
 	
-func _scout_encounter(choice):
+func _first_event():
+	var question_box = preload("res://question_box.tscn")
+	var question = question_box.instantiate()
+	
+	question.event_text = "This is the first event you'll encounter. For now, events only trigger on turn 5, but eventually they will trigger based on more complex inputs like upgrade unlocks, army growth and even how aggressive you are!"
+	question.button1_text = "I understand."
+	question.button2_text = "I understand, but again."
+	canvas_layer.add_child(question)
+	
+		
+func _scout_encounter():
 	var question_box = preload("res://question_box.tscn")
 	var question = question_box.instantiate()
 	

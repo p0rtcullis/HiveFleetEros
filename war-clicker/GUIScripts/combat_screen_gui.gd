@@ -1,6 +1,7 @@
 extends Control
 
 var battle_1_diff : int  = 25
+var battle_2_diff : int = 50
 
 
 func _on_battle_button_1_pressed() -> void:

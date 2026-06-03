@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://c0n6btegy48v1"]
+[gd_scene load_steps=37 format=3 uid="uid://c0n6btegy48v1"]
 
 [ext_resource type="PackedScene" uid="uid://bmg3wqjwo13dg" path="res://ManagementScreen/management_screen.tscn" id="1_70yv6"]
 [ext_resource type="PackedScene" uid="uid://b3nrf0a4v8gbs" path="res://Worker/guard.tscn" id="2_8jrwq"]
@@ -25,6 +25,8 @@
 resource_local_to_scene = true
 script = ExtResource("3_gth8u")
 worker_name = "Farseer"
+green = 0
+magenta = 5
 purple = 5
 metadata/_custom_type_script = "uid://c8veevrjckqal"
 
@@ -84,8 +86,16 @@ metadata/_custom_type_script = "uid://do7phg52jpppn"
 resource_local_to_scene = true
 script = ExtResource("4_d5upp")
 upgrade_name = "Unlock Shooters"
-upgrade_text = "Unlock Shooter Bugs. Cost: 100 Green"
+upgrade_text = "Permanently Unlock Shooter Bugs. Cost: 100 Green"
 green_cost = 100
+metadata/_custom_type_script = "uid://do7phg52jpppn"
+
+[sub_resource type="Resource" id="Resource_nvy02"]
+resource_local_to_scene = true
+script = ExtResource("4_d5upp")
+upgrade_name = "Unlock Warrior"
+upgrade_text = " Add Warrior Bugs. Cost: 200 Green"
+green_cost = 200
 metadata/_custom_type_script = "uid://do7phg52jpppn"
 
 [sub_resource type="Resource" id="Resource_vk86k"]
@@ -102,6 +112,38 @@ script = ExtResource("4_d5upp")
 upgrade_name = "Max Workers +10"
 upgrade_text = "Add space for 10 of each worker Cost: 200 Green"
 green_cost = 200
+metadata/_custom_type_script = "uid://do7phg52jpppn"
+
+[sub_resource type="Resource" id="Resource_3alj7"]
+resource_local_to_scene = true
+script = ExtResource("4_d5upp")
+upgrade_name = "Upgrade Max Workers +2"
+upgrade_text = " Add another worker slot. Cost: 100 Green"
+green_cost = 100
+metadata/_custom_type_script = "uid://do7phg52jpppn"
+
+[sub_resource type="Resource" id="Resource_qmmi4"]
+resource_local_to_scene = true
+script = ExtResource("4_d5upp")
+upgrade_name = "Upgrade Max Workers +2"
+upgrade_text = " Add another worker slot. Cost: 100 Green"
+green_cost = 100
+metadata/_custom_type_script = "uid://do7phg52jpppn"
+
+[sub_resource type="Resource" id="Resource_oslct"]
+resource_local_to_scene = true
+script = ExtResource("4_d5upp")
+upgrade_name = "Upgrade Max Workers +2"
+upgrade_text = " Add another worker slot. Cost: 100 Green"
+green_cost = 100
+metadata/_custom_type_script = "uid://do7phg52jpppn"
+
+[sub_resource type="Resource" id="Resource_2x3uj"]
+resource_local_to_scene = true
+script = ExtResource("4_d5upp")
+upgrade_name = "Upgrade Max Workers +2"
+upgrade_text = " Add another worker slot. Cost: 100 Green"
+green_cost = 100
 metadata/_custom_type_script = "uid://do7phg52jpppn"
 
 [node name="GameManager" type="Node"]
@@ -355,6 +397,26 @@ stats = SubResource("Resource_424ju")
 unique_name_in_owner = true
 stats = SubResource("Resource_agblk")
 
+[node name="Welcome" type="Label" parent="ManagementScreenGUI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 273.0
+offset_top = 83.0
+offset_right = 1088.0
+offset_bottom = 512.0
+text = "Welcome to the Alpha Demo for HFE! Before you begin, take a moment to read through this preface about the game. 
+
+Currently, it is a turn-based incremental game. You begin with a single Special Worker which can be assigned to produce specific units, as well as a resource called GP. 
+
+With your units, you can engage in combat, providing captives who become Mass Workers. Mass Workers produce GP, as well as passively producing units at a random rate. 
+
+Upgrades can be purchased to increase the amount of Mass Workers, the variety of units, number of units produced, likelyhood to produce multiple units from one production, and much, much more.
+
+The \"End Turn\" Button above will calculate your GP based on your workers and move production forward.
+
+Please keep in mind that this is all very, very much a work in progress. Many, many things are subject to change and are here simply as placeholders, proof of concept or prototype. I hope you enjoy fiddling with what I have so far! Press any of the buttons to your right to hide this message and begin the game."
+autowrap_mode = 2
+
 [node name="UpgradeScreenGUI" type="Control" parent="."]
 unique_name_in_owner = true
 visible = false
@@ -369,9 +431,9 @@ script = ExtResource("2_smx3j")
 [node name="ResetUpgradesButton" type="Button" parent="UpgradeScreenGUI"]
 layout_mode = 0
 offset_left = 64.0
-offset_top = 200.0
+offset_top = 352.0
 offset_right = 193.0
-offset_bottom = 231.0
+offset_bottom = 383.0
 text = "Reset Upgrades"
 
 [node name="StabberUpgrade" parent="UpgradeScreenGUI" instance=ExtResource("3_o2178")]
@@ -385,20 +447,32 @@ stats = SubResource("Resource_d246e")
 [node name="ShooterUpgrade" parent="UpgradeScreenGUI" instance=ExtResource("3_o2178")]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 472.0
-offset_top = 64.0
-offset_right = 575.0
-offset_bottom = 95.0
+offset_left = 760.0
+offset_top = 16.0
+offset_right = 895.0
+offset_bottom = 47.0
+toggle_mode = false
 text = "Unlock Shooters"
 stats = SubResource("Resource_2tadr")
+
+[node name="WarriorUpgrade" parent="UpgradeScreenGUI" instance=ExtResource("3_o2178")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 760.0
+offset_top = 64.0
+offset_right = 885.0
+offset_bottom = 95.0
+toggle_mode = false
+text = "Unlock Warrior"
+stats = SubResource("Resource_nvy02")
 
 [node name="Upgrade1" parent="UpgradeScreenGUI" instance=ExtResource("3_o2178")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 64.0
-offset_top = 64.0
-offset_right = 167.0
-offset_bottom = 95.0
+offset_top = 16.0
+offset_right = 197.0
+offset_bottom = 47.0
 text = "Max Workers +5"
 stats = SubResource("Resource_vk86k")
 
@@ -406,15 +480,63 @@ stats = SubResource("Resource_vk86k")
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 64.0
-offset_top = 104.0
-offset_right = 167.0
-offset_bottom = 135.0
+offset_top = 64.0
+offset_right = 206.0
+offset_bottom = 95.0
 text = "Max Workers +10"
 stats = SubResource("Resource_shwjl")
 prereq = [NodePath("../Upgrade1")]
 
+[node name="Upgrade3" parent="UpgradeScreenGUI" instance=ExtResource("3_o2178")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 64.0
+offset_top = 112.0
+offset_right = 167.0
+offset_bottom = 143.0
+stats = SubResource("Resource_3alj7")
+
+[node name="Upgrade4" parent="UpgradeScreenGUI" instance=ExtResource("3_o2178")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 64.0
+offset_top = 160.0
+offset_right = 167.0
+offset_bottom = 191.0
+stats = SubResource("Resource_qmmi4")
+
+[node name="Upgrade5" parent="UpgradeScreenGUI" instance=ExtResource("3_o2178")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 64.0
+offset_top = 208.0
+offset_right = 167.0
+offset_bottom = 239.0
+stats = SubResource("Resource_oslct")
+
+[node name="Upgrade6" parent="UpgradeScreenGUI" instance=ExtResource("3_o2178")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 64.0
+offset_top = 256.0
+offset_right = 167.0
+offset_bottom = 287.0
+stats = SubResource("Resource_2x3uj")
+
+[node name="Label" type="Label" parent="UpgradeScreenGUI"]
+layout_mode = 0
+offset_left = 456.0
+offset_top = 24.0
+offset_right = 752.0
+offset_bottom = 385.0
+text = "Upgrades are a major WIP. Features shown here are subject to change. There are currently two types of upgrades, dynamic and permanent. Dynamic upgrades are on the left and can be refunded with the \"Reset Upgrades\" button. Permanent upgrades are on the right and cannot be refunded. 
+
+Both kinds may or may not require prerequisities. Currently, only the \"Max Workers\" upgrades do, simply to demonstrate that it is possible."
+autowrap_mode = 2
+
 [node name="CombatScreenGUI" type="Control" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 192.0
@@ -430,6 +552,16 @@ offset_top = 64.0
 offset_right = 175.0
 offset_bottom = 95.0
 text = "Raiding Party"
+
+[node name="Label" type="Label" parent="CombatScreenGUI"]
+layout_mode = 0
+offset_left = 520.0
+offset_top = 24.0
+offset_right = 920.0
+offset_bottom = 296.0
+text = "Combat is still a major WIP.
+For now, clicking the \"Raiding Party\" Button simply totals the number of units you have, subtracts that from 100 and rolls a d100. If your number is less than the die roll, you win the combat and recieve a random amount of captives based on a loot drop table.  Rarity of drops is Ranger < Scorpion < Hawk < Spider < Banshee < Farseer. Any and all of these mechanics are subject to change."
+autowrap_mode = 1
 
 [node name="ProductionScreenGUI" type="Control" parent="."]
 unique_name_in_owner = true
@@ -480,13 +612,40 @@ offset_right = 449.0
 offset_bottom = 111.0
 text = "Slasher"
 
+[node name="WarriorProductionButton" type="Button" parent="ProductionScreenGUI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 384.0
+offset_top = 184.0
+offset_right = 452.0
+offset_bottom = 215.0
+text = "Warrior"
+
+[node name="Label2" type="Label" parent="ProductionScreenGUI"]
+layout_mode = 0
+offset_left = 648.0
+offset_top = 64.0
+offset_right = 952.0
+offset_bottom = 295.0
+text = "Production is still a major WIP. To produce a unit, click on a worker, then click a unit to queue production of that unit. There is currently no limit to the number of units that can be in a queue. Produced units will automatically be added to your force pool. Units cannot currently be cancelled. Production times vary by unit. "
+autowrap_mode = 2
+
 [node name="ArchiveScreenGUI" type="Control" parent="."]
 unique_name_in_owner = true
 visible = false
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 192.0
+offset_top = 64.0
+offset_right = 1152.0
+offset_bottom = 576.0
+
+[node name="Label" type="Label" parent="ArchiveScreenGUI"]
+layout_mode = 0
+offset_right = 632.0
+offset_bottom = 49.0
+text = "The Archive screen is a major WIP. Unlocked rewards, useful stats and misc will be located here. An image gallery and possibly animations will also be availible for viewing."
+autowrap_mode = 2
 
 [node name="DebugScreenGUI" type="Control" parent="."]
 visible = false
@@ -525,6 +684,8 @@ script = ExtResource("13_2tadr")
 
 [node name="HintTimer" type="Timer" parent="HintSystem"]
 unique_name_in_owner = true
+wait_time = 5.0
+autostart = true
 
 [node name="HintBox" type="Label" parent="HintSystem"]
 unique_name_in_owner = true
@@ -554,13 +715,20 @@ follow_viewport_enabled = true
 [connection signal="pressed" from="ManagementScreenGUI/InfoBarGUI/EndTurnButton" to="ManagementScreenGUI/ManagementScreen" method="_on_end_turn_button_pressed"]
 [connection signal="pressed" from="UpgradeScreenGUI/ResetUpgradesButton" to="UpgradeScreenGUI" method="_on_reset_upgrades_button_pressed"]
 [connection signal="toggled" from="UpgradeScreenGUI/ResetUpgradesButton" to="UpgradeScreenGUI" method="_on_reset_upgrades_button_toggled"]
+[connection signal="pressed" from="UpgradeScreenGUI/ShooterUpgrade" to="UpgradeScreenGUI" method="_on_shooter_upgrade_pressed"]
+[connection signal="pressed" from="UpgradeScreenGUI/WarriorUpgrade" to="UpgradeScreenGUI" method="_on_warrior_upgrade_pressed"]
 [connection signal="toggled" from="UpgradeScreenGUI/Upgrade1" to="UpgradeScreenGUI" method="_on_upgrade1_toggled"]
 [connection signal="toggled" from="UpgradeScreenGUI/Upgrade2" to="UpgradeScreenGUI" method="_on_upgrade_2_toggled"]
+[connection signal="toggled" from="UpgradeScreenGUI/Upgrade3" to="UpgradeScreenGUI" method="_on_upgrade_3_toggled"]
+[connection signal="toggled" from="UpgradeScreenGUI/Upgrade4" to="UpgradeScreenGUI" method="_on_upgrade_4_toggled"]
+[connection signal="toggled" from="UpgradeScreenGUI/Upgrade5" to="UpgradeScreenGUI" method="_on_upgrade_5_toggled"]
+[connection signal="toggled" from="UpgradeScreenGUI/Upgrade6" to="UpgradeScreenGUI" method="_on_upgrade_6_toggled"]
 [connection signal="pressed" from="CombatScreenGUI/BattleButton1" to="CombatScreenGUI" method="_on_battle_button_1_pressed"]
 [connection signal="pressed" from="ProductionScreenGUI/RangerProdctionButton" to="ProductionScreenGUI" method="_on_guard_prodction_button_pressed"]
 [connection signal="pressed" from="ProductionScreenGUI/SpiderProductionButton" to="ProductionScreenGUI" method="_on_spider_production_button_pressed"]
 [connection signal="pressed" from="ProductionScreenGUI/ShooterProductionButton" to="ProductionScreenGUI" method="_on_shooter_production_button_pressed"]
 [connection signal="pressed" from="ProductionScreenGUI/StabberProductionButton" to="ProductionScreenGUI" method="_on_stabber_production_button_pressed"]
+[connection signal="pressed" from="ProductionScreenGUI/WarriorProductionButton" to="ProductionScreenGUI" method="_on_warrior_production_button_pressed"]
 [connection signal="toggled" from="DebugScreenGUI/ToggleGuard" to="DebugScreenGUI" method="_on_toggle_guard_toggled"]
 [connection signal="toggled" from="DebugScreenGUI/ToggleSpider" to="DebugScreenGUI" method="_on_toggle_spider_toggled"]
 [connection signal="timeout" from="HintSystem/HintTimer" to="HintSystem" method="_on_hint_timer_timeout"]

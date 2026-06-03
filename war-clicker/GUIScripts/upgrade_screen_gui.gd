@@ -2,7 +2,7 @@ extends Control
 
 var active_upgrades = []
 
-@onready var all_upgrades = [%Upgrade1,%Upgrade2,%StabberUpgrade]
+@onready var all_upgrades = [%StabberUpgrade,%WarriorUpgrade,%ShooterUpgrade,%Upgrade1,%Upgrade2,%Upgrade3,%Upgrade4,%Upgrade5,%Upgrade6]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -39,6 +39,14 @@ func disable_unafforable_techs():
 func disable_advanced_tech(prerequisites):
 	var all_active = prerequisites.all(func(item): return item in active_upgrades)
 	return all_active
+	
+func _on_shooter_upgrade_pressed() -> void:
+	active_upgrades.append(%ShooterUpgrade)
+	%ShooterUpgrade.disabled = true
+	
+func _on_warrior_upgrade_pressed() -> void:
+	active_upgrades.append(%WarriorUpgrade)
+	%WarriorUpgrade.disabled = true
 
 func _on_upgrade1_toggled(toggled_on: bool) -> void:
 	#refactor this so that points are deducted/added for all costs dynamically, make it a function
@@ -62,3 +70,51 @@ func _on_upgrade_2_toggled(_toggled_on: bool) -> void:
 		%ManagementScreen.update_points(200,%ManagementScreen.POINTS.GREEN)
 		%ManagementScreen.update_max_workers(-10)
 		%Upgrade2.disabled = false
+
+
+func _on_upgrade_3_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		%ManagementScreen.update_points(-200,%ManagementScreen.POINTS.GREEN)
+		#%ManagementScreen.update_max_workers(10)
+		active_upgrades.append(%Upgrade3)
+		%Upgrade3.disabled = true
+	else:
+		%ManagementScreen.update_points(200,%ManagementScreen.POINTS.GREEN)
+		#%ManagementScreen.update_max_workers(-10)
+		%Upgrade3.disabled = false
+	
+	
+func _on_upgrade_4_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		%ManagementScreen.update_points(-200,%ManagementScreen.POINTS.GREEN)
+		#%ManagementScreen.update_max_workers(10)
+		active_upgrades.append(%Upgrade4)
+		%Upgrade4.disabled = true
+	else:
+		%ManagementScreen.update_points(200,%ManagementScreen.POINTS.GREEN)
+		#%ManagementScreen.update_max_workers(-10)
+		%Upgrade4.disabled = false
+
+
+func _on_upgrade_5_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		%ManagementScreen.update_points(-200,%ManagementScreen.POINTS.GREEN)
+		#%ManagementScreen.update_max_workers(10)
+		active_upgrades.append(%Upgrade2)
+		%Upgrade5.disabled = true
+	else:
+		%ManagementScreen.update_points(200,%ManagementScreen.POINTS.GREEN)
+		#%ManagementScreen.update_max_workers(-10)
+		%Upgrade5.disabled = false
+
+
+func _on_upgrade_6_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		%ManagementScreen.update_points(-200,%ManagementScreen.POINTS.GREEN)
+		#%ManagementScreen.update_max_workers(10)
+		active_upgrades.append(%Upgrade2)
+		%Upgrade6.disabled = true
+	else:
+		%ManagementScreen.update_points(200,%ManagementScreen.POINTS.GREEN)
+		#%ManagementScreen.update_max_workers(-10)
+		%Upgrade6.disabled = false

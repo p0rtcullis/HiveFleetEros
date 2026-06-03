@@ -79,11 +79,18 @@ func _ready() -> void:
 	%MaxWorkersLabel.text = "Max Workers: " +str(max_workers)
 	worker_list.append(%Ranger)
 	worker_list.append(%Spider)
+	worker_list.append(%Scorpion)
+	worker_list.append(%Hawk)
+	worker_list.append(%Banshee)
+	worker_list.append(%Farseer)
 	pass
 	
-#func _unhandled_input(event: InputEvent) -> void:
-#	if Input.is_action_just_pressed("ui_click"):
-#		print("yay")
+func _mass_worker_point_count():
+	total_green += round(((mass_ranger*5*0.25)+(mass_scorpion*10*0.25))+(mass_hawk*5*0.25))
+	total_brown += round(((mass_spider*5*0.25)+(mass_banshee+10*0.25))+(mass_hawk*5*0.25))
+	total_magenta += round((mass_spider*5*0.25))
+	total_purple += round((mass_spider*5*0.25))
+	
 #Future use
 func _on_question_box_gone():
 	%EndTurnButton.disabled = false
