@@ -87,7 +87,7 @@ func _ready() -> void:
 	
 func _mass_worker_point_count():
 	total_green += round(((mass_ranger*5*0.25)+(mass_scorpion*10*0.25))+(mass_hawk*5*0.25))
-	total_brown += round(((mass_spider*5*0.25)+(mass_banshee+10*0.25))+(mass_hawk*5*0.25))
+	total_brown += round(((mass_spider*5*0.25)+(mass_banshee*10*0.25))+(mass_hawk*5*0.25))
 	total_magenta += round((mass_spider*5*0.25))
 	total_purple += round((mass_spider*5*0.25))
 	
@@ -133,6 +133,7 @@ func _on_end_turn_button_pressed() -> void:
 	total_magenta += _worker_point_count(POINTS.MAGENTA)
 	total_purple += _worker_point_count(POINTS.PURPLE)
 	%ProductionScreenGUI._production_update()
+	_mass_worker_point_count()
 	current_turn +=1
 	#print(current_turn)
 	for turn in %EventSystem.trigger_turns:

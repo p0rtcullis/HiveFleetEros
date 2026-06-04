@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxgpitkgc5osk"]
+
+[ext_resource type="Script" uid="uid://5nu220i2qqfu" path="res://alert_box.gd" id="1_s3hhl"]
+
+[node name="AlertBox" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s3hhl")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="AlertTitle" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Alert Title"
+
+[node name="AlertBody" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+text = "Alert Body"
+autowrap_mode = 2
+
+[node name="AlertButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Accept Alert"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/AlertButton" to="." method="_on_alert_button_pressed"]
