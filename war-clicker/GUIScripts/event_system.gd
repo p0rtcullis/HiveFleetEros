@@ -43,7 +43,7 @@ func _first_event():
 func _scout_encounter():
 	var question_box = preload("res://question_box.tscn")
 	var question = question_box.instantiate()
-	
+	question.event_title = "Scouting Party"
 	question.event_text = "Enemy Scouts have been spotted in the vicinity of the base. What shall we do?"
 	question.button1_text = "Dispatch a raiding party, fall on them with the utmost fury!"
 	question.button2_text = "A silent approach is best. With luck, we may recieve captives without tipping our hand."
@@ -56,7 +56,16 @@ func _scout_encounter():
 	#print("scout"+str(choice))
 	
 func _scout_results(choice):
+	var alert = alert_box.instantiate()
 	if choice < 2:
-		print("Our forces sweep the enemy from the field. Our victory is great, but we have alerted the enemy to our presence.")
+		%ManagementScreen.mass_ranger += 5
+		alert.alert_title = "AGGRESSIVE ACTION"
+		alert.alert_text = "Our forces sweep the enemy from the field. Our victory is great, but we have alerted the enemy to our presence."
+		alert.alert_button_text = "Let them come."
 	else:
-		print("We have captured the intruders, but their disappearance will undoubedly draw more.")
+		%ManagementScreen.mass_ranger += 5
+		%ManagementScreen.mass_scorpions += 2
+		alert.alert_title = "STEALTH ACTION"
+		alert.alert_text = "We have captured the intruders, but their disappearance will undoubedly draw more."
+		alert.alert_button_text = "More for the broodchambers..."
+	canvas_layer.add_child(alert)

@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://dya763ecg0nbu"]
+[gd_scene load_steps=4 format=3 uid="uid://dya763ecg0nbu"]
 
 [ext_resource type="Script" uid="uid://bn3vxl43sbv2m" path="res://Upgrades/upgrade_button.gd" id="1_8kimk"]
+[ext_resource type="Theme" uid="uid://ck035eblxw2gv" path="res://Resources/upgrade_tooltip.tres" id="1_jqcur"]
 [ext_resource type="Resource" uid="uid://cgtfwylou0wcf" path="res://Resources/upgrade.tres" id="2_jqcur"]
 
 [node name="UpgradeButton" type="Button"]
 offset_right = 8.0
 offset_bottom = 8.0
+theme = ExtResource("1_jqcur")
 toggle_mode = true
 text = "Default Text"
 script = ExtResource("1_8kimk")

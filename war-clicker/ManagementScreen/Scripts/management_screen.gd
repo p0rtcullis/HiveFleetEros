@@ -73,6 +73,8 @@ var mass_hawk : int = 0:
 		mass_hawk = min(value,max_workers)
 		%MassHawkLabel.text = str(mass_hawk)
 	
+	
+var mass_worker_list : Array = [mass_ranger,mass_spider,mass_banshee,mass_scorpion,mass_hawk]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Events.connect("question_box_gone",_on_question_box_gone)
@@ -133,6 +135,9 @@ func _on_end_turn_button_pressed() -> void:
 	total_magenta += _worker_point_count(POINTS.MAGENTA)
 	total_purple += _worker_point_count(POINTS.PURPLE)
 	%ProductionScreenGUI._production_update()
+	%ProductionScreenGUI._worker_production()
+	%ArmyLabel.text = "Army Size: " + str(unit_list.size())
+	mass_worker_list = [mass_ranger,mass_spider,mass_banshee,mass_scorpion,mass_hawk]
 	_mass_worker_point_count()
 	current_turn +=1
 	#print(current_turn)

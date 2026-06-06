@@ -1,6 +1,7 @@
-[gd_scene load_steps=37 format=3 uid="uid://c0n6btegy48v1"]
+[gd_scene load_steps=38 format=3 uid="uid://c0n6btegy48v1"]
 
 [ext_resource type="PackedScene" uid="uid://bmg3wqjwo13dg" path="res://ManagementScreen/management_screen.tscn" id="1_70yv6"]
+[ext_resource type="Script" uid="uid://duchtboj7lubp" path="res://game_manager.gd" id="1_nvy02"]
 [ext_resource type="PackedScene" uid="uid://b3nrf0a4v8gbs" path="res://Worker/guard.tscn" id="2_8jrwq"]
 [ext_resource type="Script" uid="uid://cckuthll68xey" path="res://GUIScripts/side_bar_gui.gd" id="2_dq8jp"]
 [ext_resource type="Script" uid="uid://ertesfb6senx" path="res://GUIScripts/upgrade_screen_gui.gd" id="2_smx3j"]
@@ -85,7 +86,7 @@ metadata/_custom_type_script = "uid://do7phg52jpppn"
 [sub_resource type="Resource" id="Resource_2tadr"]
 resource_local_to_scene = true
 script = ExtResource("4_d5upp")
-upgrade_name = "Unlock Shooters"
+upgrade_name = "Unlock Termagants"
 upgrade_text = "Permanently Unlock Shooter Bugs. Cost: 100 Green"
 green_cost = 100
 metadata/_custom_type_script = "uid://do7phg52jpppn"
@@ -101,52 +102,53 @@ metadata/_custom_type_script = "uid://do7phg52jpppn"
 [sub_resource type="Resource" id="Resource_vk86k"]
 resource_local_to_scene = true
 script = ExtResource("4_d5upp")
-upgrade_name = "Max Workers +5"
-upgrade_text = " Add space for 5 of each worker Cost: 100 Green"
+upgrade_name = "Expanded Broodchamber"
+upgrade_text = " Add space for 5 of each worker. Cost: 100 Green"
 green_cost = 100
 metadata/_custom_type_script = "uid://do7phg52jpppn"
 
 [sub_resource type="Resource" id="Resource_shwjl"]
 resource_local_to_scene = true
 script = ExtResource("4_d5upp")
-upgrade_name = "Max Workers +10"
-upgrade_text = "Add space for 10 of each worker Cost: 200 Green"
+upgrade_name = "Deeper Broodchamber"
+upgrade_text = "Add space for 10 of each worker. Cost: 200 Green"
 green_cost = 200
 metadata/_custom_type_script = "uid://do7phg52jpppn"
 
 [sub_resource type="Resource" id="Resource_3alj7"]
 resource_local_to_scene = true
 script = ExtResource("4_d5upp")
-upgrade_name = "Upgrade Max Workers +2"
-upgrade_text = " Add another worker slot. Cost: 100 Green"
+upgrade_name = "Barbed Cocks"
+upgrade_text = "Increases breeder pleasure and fertilization chance by locking the couple for several hours. Cost: 100 Green"
 green_cost = 100
 metadata/_custom_type_script = "uid://do7phg52jpppn"
 
 [sub_resource type="Resource" id="Resource_qmmi4"]
 resource_local_to_scene = true
 script = ExtResource("4_d5upp")
-upgrade_name = "Upgrade Max Workers +2"
-upgrade_text = " Add another worker slot. Cost: 100 Green"
+upgrade_name = "Womb Latch"
+upgrade_text = "Snug against the cervic, tyranid cocks and now deliver potent seed directly to their partner's personal broodchamber. Cost: 100 Green"
 green_cost = 100
 metadata/_custom_type_script = "uid://do7phg52jpppn"
 
 [sub_resource type="Resource" id="Resource_oslct"]
 resource_local_to_scene = true
 script = ExtResource("4_d5upp")
-upgrade_name = "Upgrade Max Workers +2"
-upgrade_text = " Add another worker slot. Cost: 100 Green"
+upgrade_name = "Chambered Testicles"
+upgrade_text = "Adapting to the Aeldari fertility, the twitching testes of the tyranids now come with a diversity of DNA.Cost: 100 Green"
 green_cost = 100
 metadata/_custom_type_script = "uid://do7phg52jpppn"
 
 [sub_resource type="Resource" id="Resource_2x3uj"]
 resource_local_to_scene = true
 script = ExtResource("4_d5upp")
-upgrade_name = "Upgrade Max Workers +2"
-upgrade_text = " Add another worker slot. Cost: 100 Green"
+upgrade_name = "Uterine-Bore Spermazoa"
+upgrade_text = "Adapted from the classic fleashborer weapon, tyranid penises are loaded with their own \"special ammo\". Even the toughest eggs will crack!Cost: 100 Green"
 green_cost = 100
 metadata/_custom_type_script = "uid://do7phg52jpppn"
 
 [node name="GameManager" type="Node"]
+script = ExtResource("1_nvy02")
 
 [node name="Layout1" type="Sprite2D" parent="."]
 visible = false
@@ -269,14 +271,6 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 
-[node name="MaxWorkersLabel" type="Label" parent="ManagementScreenGUI/InfoBarGUI"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 320.0
-offset_right = 360.0
-offset_bottom = 23.0
-text = "Max Workers: 0"
-
 [node name="EndTurnButton" type="Button" parent="ManagementScreenGUI/InfoBarGUI"]
 unique_name_in_owner = true
 layout_mode = 0
@@ -337,7 +331,7 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 
-[node name="MassScorptionLabel" type="Label" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/VBoxContainer4"]
+[node name="MassScorpionLabel" type="Label" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/VBoxContainer4"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
@@ -357,6 +351,22 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ManagementScreenGUI/InfoBarGUI"]
+layout_mode = 0
+offset_left = 256.0
+offset_right = 376.0
+offset_bottom = 40.0
+
+[node name="MaxWorkersLabel" type="Label" parent="ManagementScreenGUI/InfoBarGUI/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Max Workers: 0"
+
+[node name="ArmyLabel" type="Label" parent="ManagementScreenGUI/InfoBarGUI/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Army Size: 0"
 
 [node name="ManagementScreen" parent="ManagementScreenGUI" instance=ExtResource("1_70yv6")]
 unique_name_in_owner = true
@@ -452,7 +462,7 @@ offset_top = 16.0
 offset_right = 895.0
 offset_bottom = 47.0
 toggle_mode = false
-text = "Unlock Shooters"
+text = "Unlock Termagants"
 stats = SubResource("Resource_2tadr")
 
 [node name="WarriorUpgrade" parent="UpgradeScreenGUI" instance=ExtResource("3_o2178")]
@@ -601,7 +611,7 @@ offset_left = 384.0
 offset_top = 136.0
 offset_right = 453.0
 offset_bottom = 167.0
-text = "Shooter"
+text = "Termagant"
 
 [node name="StabberProductionButton" type="Button" parent="ProductionScreenGUI"]
 unique_name_in_owner = true
@@ -610,7 +620,7 @@ offset_left = 384.0
 offset_top = 80.0
 offset_right = 449.0
 offset_bottom = 111.0
-text = "Slasher"
+text = "Hormagaunt"
 
 [node name="WarriorProductionButton" type="Button" parent="ProductionScreenGUI"]
 unique_name_in_owner = true
@@ -708,6 +718,33 @@ script = ExtResource("14_tmn8n")
 unique_name_in_owner = true
 follow_viewport_enabled = true
 
+[node name="TextureRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect"]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 48.0
+offset_right = 1040.0
+offset_bottom = 552.0
+text = "You  awake. Immediately, you sense something is wrong. The ossified cradle that supports your immense form is brittle and dying. Ruptured generative organs hang around you like rotten fruit. Birthing pools froth over with stillborn progeny. Extending your senses through the vast, living hive ship that has long carried you through the stars, you realise your biomass reserves are perilously low; clearly, some cataclysm struck your vessel during your eons spent in hibernation.
+
+Worse, your senses extend only as far as those of your ship. The greater whole to which you belong - that which this galaxy's inhabitants have in their ignorance named the Tyranid Race - is lost to you. For the first time in your existence, you are alone.
+
+For a time, you retreat into contemplation. Dispassionately you regard the terrible wounds inflicted upon your body, the scarcity of resources, the absence of your kin. Even the genetic records you store within yourself are scrambled, inaccessible. But within them you find something of use; an old trait, inefficient, long discarded. But your kind have long memories, and in this abandoned quirk of biology you find the thinnest chance of salvation.
+
+You have so little left. It is a calculated gamble; birthing a single viable bioform requires the cannibalisation of several of major organs, weakening you further. Finally it crawls from its birthing sac, its mind touching yours as it shakes itself clear of amniotic slime and examines the reproductive organ you have crafted for it. It is a simple thing, quicksilver-fast and hungry, its every instinct bent towards a single, overriding goal."
+
+[node name="Button" type="Button" parent="TextureRect"]
+layout_mode = 0
+offset_left = 544.0
+offset_top = 536.0
+offset_right = 603.0
+offset_bottom = 567.0
+text = "BREED"
+
 [connection signal="pressed" from="ManagementScreenGUI/SideBarGUI/ProductionScreenToggle" to="ManagementScreenGUI/SideBarGUI" method="_on_production_screen_toggle_pressed"]
 [connection signal="pressed" from="ManagementScreenGUI/SideBarGUI/UpgradeScreeenToggle" to="ManagementScreenGUI/SideBarGUI" method="_on_upgrade_screeen_toggle_pressed"]
 [connection signal="pressed" from="ManagementScreenGUI/SideBarGUI/CombatScreenToggle" to="ManagementScreenGUI/SideBarGUI" method="_on_combat_screen_toggle_pressed"]
@@ -732,3 +769,4 @@ follow_viewport_enabled = true
 [connection signal="toggled" from="DebugScreenGUI/ToggleGuard" to="DebugScreenGUI" method="_on_toggle_guard_toggled"]
 [connection signal="toggled" from="DebugScreenGUI/ToggleSpider" to="DebugScreenGUI" method="_on_toggle_spider_toggled"]
 [connection signal="timeout" from="HintSystem/HintTimer" to="HintSystem" method="_on_hint_timer_timeout"]
+[connection signal="pressed" from="TextureRect/Button" to="." method="_on_button_pressed"]

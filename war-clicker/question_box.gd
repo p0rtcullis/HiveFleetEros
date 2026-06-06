@@ -1,13 +1,14 @@
 extends CenterContainer
 
 #var event_data = BinaryEvent.new()
-
+var event_title : String = "Placeholder"
 var event_text : String = "Placeholder"
 var button1_text : String = "Placeholder"
 var button2_text : String = "Placeholder"
 @onready var button1 = %Button
 
 func _ready() -> void:
+	%EventTitle.text = event_title
 	%Label.text = event_text
 	%Button.text = button1_text
 	%Button2.text = button2_text

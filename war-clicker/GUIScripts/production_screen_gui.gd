@@ -9,6 +9,16 @@ extends Control
 
 @onready var selected_worker = %Ranger
 
+var prod_mod : int = 0
+var unlocked_units :Array = [stabber_template]
+
+func _worker_production():
+	for worker in %ManagementScreen.mass_worker_list:
+		for x in range(0,worker):
+			var prod_chance = randi_range(1,100)
+			if prod_chance <= 10 + prod_mod:
+				%ManagementScreen.unit_list.append(unlocked_units.pick_random())
+
 
 func _production_update() -> void:
 	for worker in %ManagementScreen.worker_list:
