@@ -64,7 +64,7 @@ func _scout_results(choice):
 		alert.alert_button_text = "Let them come."
 	else:
 		%ManagementScreen.mass_ranger += 5
-		%ManagementScreen.mass_scorpions += 2
+		%ManagementScreen.mass_scorpion += 2
 		alert.alert_title = "STEALTH ACTION"
 		alert.alert_text = "We have captured the intruders, but their disappearance will undoubedly draw more."
 		alert.alert_button_text = "More for the broodchambers..."

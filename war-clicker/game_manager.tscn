@@ -80,7 +80,7 @@ resource_local_to_scene = true
 script = ExtResource("4_d5upp")
 upgrade_name = "Upgrade Max Workers +2"
 upgrade_text = " Add another worker slot. Cost: 100 Green"
-green_cost = 100
+unlocked = true
 metadata/_custom_type_script = "uid://do7phg52jpppn"
 
 [sub_resource type="Resource" id="Resource_2tadr"]
@@ -461,7 +461,6 @@ offset_left = 760.0
 offset_top = 16.0
 offset_right = 895.0
 offset_bottom = 47.0
-toggle_mode = false
 text = "Unlock Termagants"
 stats = SubResource("Resource_2tadr")
 
@@ -472,7 +471,6 @@ offset_left = 760.0
 offset_top = 64.0
 offset_right = 885.0
 offset_bottom = 95.0
-toggle_mode = false
 text = "Unlock Warrior"
 stats = SubResource("Resource_nvy02")
 
@@ -719,6 +717,7 @@ unique_name_in_owner = true
 follow_viewport_enabled = true
 
 [node name="TextureRect" type="ColorRect" parent="."]
+visible = false
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0, 0, 0, 1)
@@ -754,12 +753,7 @@ text = "BREED"
 [connection signal="toggled" from="UpgradeScreenGUI/ResetUpgradesButton" to="UpgradeScreenGUI" method="_on_reset_upgrades_button_toggled"]
 [connection signal="pressed" from="UpgradeScreenGUI/ShooterUpgrade" to="UpgradeScreenGUI" method="_on_shooter_upgrade_pressed"]
 [connection signal="pressed" from="UpgradeScreenGUI/WarriorUpgrade" to="UpgradeScreenGUI" method="_on_warrior_upgrade_pressed"]
-[connection signal="toggled" from="UpgradeScreenGUI/Upgrade1" to="UpgradeScreenGUI" method="_on_upgrade1_toggled"]
-[connection signal="toggled" from="UpgradeScreenGUI/Upgrade2" to="UpgradeScreenGUI" method="_on_upgrade_2_toggled"]
-[connection signal="toggled" from="UpgradeScreenGUI/Upgrade3" to="UpgradeScreenGUI" method="_on_upgrade_3_toggled"]
-[connection signal="toggled" from="UpgradeScreenGUI/Upgrade4" to="UpgradeScreenGUI" method="_on_upgrade_4_toggled"]
-[connection signal="toggled" from="UpgradeScreenGUI/Upgrade5" to="UpgradeScreenGUI" method="_on_upgrade_5_toggled"]
-[connection signal="toggled" from="UpgradeScreenGUI/Upgrade6" to="UpgradeScreenGUI" method="_on_upgrade_6_toggled"]
+[connection signal="pressed" from="UpgradeScreenGUI/Upgrade1" to="UpgradeScreenGUI" method="_on_upgrade_1_pressed"]
 [connection signal="pressed" from="CombatScreenGUI/BattleButton1" to="CombatScreenGUI" method="_on_battle_button_1_pressed"]
 [connection signal="pressed" from="ProductionScreenGUI/RangerProdctionButton" to="ProductionScreenGUI" method="_on_guard_prodction_button_pressed"]
 [connection signal="pressed" from="ProductionScreenGUI/SpiderProductionButton" to="ProductionScreenGUI" method="_on_spider_production_button_pressed"]

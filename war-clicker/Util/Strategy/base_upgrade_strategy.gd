@@ -8,3 +8,4 @@ extends Resource
 @export var brown_cost : int = 0
 @export var magenta_cost : int = 0
 @export var purple_cost : int = 0
+@export var unlocked : bool = false

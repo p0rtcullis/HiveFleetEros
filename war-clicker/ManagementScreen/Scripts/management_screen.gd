@@ -15,7 +15,7 @@ var unit_list : Array = []
 	set(value):
 		total_green = value
 		%GreenPointsLabel.text = str(total_green)
-		%UpgradeScreenGUI.disable_unafforable_techs()
+		#%UpgradeScreenGUI.disable_unafforable_techs()
 		
 var green_mod : int = 0
 
@@ -23,7 +23,7 @@ var green_mod : int = 0
 	set(value):
 		total_brown = value
 		%BrownPointsLabel.text = str(total_brown)
-		%UpgradeScreenGUI.disable_unafforable_techs()
+		#%UpgradeScreenGUI.disable_unafforable_techs()
 		
 var brown_mod : int = 0
 
@@ -31,7 +31,7 @@ var brown_mod : int = 0
 	set(value):
 		total_magenta = value
 		%MagentaPointsLabel.text = str(total_magenta)
-		%UpgradeScreenGUI.disable_unafforable_techs()
+		#%UpgradeScreenGUI.disable_unafforable_techs()
 		
 var magenta_mod : int = 0
 
@@ -39,7 +39,7 @@ var magenta_mod : int = 0
 	set(value):
 		total_purple = value
 		%PurplePointsLabel.text = str(total_purple)
-		%UpgradeScreenGUI.disable_unafforable_techs()
+		#%UpgradeScreenGUI.disable_unafforable_techs()
 		
 var purple_mod : int = 0
 
@@ -130,6 +130,7 @@ func update_points(new_points: int, color : POINTS):
 				
 #Process end of turn updates
 func _on_end_turn_button_pressed() -> void:
+	%UpgradeScreenGUI.upgrade_processing()
 	total_green += _worker_point_count(POINTS.GREEN)
 	total_brown += _worker_point_count(POINTS.BROWN)
 	total_magenta += _worker_point_count(POINTS.MAGENTA)
