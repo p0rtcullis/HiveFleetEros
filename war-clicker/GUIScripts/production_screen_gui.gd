@@ -10,14 +10,26 @@ extends Control
 @onready var selected_worker = %Ranger
 
 var prod_mod : int = 0
-var unlocked_units :Array = [stabber_template]
+@onready var unlocked_units :Array = [stabber_template]
+@onready var unit_types : Dictionary = {"shooter":shooter_template,"warrior":warrior_template,"stalker":stalker_template,"ripple":ripple_template,"psy":psy_template}
+
+func _ready() -> void:
+	Events.connect("end_turn",_end_turn_production)
+	Events.connect("unit_unlocked",_unit_unlocked)
+
+func _end_turn_production():
+	_worker_production()
+	_production_update()
+	
+func _unit_unlocked(unit):
+	unlocked_units.append(unit_types[unit])
 
 func _worker_production():
 	for worker in %ManagementScreen.mass_worker_list:
 		for x in range(0,worker):
 			var prod_chance = randi_range(1,100)
 			if prod_chance <= 10 + prod_mod:
-				%ManagementScreen.unit_list.append(unlocked_units.pick_random())
+				Events.unit_gain.emit(unlocked_units.pick_random())
 
 
 func _production_update() -> void:
@@ -32,7 +44,7 @@ func _production_update() -> void:
 			else:
 				#print("Unit Produced")
 				worker.stats.production_timer = 0
-				%ManagementScreen.unit_list.append(worker.production_queue.pop_front())
+				Events.unit_gain.emit(worker.production_queue.pop_front())
 				#print(%ManagementScreen.unit_list)
 
 func _on_ranger_prodction_button_pressed() -> void:
@@ -43,27 +55,23 @@ func _on_spider_production_button_pressed() -> void:
 
 #Shooter
 func _on_shooter_production_button_pressed() -> void:
-	if %ShooterUpgrade not in %UpgradeScreenGUI.all_upgrades:
+	if shooter_template not in unlocked_units:
 		print("Upgrade not unlocked!")
 	else:
 		var unit = shooter_template.instantiate()
 		selected_worker.production_queue.append(unit)
-		#print(selected_worker.production_queue)
 
 #Stabber
 func _on_stabber_production_button_pressed() -> void:
-	if %StabberUpgrade not in %UpgradeScreenGUI.all_upgrades:
+	if stabber_template not in unlocked_units:
 		print("Upgrade not unlocked!")
 	else:
 		var unit = stabber_template.instantiate()
 		selected_worker.production_queue.append(unit)
-		#print(selected_worker.production_queue)
 
 
 func _on_warrior_production_button_pressed() -> void:
-	if %WarriorUpgrade not in %UpgradeScreenGUI.all_upgrades:
+	if warrior_template not in unlocked_units:
 		print("Upgrade not unlocked!")
 	else:
 		var unit = warrior_template.instantiate()
-		selected_worker.production_queue.append(unit)
-		#print(selected_worker.production_queue)

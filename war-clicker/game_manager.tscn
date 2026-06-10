@@ -656,7 +656,6 @@ text = "The Archive screen is a major WIP. Unlocked rewards, useful stats and mi
 autowrap_mode = 2
 
 [node name="DebugScreenGUI" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_top = 576.0
@@ -682,6 +681,24 @@ offset_right = 248.0
 offset_bottom = 39.0
 toggle_mode = true
 text = "Toggle Spider"
+
+[node name="ToggleEvents" type="Button" parent="DebugScreenGUI"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 8.0
+offset_right = 366.0
+offset_bottom = 39.0
+toggle_mode = true
+text = "ToggleEvents"
+
+[node name="ToggleDevMode" type="Button" parent="DebugScreenGUI"]
+layout_mode = 0
+offset_left = 376.0
+offset_top = 8.0
+offset_right = 508.0
+offset_bottom = 39.0
+toggle_mode = true
+text = "ToggleDevMode"
 
 [node name="HintSystem" type="Control" parent="."]
 layout_mode = 3
@@ -762,5 +779,6 @@ text = "BREED"
 [connection signal="pressed" from="ProductionScreenGUI/WarriorProductionButton" to="ProductionScreenGUI" method="_on_warrior_production_button_pressed"]
 [connection signal="toggled" from="DebugScreenGUI/ToggleGuard" to="DebugScreenGUI" method="_on_toggle_guard_toggled"]
 [connection signal="toggled" from="DebugScreenGUI/ToggleSpider" to="DebugScreenGUI" method="_on_toggle_spider_toggled"]
+[connection signal="toggled" from="DebugScreenGUI/ToggleEvents" to="DebugScreenGUI" method="_on_toggle_events_toggled"]
 [connection signal="timeout" from="HintSystem/HintTimer" to="HintSystem" method="_on_hint_timer_timeout"]
 [connection signal="pressed" from="TextureRect/Button" to="." method="_on_button_pressed"]

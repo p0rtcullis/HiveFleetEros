@@ -1,28 +1,40 @@
 extends Control
 
+var upgrades_reset : bool = true
 var active_upgrades = []
 
 @onready var all_upgrades = [%WarriorUpgrade,%ShooterUpgrade,%Upgrade1,%Upgrade2,%Upgrade3,%Upgrade4,%Upgrade5,%Upgrade6]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	Events.connect("end_turn",_end_turn_upgrade)
+	for upgrade in all_upgrades:
+		upgrade.text = "Default"
+		upgrade.tooltip_text = "Def"
+		
+func _end_turn_upgrade():
+	upgrade_processing()
 
 #add or subtract from total points for each color. set true for additon, set false for subtraction
 func process_cost(upgrade,refund):
-	#var costs : Array = [upgrade.stats.green_cost,upgrade.stats.brown_cost,upgrade.stats.magenta_cost,upgrade.stats.purple_cost]
 	if refund:
-		%ManagementScreen.update_points(upgrade.stats.green_cost,%ManagementScreen.POINTS.GREEN)
-		%ManagementScreen.update_points(upgrade.stats.brown_cost,%ManagementScreen.POINTS.BROWN)
-		%ManagementScreen.update_points(upgrade.stats.magenta_cost,%ManagementScreen.POINTS.MAGENTA)
-		%ManagementScreen.update_points(upgrade.stats.purple_cost,%ManagementScreen.POINTS.PURPLE)
+		Events.points_change.emit(upgrade.stats.green_cost,%ManagementScreen.POINTS.GREEN)
+		Events.points_change.emit(upgrade.stats.brown_cost,%ManagementScreen.POINTS.BROWN)
+		Events.points_change.emit(upgrade.stats.magenta_cost,%ManagementScreen.POINTS.MAGENTA)
+		Events.points_change.emit(upgrade.stats.purple_cost,%ManagementScreen.POINTS.PURPLE)
 	else:
-		%ManagementScreen.update_points(upgrade.stats.green_cost*-1,%ManagementScreen.POINTS.GREEN)
-		%ManagementScreen.update_points(upgrade.stats.brown_cost*-1,%ManagementScreen.POINTS.BROWN)
-		%ManagementScreen.update_points(upgrade.stats.magenta_cost*-1,%ManagementScreen.POINTS.MAGENTA)
-		%ManagementScreen.update_points(upgrade.stats.purple_cost*-1,%ManagementScreen.POINTS.PURPLE)
+		Events.points_change.emit(upgrade.stats.green_cost*-1,%ManagementScreen.POINTS.GREEN)
+		Events.points_change.emit(upgrade.stats.brown_cost*-1,%ManagementScreen.POINTS.BROWN)
+		Events.points_change.emit(upgrade.stats.magenta_cost*-1,%ManagementScreen.POINTS.MAGENTA)
+		Events.points_change.emit(upgrade.stats.purple_cost*-1,%ManagementScreen.POINTS.PURPLE)
+
 		
+func is_purchased(upgrade):
+	return upgrade.stats.purchased == true	
 	
+func is_not_purchased(upgrade):
+	return upgrade.stats.purchased == false	
+
 func is_locked(upgrade):
 	return upgrade.stats.unlocked == false
 
@@ -58,41 +70,33 @@ func prereq_met(upgrade):
 
 #all upgrade checks packaged into one, called by %ManagementScreen
 func upgrade_processing():
-	#var reset_check = all_upgrades.filter(is_unlocked)
 	for upgrade in all_upgrades.filter(is_basic):
 		if is_affordable(upgrade) and is_locked(upgrade):
 			upgrade.stats.unlocked = true
 			upgrade.disabled = false
-	#var filtered_techs = all_upgrades.filter(is_unlocked)
-	#print(all_upgrades.filter(is_locked))
-	#filtered_techs = all_upgrades.filter(is_locked)
-	#print(all_upgrades.filter(is_affordable))
-	#filtered_techs = filtered_techs.filter(is_affordable)
-	#print(filtered_techs)
-	#print(filtered_techs)
-	pass
-	
-func price_check(upgrade_cost,total_points):
-	return upgrade_cost <= total_points
-
+			
 
 func _on_reset_upgrades_button_pressed() -> void:
-	for upgrade in all_upgrades.filter(is_unlocked):
-		process_cost(upgrade,true)
-		upgrade.disabled = true
-	for upgrade in all_upgrades.filter(is_basic):
-		if is_affordable(upgrade):
-			upgrade.stats.unlocked = true
-			upgrade.disabled = false
+	if upgrades_reset == false:
+		for upgrade in all_upgrades.filter(is_purchased):
+			process_cost(upgrade,true)
+			upgrade.disabled = true
+		for upgrade in all_upgrades.filter(is_basic):
+			if is_affordable(upgrade):
+				upgrade.stats.unlocked = true
+				upgrade.disabled = false
+		upgrades_reset = true
 
 func buy_upgrade(upgrade):
 	process_cost(upgrade,false)
 	upgrade.disabled = true
+	upgrades_reset = false
+	upgrade.stats.purchased = true
 	
 func _on_shooter_upgrade_pressed() -> void:
 	process_cost(%ShooterUpgrade,false)
 	%ShooterUpgrade.disabled = true
-	%ProductionScreenGUI.unlocked_units.append(%ProductionScreenGUI.shooter_template)
+	Events.unit_unlocked.emit("shooter")
 	
 func _on_warrior_upgrade_pressed() -> void:
 	pass # Replace with function body.
@@ -100,3 +104,4 @@ func _on_warrior_upgrade_pressed() -> void:
 	
 func _on_upgrade_1_pressed() -> void:
 	buy_upgrade(%Upgrade1)
+	

@@ -9,3 +9,4 @@ extends Resource
 @export var magenta_cost : int = 0
 @export var purple_cost : int = 0
 @export var unlocked : bool = false
+@export var purchased : bool = false

@@ -4,6 +4,10 @@ var battle_1_diff : int  = 25
 var battle_2_diff : int = 50
 var combat_alert_box = preload("res://alert_box.tscn")
 
+var num_stabbers : int  = 0
+var num_shooters : int = 0
+
+
 func _ready() -> void:
 	Events.connect("alert_created",_on_battle_button_1_pressed)
 	Events.connect("alert_acknowledged",_acknowledge_event)
