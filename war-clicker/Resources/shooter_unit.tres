@@ -5,8 +5,8 @@
 [resource]
 resource_local_to_scene = true
 script = ExtResource("1_344go")
-unit_name = "Shooter"
-unit_text = "He shoots ddues"
+unit_name = "Termagant"
+unit_text = "Line infantry of the hive"
 green_cost = 10
 cook_time = 5
 metadata/_custom_type_script = "uid://c236vyguht3h"

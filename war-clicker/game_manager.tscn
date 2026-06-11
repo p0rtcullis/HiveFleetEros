@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://c0n6btegy48v1"]
+[gd_scene load_steps=41 format=3 uid="uid://c0n6btegy48v1"]
 
 [ext_resource type="PackedScene" uid="uid://bmg3wqjwo13dg" path="res://ManagementScreen/management_screen.tscn" id="1_70yv6"]
 [ext_resource type="Script" uid="uid://duchtboj7lubp" path="res://game_manager.gd" id="1_nvy02"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://b36h6hgufjtnh" path="res://Worker/hawk.tscn" id="11_nvy02"]
 [ext_resource type="Script" uid="uid://37lyibncgijc" path="res://GUIScripts/hint_system.gd" id="13_2tadr"]
 [ext_resource type="Script" uid="uid://ke2r5ggj0cwr" path="res://GUIScripts/event_system.gd" id="14_tmn8n"]
+[ext_resource type="Theme" uid="uid://di6ohiiwfn1m6" path="res://Resources/button_theme.tres" id="19_7bexq"]
 
 [sub_resource type="Resource" id="Resource_7bexq"]
 resource_local_to_scene = true
@@ -147,6 +148,12 @@ upgrade_text = "Adapted from the classic fleashborer weapon, tyranid penises are
 green_cost = 100
 metadata/_custom_type_script = "uid://do7phg52jpppn"
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7bexq"]
+bg_color = Color(0.6236472, 0.12244458, 0.73932815, 1)
+
+[sub_resource type="Theme" id="Theme_424ju"]
+Label/styles/normal = SubResource("StyleBoxFlat_7bexq")
+
 [node name="GameManager" type="Node"]
 script = ExtResource("1_nvy02")
 
@@ -168,6 +175,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
+metadata/_edit_lock_ = true
 
 [node name="SideBarGUI" type="Control" parent="ManagementScreenGUI"]
 anchors_preset = 0
@@ -176,6 +184,12 @@ offset_right = 192.0
 offset_bottom = 576.0
 script = ExtResource("2_dq8jp")
 
+[node name="ColorRect" type="ColorRect" parent="ManagementScreenGUI/SideBarGUI"]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 512.0
+color = Color(0, 0, 0, 1)
+
 [node name="ProductionScreenToggle" type="Button" parent="ManagementScreenGUI/SideBarGUI"]
 unique_name_in_owner = true
 layout_mode = 0
@@ -183,6 +197,7 @@ offset_left = 48.0
 offset_top = 16.0
 offset_right = 142.0
 offset_bottom = 47.0
+theme = ExtResource("19_7bexq")
 text = "Production"
 
 [node name="UpgradeScreeenToggle" type="Button" parent="ManagementScreenGUI/SideBarGUI"]
@@ -192,6 +207,7 @@ offset_left = 56.0
 offset_top = 80.0
 offset_right = 138.0
 offset_bottom = 111.0
+theme = ExtResource("19_7bexq")
 text = "Upgrades"
 
 [node name="CombatScreenToggle" type="Button" parent="ManagementScreenGUI/SideBarGUI"]
@@ -201,6 +217,7 @@ offset_left = 64.0
 offset_top = 144.0
 offset_right = 133.0
 offset_bottom = 175.0
+theme = ExtResource("19_7bexq")
 text = "Combat"
 
 [node name="ArchiveScreenToggle" type="Button" parent="ManagementScreenGUI/SideBarGUI"]
@@ -210,6 +227,7 @@ offset_left = 40.0
 offset_top = 208.0
 offset_right = 163.0
 offset_bottom = 239.0
+theme = ExtResource("19_7bexq")
 text = "Archive"
 
 [node name="InfoBarGUI" type="Control" parent="ManagementScreenGUI"]
@@ -278,6 +296,7 @@ offset_left = 472.0
 offset_top = 16.0
 offset_right = 550.0
 offset_bottom = 47.0
+theme = ExtResource("19_7bexq")
 text = "End Turn"
 
 [node name="MassWorkers" type="HBoxContainer" parent="ManagementScreenGUI/InfoBarGUI"]
@@ -409,6 +428,7 @@ stats = SubResource("Resource_agblk")
 
 [node name="Welcome" type="Label" parent="ManagementScreenGUI"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = 273.0
 offset_top = 83.0
@@ -573,7 +593,6 @@ autowrap_mode = 1
 
 [node name="ProductionScreenGUI" type="Control" parent="."]
 unique_name_in_owner = true
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 192.0
@@ -581,52 +600,36 @@ offset_top = 64.0
 offset_right = 1152.0
 offset_bottom = 576.0
 script = ExtResource("10_yawsv")
-
-[node name="RangerProdctionButton" type="Button" parent="ProductionScreenGUI"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 64.0
-offset_top = 80.0
-offset_right = 120.0
-offset_bottom = 111.0
-tooltip_text = "Produce units with the Ranger"
-text = "Ranger"
-
-[node name="SpiderProductionButton" type="Button" parent="ProductionScreenGUI"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 64.0
-offset_top = 144.0
-offset_right = 122.0
-offset_bottom = 175.0
-tooltip_text = "Produce units with the Spider"
-text = "Spider"
+metadata/_edit_lock_ = true
 
 [node name="ShooterProductionButton" type="Button" parent="ProductionScreenGUI"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 384.0
-offset_top = 136.0
-offset_right = 453.0
-offset_bottom = 167.0
+offset_left = 528.0
+offset_top = 120.0
+offset_right = 621.0
+offset_bottom = 151.0
+theme = ExtResource("19_7bexq")
 text = "Termagant"
 
 [node name="StabberProductionButton" type="Button" parent="ProductionScreenGUI"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 384.0
-offset_top = 80.0
-offset_right = 449.0
-offset_bottom = 111.0
+offset_left = 528.0
+offset_top = 64.0
+offset_right = 635.0
+offset_bottom = 95.0
+theme = ExtResource("19_7bexq")
 text = "Hormagaunt"
 
 [node name="WarriorProductionButton" type="Button" parent="ProductionScreenGUI"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 384.0
-offset_top = 184.0
-offset_right = 452.0
-offset_bottom = 215.0
+offset_left = 528.0
+offset_top = 168.0
+offset_right = 596.0
+offset_bottom = 199.0
+theme = ExtResource("19_7bexq")
 text = "Warrior"
 
 [node name="Label2" type="Label" parent="ProductionScreenGUI"]
@@ -637,6 +640,75 @@ offset_right = 952.0
 offset_bottom = 295.0
 text = "Production is still a major WIP. To produce a unit, click on a worker, then click a unit to queue production of that unit. There is currently no limit to the number of units that can be in a queue. Produced units will automatically be added to your force pool. Units cannot currently be cancelled. Production times vary by unit. "
 autowrap_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="ProductionScreenGUI"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 64.0
+offset_right = 512.0
+offset_bottom = 448.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ProductionScreenGUI/PanelContainer"]
+layout_mode = 2
+
+[node name="ProductionQueue" type="ItemList" parent="ProductionScreenGUI/PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ProductionScreenGUI"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 140.0
+offset_bottom = 448.0
+theme_override_constants/separation = 35
+alignment = 1
+
+[node name="RangerProdctionButton" type="Button" parent="ProductionScreenGUI/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Produce units with the Ranger"
+theme = ExtResource("19_7bexq")
+text = "Ranger"
+
+[node name="SpiderProductionButton" type="Button" parent="ProductionScreenGUI/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Produce units with the Spider"
+theme = ExtResource("19_7bexq")
+text = "Spider"
+
+[node name="HawkProductionButton" type="Button" parent="ProductionScreenGUI/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("19_7bexq")
+text = "Hawk"
+
+[node name="ScorpionProductionButton" type="Button" parent="ProductionScreenGUI/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("19_7bexq")
+text = "Scorpion"
+
+[node name="SeerProductionButton" type="Button" parent="ProductionScreenGUI/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("19_7bexq")
+text = "Seer"
+
+[node name="BansheeProductionButton" type="Button" parent="ProductionScreenGUI/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("19_7bexq")
+text = "Banshee
+"
+
+[node name="SelectedWorkerLabel" type="Label" parent="ProductionScreenGUI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 192.0
+offset_top = 40.0
+offset_right = 232.0
+offset_bottom = 63.0
+theme = SubResource("Theme_424ju")
+text = "Selected Worker: Ranger"
 
 [node name="ArchiveScreenGUI" type="Control" parent="."]
 unique_name_in_owner = true
@@ -772,11 +844,12 @@ text = "BREED"
 [connection signal="pressed" from="UpgradeScreenGUI/WarriorUpgrade" to="UpgradeScreenGUI" method="_on_warrior_upgrade_pressed"]
 [connection signal="pressed" from="UpgradeScreenGUI/Upgrade1" to="UpgradeScreenGUI" method="_on_upgrade_1_pressed"]
 [connection signal="pressed" from="CombatScreenGUI/BattleButton1" to="CombatScreenGUI" method="_on_battle_button_1_pressed"]
-[connection signal="pressed" from="ProductionScreenGUI/RangerProdctionButton" to="ProductionScreenGUI" method="_on_guard_prodction_button_pressed"]
-[connection signal="pressed" from="ProductionScreenGUI/SpiderProductionButton" to="ProductionScreenGUI" method="_on_spider_production_button_pressed"]
 [connection signal="pressed" from="ProductionScreenGUI/ShooterProductionButton" to="ProductionScreenGUI" method="_on_shooter_production_button_pressed"]
 [connection signal="pressed" from="ProductionScreenGUI/StabberProductionButton" to="ProductionScreenGUI" method="_on_stabber_production_button_pressed"]
 [connection signal="pressed" from="ProductionScreenGUI/WarriorProductionButton" to="ProductionScreenGUI" method="_on_warrior_production_button_pressed"]
+[connection signal="item_activated" from="ProductionScreenGUI/PanelContainer/HBoxContainer/ProductionQueue" to="ProductionScreenGUI" method="_on_production_queue_item_activated"]
+[connection signal="pressed" from="ProductionScreenGUI/VBoxContainer/RangerProdctionButton" to="ProductionScreenGUI" method="_on_ranger_prodction_button_pressed"]
+[connection signal="pressed" from="ProductionScreenGUI/VBoxContainer/SpiderProductionButton" to="ProductionScreenGUI" method="_on_spider_production_button_pressed"]
 [connection signal="toggled" from="DebugScreenGUI/ToggleGuard" to="DebugScreenGUI" method="_on_toggle_guard_toggled"]
 [connection signal="toggled" from="DebugScreenGUI/ToggleSpider" to="DebugScreenGUI" method="_on_toggle_spider_toggled"]
 [connection signal="toggled" from="DebugScreenGUI/ToggleEvents" to="DebugScreenGUI" method="_on_toggle_events_toggled"]

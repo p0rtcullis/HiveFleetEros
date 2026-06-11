@@ -1,7 +1,16 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ck035eblxw2gv"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://ck035eblxw2gv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ihq6j"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.8156863, 0.3647059, 0.93333334, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jlgyw"]
 bg_color = Color(0, 0, 0, 1)
 
 [resource]
+Button/styles/normal = SubResource("StyleBoxFlat_ihq6j")
 TooltipPanel/styles/panel = SubResource("StyleBoxFlat_jlgyw")
