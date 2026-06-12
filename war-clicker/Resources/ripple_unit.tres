@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="BaseUnitStrategy" load_steps=2 format=3 uid="uid://dungtdyxl1dcc"]
+
+[ext_resource type="Script" uid="uid://c236vyguht3h" path="res://Util/Strategy/base_unit_strategy.gd" id="1_o535b"]
+
+[resource]
+script = ExtResource("1_o535b")
+unit_name = "Ripper"
+metadata/_custom_type_script = "uid://c236vyguht3h"

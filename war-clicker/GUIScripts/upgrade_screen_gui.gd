@@ -3,15 +3,16 @@ extends Control
 var upgrades_reset : bool = true
 var active_upgrades = []
 
-@onready var all_upgrades = [%WarriorUpgrade,%ShooterUpgrade,%Upgrade1,%Upgrade2,%Upgrade3,%Upgrade4,%Upgrade5,%Upgrade6]
+@onready var all_upgrades = [%WarriorUpgrade,%RippleUpgrade,%StalkerUpgrade,%PsyUpgrade,%ShooterUpgrade,%Upgrade1,%Upgrade2,%Upgrade3,%Upgrade4,%Upgrade5,%Upgrade6]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Events.connect("end_turn",_end_turn_upgrade)
-	for upgrade in all_upgrades:
-		upgrade.text = "Default"
-		upgrade.tooltip_text = "Def"
-		
+	if Events.enable_dev_mode:
+		for upgrade in all_upgrades:
+			upgrade.text = "Default"
+			upgrade.tooltip_text = "Def"
+	
 func _end_turn_upgrade():
 	upgrade_processing()
 
@@ -98,10 +99,26 @@ func _on_shooter_upgrade_pressed() -> void:
 	%ShooterUpgrade.disabled = true
 	Events.unit_unlocked.emit("shooter")
 	
+func _on_ripple_upgrade_pressed() -> void:
+	process_cost(%RippleUpgrade,false)
+	%RippleUpgrade.disabled = true
+	Events.unit_unlocked.emit("ripple")
+	
 func _on_warrior_upgrade_pressed() -> void:
-	pass # Replace with function body.
+	process_cost(%WarriorUpgrade,false)
+	%WarriorUpgrade.disabled = true
+	Events.unit_unlocked.emit("warrior")
+	
+func _on_stalker_upgrade_pressed() -> void:
+	process_cost(%StalkerUpgrade,false)
+	%StalkerUpgrade.disabled = true
+	Events.unit_unlocked.emit("stalker")
+	
+func _on_psy_upgrade_pressed() -> void:
+	process_cost(%PsyUpgrade,false)
+	%PsyUpgrade.disabled = true
+	Events.unit_unlocked.emit("psy")
 
 	
 func _on_upgrade_1_pressed() -> void:
 	buy_upgrade(%Upgrade1)
-	

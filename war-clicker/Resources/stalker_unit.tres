@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="BaseUnitStrategy" load_steps=2 format=3 uid="uid://eixp2w85n8cg"]
+
+[ext_resource type="Script" uid="uid://c236vyguht3h" path="res://Util/Strategy/base_unit_strategy.gd" id="1_7il66"]
+
+[resource]
+script = ExtResource("1_7il66")
+unit_name = "Lictor"
+metadata/_custom_type_script = "uid://c236vyguht3h"

@@ -1,7 +1,7 @@
 extends Node
 
 var enable_events : bool = false
-var enable_dev_mode : bool = false
+var enable_dev_mode : bool = true
 
 
 signal trigger_event(lookup_number)

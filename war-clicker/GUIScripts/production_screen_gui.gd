@@ -16,11 +16,26 @@ extends Control
 var prod_mod : int = 0
 @onready var unlocked_units :Array = [stabber_template]
 @onready var unit_types : Dictionary = {"shooter":shooter_template,"warrior":warrior_template,"stalker":stalker_template,"ripple":ripple_template,"psy":psy_template}
+@onready var unit_buttons : Dictionary = {"shooter":%ShooterProductionButton,"warrior":%WarriorProductionButton,"stalker":stalker_template,"ripple":ripple_template,"psy":psy_template}
+@onready var worker_types : Dictionary = {"scorpion":%ScorpionProductionButton,"hawk":%HawkProductionButton,"spider":%SpiderProductionButton,"banshee":%BansheeProductionButton,"seer":%SeerProductionButton}
 
 func _ready() -> void:
 	Events.connect("end_turn",_end_turn_production)
 	Events.connect("unit_unlocked",_unit_unlocked)
-
+	Events.connect("worker_unlocked",_worker_unlocked)
+	
+	%ScorpionProductionButton.disabled = true
+	%HawkProductionButton.disabled = true
+	%SpiderProductionButton.disabled = true
+	%BansheeProductionButton.disabled = true
+	%SeerProductionButton.disabled = true
+	
+	%ShooterProductionButton.disabled = true
+	%WarriorProductionButton.disabled = true
+	%StalkerProductionButton.disabled = true
+	%RippleProductionButton.disabled = true
+	%PsyProductionButton.disabled = true
+	
 func _end_turn_production():
 	_worker_production()
 	_production_update()
@@ -28,6 +43,10 @@ func _end_turn_production():
 	
 func _unit_unlocked(unit):
 	unlocked_units.append(unit_types[unit])
+	unit_buttons[unit].disabled = false
+	
+func _worker_unlocked(worker):
+	worker_types[worker].disabled = false
 
 func _worker_production():
 	for worker in %ManagementScreen.mass_worker_list:
@@ -74,17 +93,41 @@ func _on_ranger_prodction_button_pressed() -> void:
 	selected_worker = %Ranger
 	_display_queue(%Ranger)
 	
+func _on_scorpion_production_button_pressed() -> void:
+	selected_worker = %Scorpion
+	_display_queue(%Scorpion)
+	
+func _on_hawk_production_button_pressed() -> void:
+	selected_worker = %Hawk
+	_display_queue(%Hawk)
+	
 func _on_spider_production_button_pressed() -> void:
 	selected_worker = %Spider
 	_display_queue(%Spider)
-#Shooter
+	
+func _on_banshee_production_button_pressed() -> void:
+	selected_worker = %Banshee
+	_display_queue(%Banshee)
+	
+func _on_seer_production_button_pressed() -> void:
+	selected_worker = %Seer
+	_display_queue(%Seer)
+	
 func _on_shooter_production_button_pressed() -> void:
 	_create_unit(shooter_template)
 
-#Stabber
 func _on_stabber_production_button_pressed() -> void:
 	_create_unit(stabber_template)
 
 
 func _on_warrior_production_button_pressed() -> void:
 	_create_unit(warrior_template)
+
+func _on_stalker_production_button_pressed() -> void:
+	_create_unit(stalker_template)
+
+func _on_ripple_production_button_pressed() -> void:
+	_create_unit(ripple_template)
+
+func _on_psy_production_button_pressed() -> void:
+	_create_unit(psy_template)

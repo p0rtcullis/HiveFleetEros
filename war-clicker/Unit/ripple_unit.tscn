@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bn0vwrnn4ixi7"]
+
+[ext_resource type="Script" uid="uid://8pueq6gqs6jp" path="res://Unit/ripple_unit.gd" id="1_1ml8e"]
+[ext_resource type="Resource" uid="uid://dungtdyxl1dcc" path="res://Resources/ripple_unit.tres" id="2_uimkh"]
+
+[node name="RippleUnit" type="Node2D"]
+script = ExtResource("1_1ml8e")
+stats = ExtResource("2_uimkh")

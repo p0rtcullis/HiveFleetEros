@@ -87,7 +87,7 @@ func _ready() -> void:
 	worker_list.append(%Scorpion)
 	worker_list.append(%Hawk)
 	worker_list.append(%Banshee)
-	worker_list.append(%Farseer)
+	worker_list.append(%Seer)
 	pass
 	
 	

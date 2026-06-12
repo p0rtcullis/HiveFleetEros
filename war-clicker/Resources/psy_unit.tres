@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="BaseUnitStrategy" load_steps=2 format=3 uid="uid://dle4jmjnn638n"]
+
+[ext_resource type="Script" uid="uid://c236vyguht3h" path="res://Util/Strategy/base_unit_strategy.gd" id="1_8i5gq"]
+
+[resource]
+script = ExtResource("1_8i5gq")
+unit_name = "Zoanthrope"
+metadata/_custom_type_script = "uid://c236vyguht3h"

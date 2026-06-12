@@ -1,11 +1,11 @@
-[gd_scene load_steps=41 format=3 uid="uid://c0n6btegy48v1"]
+[gd_scene load_steps=44 format=3 uid="uid://c0n6btegy48v1"]
 
 [ext_resource type="PackedScene" uid="uid://bmg3wqjwo13dg" path="res://ManagementScreen/management_screen.tscn" id="1_70yv6"]
 [ext_resource type="Script" uid="uid://duchtboj7lubp" path="res://game_manager.gd" id="1_nvy02"]
 [ext_resource type="PackedScene" uid="uid://b3nrf0a4v8gbs" path="res://Worker/guard.tscn" id="2_8jrwq"]
 [ext_resource type="Script" uid="uid://cckuthll68xey" path="res://GUIScripts/side_bar_gui.gd" id="2_dq8jp"]
 [ext_resource type="Script" uid="uid://ertesfb6senx" path="res://GUIScripts/upgrade_screen_gui.gd" id="2_smx3j"]
-[ext_resource type="Script" uid="uid://nwai5gntgmn1" path="res://info_bar_gui.gd" id="3_d246e"]
+[ext_resource type="Script" uid="uid://nwai5gntgmn1" path="res://GUIScripts/info_bar_gui.gd" id="3_d246e"]
 [ext_resource type="Script" uid="uid://c8veevrjckqal" path="res://Util/Strategy/base_worker_strategy.gd" id="3_gth8u"]
 [ext_resource type="PackedScene" uid="uid://dya763ecg0nbu" path="res://Upgrades/upgrade_button.tscn" id="3_o2178"]
 [ext_resource type="PackedScene" uid="uid://cuo63ymo6ofmr" path="res://Worker/banshee.tscn" id="4_anra8"]
@@ -76,30 +76,6 @@ worker_name = "Swooping Hawk"
 brown = 5
 metadata/_custom_type_script = "uid://c8veevrjckqal"
 
-[sub_resource type="Resource" id="Resource_d246e"]
-resource_local_to_scene = true
-script = ExtResource("4_d5upp")
-upgrade_name = "Upgrade Max Workers +2"
-upgrade_text = " Add another worker slot. Cost: 100 Green"
-unlocked = true
-metadata/_custom_type_script = "uid://do7phg52jpppn"
-
-[sub_resource type="Resource" id="Resource_2tadr"]
-resource_local_to_scene = true
-script = ExtResource("4_d5upp")
-upgrade_name = "Unlock Termagants"
-upgrade_text = "Permanently Unlock Shooter Bugs. Cost: 100 Green"
-green_cost = 100
-metadata/_custom_type_script = "uid://do7phg52jpppn"
-
-[sub_resource type="Resource" id="Resource_nvy02"]
-resource_local_to_scene = true
-script = ExtResource("4_d5upp")
-upgrade_name = "Unlock Warrior"
-upgrade_text = " Add Warrior Bugs. Cost: 200 Green"
-green_cost = 200
-metadata/_custom_type_script = "uid://do7phg52jpppn"
-
 [sub_resource type="Resource" id="Resource_vk86k"]
 resource_local_to_scene = true
 script = ExtResource("4_d5upp")
@@ -146,6 +122,60 @@ script = ExtResource("4_d5upp")
 upgrade_name = "Uterine-Bore Spermazoa"
 upgrade_text = "Adapted from the classic fleashborer weapon, tyranid penises are loaded with their own \"special ammo\". Even the toughest eggs will crack!Cost: 100 Green"
 green_cost = 100
+metadata/_custom_type_script = "uid://do7phg52jpppn"
+
+[sub_resource type="Resource" id="Resource_2tadr"]
+resource_local_to_scene = true
+script = ExtResource("4_d5upp")
+upgrade_name = "Unlock Termagant"
+upgrade_text = "Permanently Unlock Shooter Bugs. Cost: 100 Green"
+green_cost = 100
+metadata/_custom_type_script = "uid://do7phg52jpppn"
+
+[sub_resource type="Resource" id="Resource_jy3no"]
+resource_local_to_scene = true
+script = ExtResource("4_d5upp")
+upgrade_name = "Unlock Ripper"
+upgrade_text = "Unlock Rippers"
+green_cost = 100
+brown_cost = 100
+metadata/_custom_type_script = "uid://do7phg52jpppn"
+
+[sub_resource type="Resource" id="Resource_nvy02"]
+resource_local_to_scene = true
+script = ExtResource("4_d5upp")
+upgrade_name = "Unlock Warrior"
+upgrade_text = " Add Warrior Bugs. Cost: 200 Green"
+green_cost = 200
+brown_cost = 100
+magenta_cost = 100
+purple_cost = 100
+metadata/_custom_type_script = "uid://do7phg52jpppn"
+
+[sub_resource type="Resource" id="Resource_v8q4t"]
+resource_local_to_scene = true
+script = ExtResource("4_d5upp")
+upgrade_name = "Unlock Lictor"
+upgrade_text = " Add another worker slot. Cost: 100 Green"
+brown_cost = 100
+magenta_cost = 100
+metadata/_custom_type_script = "uid://do7phg52jpppn"
+
+[sub_resource type="Resource" id="Resource_otlv6"]
+resource_local_to_scene = true
+script = ExtResource("4_d5upp")
+upgrade_name = "Unlock Zoanthrope"
+upgrade_text = " Add another worker slot. Cost: 100 Green"
+green_cost = 100
+purple_cost = 200
+metadata/_custom_type_script = "uid://do7phg52jpppn"
+
+[sub_resource type="Resource" id="Resource_d246e"]
+resource_local_to_scene = true
+script = ExtResource("4_d5upp")
+upgrade_name = "Upgrade Max Workers +2"
+upgrade_text = " Add another worker slot. Cost: 100 Green"
+unlocked = true
 metadata/_custom_type_script = "uid://do7phg52jpppn"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7bexq"]
@@ -236,156 +266,181 @@ offset_right = 1152.0
 offset_bottom = 64.0
 script = ExtResource("3_d246e")
 
-[node name="PointsGUI" type="HBoxContainer" parent="ManagementScreenGUI/InfoBarGUI"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ManagementScreenGUI/InfoBarGUI/PointsGUI"]
-layout_mode = 2
-
-[node name="GreenPointsTitle" type="Label" parent="ManagementScreenGUI/InfoBarGUI/PointsGUI/VBoxContainer"]
-layout_mode = 2
-text = "Green Pts:"
-
-[node name="BrownPointsTitle" type="Label" parent="ManagementScreenGUI/InfoBarGUI/PointsGUI/VBoxContainer"]
-layout_mode = 2
-text = "Brown Pts:"
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="ManagementScreenGUI/InfoBarGUI/PointsGUI"]
-layout_mode = 2
-
-[node name="GreenPointsLabel" type="Label" parent="ManagementScreenGUI/InfoBarGUI/PointsGUI/VBoxContainer2"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "0"
-
-[node name="BrownPointsLabel" type="Label" parent="ManagementScreenGUI/InfoBarGUI/PointsGUI/VBoxContainer2"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "0"
-
-[node name="VBoxContainer3" type="VBoxContainer" parent="ManagementScreenGUI/InfoBarGUI/PointsGUI"]
-layout_mode = 2
-
-[node name="MagentaPointsTitle" type="Label" parent="ManagementScreenGUI/InfoBarGUI/PointsGUI/VBoxContainer3"]
-layout_mode = 2
-text = "Magenta Pts:"
-
-[node name="PurplePointsTitle" type="Label" parent="ManagementScreenGUI/InfoBarGUI/PointsGUI/VBoxContainer3"]
-layout_mode = 2
-text = "Purple Pts:"
-
-[node name="VBoxContainer4" type="VBoxContainer" parent="ManagementScreenGUI/InfoBarGUI/PointsGUI"]
-layout_mode = 2
-
-[node name="MagentaPointsLabel" type="Label" parent="ManagementScreenGUI/InfoBarGUI/PointsGUI/VBoxContainer4"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "0"
-
-[node name="PurplePointsLabel" type="Label" parent="ManagementScreenGUI/InfoBarGUI/PointsGUI/VBoxContainer4"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "0"
-
 [node name="EndTurnButton" type="Button" parent="ManagementScreenGUI/InfoBarGUI"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 472.0
+offset_left = 1056.0
 offset_top = 16.0
-offset_right = 550.0
+offset_right = 1134.0
 offset_bottom = 47.0
 theme = ExtResource("19_7bexq")
 text = "End Turn"
 
-[node name="MassWorkers" type="HBoxContainer" parent="ManagementScreenGUI/InfoBarGUI"]
+[node name="MassWorkers" type="PanelContainer" parent="ManagementScreenGUI/InfoBarGUI"]
 layout_mode = 0
-offset_left = 576.0
-offset_right = 673.0
-offset_bottom = 40.0
+offset_left = 784.0
+offset_top = 8.0
+offset_right = 1041.0
+offset_bottom = 58.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers"]
+[node name="ColorRect" type="ColorRect" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers"]
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MassWorkersHBox" type="HBoxContainer" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers"]
 layout_mode = 2
 
-[node name="MassRangerTitle" type="Label" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/MassWorkersHBox"]
+layout_mode = 2
+
+[node name="MassRangerTitle" type="Label" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/MassWorkersHBox/VBoxContainer"]
 layout_mode = 2
 tooltip_text = "Rangers give 5 Green"
 mouse_filter = 0
 text = "Rangers:"
 
-[node name="MassSpiderTitle" type="Label" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/VBoxContainer"]
+[node name="MassSpiderTitle" type="Label" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/MassWorkersHBox/VBoxContainer"]
 layout_mode = 2
 text = "Spiders:"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/MassWorkersHBox"]
 layout_mode = 2
 
-[node name="MassRangerLabel" type="Label" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/VBoxContainer2"]
+[node name="MassRangerLabel" type="Label" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/MassWorkersHBox/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 
-[node name="MassSpiderLabel" type="Label" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/VBoxContainer2"]
+[node name="MassSpiderLabel" type="Label" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/MassWorkersHBox/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers"]
+[node name="VBoxContainer3" type="VBoxContainer" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/MassWorkersHBox"]
 layout_mode = 2
 
-[node name="MassBansheeTitle" type="Label" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/VBoxContainer3"]
+[node name="MassBansheeTitle" type="Label" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/MassWorkersHBox/VBoxContainer3"]
 layout_mode = 2
 text = "Banshees:"
 
-[node name="MassScorpionTitle" type="Label" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/VBoxContainer3"]
+[node name="MassScorpionTitle" type="Label" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/MassWorkersHBox/VBoxContainer3"]
 layout_mode = 2
 text = "Scorpions:"
 
-[node name="VBoxContainer4" type="VBoxContainer" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers"]
+[node name="VBoxContainer4" type="VBoxContainer" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/MassWorkersHBox"]
 layout_mode = 2
 
-[node name="MassBansheeLabel" type="Label" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/VBoxContainer4"]
+[node name="MassBansheeLabel" type="Label" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/MassWorkersHBox/VBoxContainer4"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 
-[node name="MassScorpionLabel" type="Label" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/VBoxContainer4"]
+[node name="MassScorpionLabel" type="Label" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/MassWorkersHBox/VBoxContainer4"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 
-[node name="VBoxContainer5" type="VBoxContainer" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers"]
+[node name="VBoxContainer5" type="VBoxContainer" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/MassWorkersHBox"]
 layout_mode = 2
 
-[node name="MassHawkTitle" type="Label" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/VBoxContainer5"]
+[node name="MassHawkTitle" type="Label" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/MassWorkersHBox/VBoxContainer5"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Hawks:"
 
-[node name="VBoxContainer6" type="VBoxContainer" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers"]
+[node name="VBoxContainer6" type="VBoxContainer" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/MassWorkersHBox"]
 layout_mode = 2
 
-[node name="MassHawkLabel" type="Label" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/VBoxContainer6"]
+[node name="MassHawkLabel" type="Label" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/MassWorkersHBox/VBoxContainer6"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ManagementScreenGUI/InfoBarGUI"]
+[node name="ArmyData" type="PanelContainer" parent="ManagementScreenGUI/InfoBarGUI"]
 layout_mode = 0
-offset_left = 256.0
-offset_right = 376.0
-offset_bottom = 40.0
+offset_left = 592.0
+offset_top = 8.0
+offset_right = 725.0
+offset_bottom = 58.0
 
-[node name="MaxWorkersLabel" type="Label" parent="ManagementScreenGUI/InfoBarGUI/VBoxContainer"]
+[node name="ColorRect" type="ColorRect" parent="ManagementScreenGUI/InfoBarGUI/ArmyData"]
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ManagementScreenGUI/InfoBarGUI/ArmyData"]
+layout_mode = 2
+
+[node name="MaxWorkersLabel" type="Label" parent="ManagementScreenGUI/InfoBarGUI/ArmyData/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Max Workers: 0"
 
-[node name="ArmyLabel" type="Label" parent="ManagementScreenGUI/InfoBarGUI/VBoxContainer"]
+[node name="ArmyLabel" type="Label" parent="ManagementScreenGUI/InfoBarGUI/ArmyData/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Army Size: 0"
+
+[node name="PointsGUI" type="PanelContainer" parent="ManagementScreenGUI/InfoBarGUI"]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 8.0
+offset_right = 536.0
+offset_bottom = 58.0
+
+[node name="ColorRect" type="ColorRect" parent="ManagementScreenGUI/InfoBarGUI/PointsGUI"]
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="PointsGUI" type="HBoxContainer" parent="ManagementScreenGUI/InfoBarGUI/PointsGUI"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ManagementScreenGUI/InfoBarGUI/PointsGUI/PointsGUI"]
+layout_mode = 2
+
+[node name="GreenPointsTitle" type="Label" parent="ManagementScreenGUI/InfoBarGUI/PointsGUI/PointsGUI/VBoxContainer"]
+layout_mode = 2
+text = "Green Pts:"
+
+[node name="BrownPointsTitle" type="Label" parent="ManagementScreenGUI/InfoBarGUI/PointsGUI/PointsGUI/VBoxContainer"]
+layout_mode = 2
+text = "Brown Pts:"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="ManagementScreenGUI/InfoBarGUI/PointsGUI/PointsGUI"]
+layout_mode = 2
+
+[node name="GreenPointsLabel" type="Label" parent="ManagementScreenGUI/InfoBarGUI/PointsGUI/PointsGUI/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="BrownPointsLabel" type="Label" parent="ManagementScreenGUI/InfoBarGUI/PointsGUI/PointsGUI/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="ManagementScreenGUI/InfoBarGUI/PointsGUI/PointsGUI"]
+layout_mode = 2
+
+[node name="MagentaPointsTitle" type="Label" parent="ManagementScreenGUI/InfoBarGUI/PointsGUI/PointsGUI/VBoxContainer3"]
+layout_mode = 2
+text = "Magenta Pts:"
+
+[node name="PurplePointsTitle" type="Label" parent="ManagementScreenGUI/InfoBarGUI/PointsGUI/PointsGUI/VBoxContainer3"]
+layout_mode = 2
+text = "Purple Pts:"
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="ManagementScreenGUI/InfoBarGUI/PointsGUI/PointsGUI"]
+layout_mode = 2
+
+[node name="MagentaPointsLabel" type="Label" parent="ManagementScreenGUI/InfoBarGUI/PointsGUI/PointsGUI/VBoxContainer4"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="PurplePointsLabel" type="Label" parent="ManagementScreenGUI/InfoBarGUI/PointsGUI/PointsGUI/VBoxContainer4"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
 
 [node name="ManagementScreen" parent="ManagementScreenGUI" instance=ExtResource("1_70yv6")]
 unique_name_in_owner = true
@@ -396,7 +451,7 @@ anchors_preset = 0
 offset_left = -64.0
 offset_bottom = 64.0
 
-[node name="Farseer" parent="ManagementScreenGUI/ManagementScreen/Control" instance=ExtResource("4_s6dek")]
+[node name="Seer" parent="ManagementScreenGUI/ManagementScreen/Control" instance=ExtResource("4_s6dek")]
 unique_name_in_owner = true
 stats = SubResource("Resource_7bexq")
 
@@ -449,7 +504,6 @@ autowrap_mode = 2
 
 [node name="UpgradeScreenGUI" type="Control" parent="."]
 unique_name_in_owner = true
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 192.0
@@ -466,34 +520,6 @@ offset_right = 193.0
 offset_bottom = 383.0
 text = "Reset Upgrades"
 
-[node name="StabberUpgrade" parent="UpgradeScreenGUI" instance=ExtResource("3_o2178")]
-unique_name_in_owner = true
-visible = false
-layout_mode = 0
-offset_right = 103.0
-offset_bottom = 31.0
-stats = SubResource("Resource_d246e")
-
-[node name="ShooterUpgrade" parent="UpgradeScreenGUI" instance=ExtResource("3_o2178")]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 760.0
-offset_top = 16.0
-offset_right = 895.0
-offset_bottom = 47.0
-text = "Unlock Termagants"
-stats = SubResource("Resource_2tadr")
-
-[node name="WarriorUpgrade" parent="UpgradeScreenGUI" instance=ExtResource("3_o2178")]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 760.0
-offset_top = 64.0
-offset_right = 885.0
-offset_bottom = 95.0
-text = "Unlock Warrior"
-stats = SubResource("Resource_nvy02")
-
 [node name="Upgrade1" parent="UpgradeScreenGUI" instance=ExtResource("3_o2178")]
 unique_name_in_owner = true
 layout_mode = 0
@@ -501,7 +527,7 @@ offset_left = 64.0
 offset_top = 16.0
 offset_right = 197.0
 offset_bottom = 47.0
-text = "Max Workers +5"
+text = "Upgrade1"
 stats = SubResource("Resource_vk86k")
 
 [node name="Upgrade2" parent="UpgradeScreenGUI" node_paths=PackedStringArray("prereq") instance=ExtResource("3_o2178")]
@@ -511,7 +537,7 @@ offset_left = 64.0
 offset_top = 64.0
 offset_right = 206.0
 offset_bottom = 95.0
-text = "Max Workers +10"
+text = "Upgrade2"
 stats = SubResource("Resource_shwjl")
 prereq = [NodePath("../Upgrade1")]
 
@@ -522,6 +548,7 @@ offset_left = 64.0
 offset_top = 112.0
 offset_right = 167.0
 offset_bottom = 143.0
+text = "Upgrade3"
 stats = SubResource("Resource_3alj7")
 
 [node name="Upgrade4" parent="UpgradeScreenGUI" instance=ExtResource("3_o2178")]
@@ -531,6 +558,7 @@ offset_left = 64.0
 offset_top = 160.0
 offset_right = 167.0
 offset_bottom = 191.0
+text = "Upgrade4"
 stats = SubResource("Resource_qmmi4")
 
 [node name="Upgrade5" parent="UpgradeScreenGUI" instance=ExtResource("3_o2178")]
@@ -540,6 +568,7 @@ offset_left = 64.0
 offset_top = 208.0
 offset_right = 167.0
 offset_bottom = 239.0
+text = "Upgrade5"
 stats = SubResource("Resource_oslct")
 
 [node name="Upgrade6" parent="UpgradeScreenGUI" instance=ExtResource("3_o2178")]
@@ -549,18 +578,68 @@ offset_left = 64.0
 offset_top = 256.0
 offset_right = 167.0
 offset_bottom = 287.0
+text = "Upgrade6"
 stats = SubResource("Resource_2x3uj")
 
-[node name="Label" type="Label" parent="UpgradeScreenGUI"]
+[node name="UpgradeNote" type="Label" parent="UpgradeScreenGUI"]
 layout_mode = 0
 offset_left = 456.0
 offset_top = 24.0
 offset_right = 752.0
 offset_bottom = 385.0
-text = "Upgrades are a major WIP. Features shown here are subject to change. There are currently two types of upgrades, dynamic and permanent. Dynamic upgrades are on the left and can be refunded with the \"Reset Upgrades\" button. Permanent upgrades are on the right and cannot be refunded. 
+text = "Upgrades are a major WIP. Features shown here are subject to change. 
 
-Both kinds may or may not require prerequisities. Currently, only the \"Max Workers\" upgrades do, simply to demonstrate that it is possible."
+Upgrades may or may not require prerequisities. Currently, only the \"Max Workers\" upgrades do, simply to demonstrate that it is possible."
 autowrap_mode = 2
+
+[node name="UnitUnlocks" type="PanelContainer" parent="UpgradeScreenGUI"]
+layout_mode = 0
+offset_left = 792.0
+offset_top = 16.0
+offset_right = 944.0
+offset_bottom = 70.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradeScreenGUI/UnitUnlocks"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="ShooterUpgrade" parent="UpgradeScreenGUI/UnitUnlocks/VBoxContainer" instance=ExtResource("3_o2178")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Unlock Termagants"
+stats = SubResource("Resource_2tadr")
+
+[node name="RippleUpgrade" parent="UpgradeScreenGUI/UnitUnlocks/VBoxContainer" instance=ExtResource("3_o2178")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Unlock Ripper"
+stats = SubResource("Resource_jy3no")
+
+[node name="WarriorUpgrade" parent="UpgradeScreenGUI/UnitUnlocks/VBoxContainer" instance=ExtResource("3_o2178")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Unlock Warrior"
+stats = SubResource("Resource_nvy02")
+
+[node name="StalkerUpgrade" parent="UpgradeScreenGUI/UnitUnlocks/VBoxContainer" instance=ExtResource("3_o2178")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Unlock Lictor"
+stats = SubResource("Resource_v8q4t")
+
+[node name="PsyUpgrade" parent="UpgradeScreenGUI/UnitUnlocks/VBoxContainer" instance=ExtResource("3_o2178")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Unlock Zoanthrope"
+stats = SubResource("Resource_otlv6")
+
+[node name="StabberUpgrade" parent="UpgradeScreenGUI" instance=ExtResource("3_o2178")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_right = 103.0
+offset_bottom = 31.0
+stats = SubResource("Resource_d246e")
 
 [node name="CombatScreenGUI" type="Control" parent="."]
 unique_name_in_owner = true
@@ -593,6 +672,7 @@ autowrap_mode = 1
 
 [node name="ProductionScreenGUI" type="Control" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 192.0
@@ -602,103 +682,29 @@ offset_bottom = 576.0
 script = ExtResource("10_yawsv")
 metadata/_edit_lock_ = true
 
-[node name="ShooterProductionButton" type="Button" parent="ProductionScreenGUI"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 528.0
-offset_top = 120.0
-offset_right = 621.0
-offset_bottom = 151.0
-theme = ExtResource("19_7bexq")
-text = "Termagant"
-
-[node name="StabberProductionButton" type="Button" parent="ProductionScreenGUI"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 528.0
-offset_top = 64.0
-offset_right = 635.0
-offset_bottom = 95.0
-theme = ExtResource("19_7bexq")
-text = "Hormagaunt"
-
-[node name="WarriorProductionButton" type="Button" parent="ProductionScreenGUI"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 528.0
-offset_top = 168.0
-offset_right = 596.0
-offset_bottom = 199.0
-theme = ExtResource("19_7bexq")
-text = "Warrior"
-
-[node name="Label2" type="Label" parent="ProductionScreenGUI"]
+[node name="Production Note" type="Label" parent="ProductionScreenGUI"]
 layout_mode = 0
 offset_left = 648.0
 offset_top = 64.0
 offset_right = 952.0
 offset_bottom = 295.0
-text = "Production is still a major WIP. To produce a unit, click on a worker, then click a unit to queue production of that unit. There is currently no limit to the number of units that can be in a queue. Produced units will automatically be added to your force pool. Units cannot currently be cancelled. Production times vary by unit. "
+text = "Production is still a major WIP. To produce a unit, click on a worker, then click a unit to queue production of that unit. There is currently no limit to the number of units that can be in a queue. Produced units will automatically be added to your force pool. Units can be cancelled by double clicking them in the queue. Production times vary by unit. "
 autowrap_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="ProductionScreenGUI"]
+[node name="QueueDisplay" type="PanelContainer" parent="ProductionScreenGUI"]
 layout_mode = 0
 offset_left = 192.0
 offset_top = 64.0
 offset_right = 512.0
 offset_bottom = 448.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ProductionScreenGUI/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ProductionScreenGUI/QueueDisplay"]
 layout_mode = 2
 
-[node name="ProductionQueue" type="ItemList" parent="ProductionScreenGUI/PanelContainer/HBoxContainer"]
+[node name="ProductionQueue" type="ItemList" parent="ProductionScreenGUI/QueueDisplay/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ProductionScreenGUI"]
-layout_mode = 0
-offset_left = 64.0
-offset_top = 64.0
-offset_right = 140.0
-offset_bottom = 448.0
-theme_override_constants/separation = 35
-alignment = 1
-
-[node name="RangerProdctionButton" type="Button" parent="ProductionScreenGUI/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-tooltip_text = "Produce units with the Ranger"
-theme = ExtResource("19_7bexq")
-text = "Ranger"
-
-[node name="SpiderProductionButton" type="Button" parent="ProductionScreenGUI/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-tooltip_text = "Produce units with the Spider"
-theme = ExtResource("19_7bexq")
-text = "Spider"
-
-[node name="HawkProductionButton" type="Button" parent="ProductionScreenGUI/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("19_7bexq")
-text = "Hawk"
-
-[node name="ScorpionProductionButton" type="Button" parent="ProductionScreenGUI/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("19_7bexq")
-text = "Scorpion"
-
-[node name="SeerProductionButton" type="Button" parent="ProductionScreenGUI/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("19_7bexq")
-text = "Seer"
-
-[node name="BansheeProductionButton" type="Button" parent="ProductionScreenGUI/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("19_7bexq")
-text = "Banshee
-"
 
 [node name="SelectedWorkerLabel" type="Label" parent="ProductionScreenGUI"]
 unique_name_in_owner = true
@@ -709,6 +715,104 @@ offset_right = 232.0
 offset_bottom = 63.0
 theme = SubResource("Theme_424ju")
 text = "Selected Worker: Ranger"
+
+[node name="UnitButtons" type="PanelContainer" parent="ProductionScreenGUI"]
+layout_mode = 0
+offset_left = 528.0
+offset_top = 88.0
+offset_right = 629.0
+offset_bottom = 323.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ProductionScreenGUI/UnitButtons"]
+layout_mode = 2
+theme_override_constants/separation = 17
+
+[node name="StabberProductionButton" type="Button" parent="ProductionScreenGUI/UnitButtons/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("19_7bexq")
+text = "Hormagaunt"
+
+[node name="ShooterProductionButton" type="Button" parent="ProductionScreenGUI/UnitButtons/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("19_7bexq")
+text = "Termagant"
+
+[node name="RippleProductionButton" type="Button" parent="ProductionScreenGUI/UnitButtons/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("19_7bexq")
+text = "Rippers"
+
+[node name="WarriorProductionButton" type="Button" parent="ProductionScreenGUI/UnitButtons/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("19_7bexq")
+text = "Warrior"
+
+[node name="StalkerProductionButton" type="Button" parent="ProductionScreenGUI/UnitButtons/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("19_7bexq")
+text = "Lictor"
+
+[node name="PsyProductionButton" type="Button" parent="ProductionScreenGUI/UnitButtons/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("19_7bexq")
+text = "Zoanthrope"
+
+[node name="WorkerButtons" type="PanelContainer" parent="ProductionScreenGUI"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 88.0
+offset_right = 134.0
+offset_bottom = 413.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ProductionScreenGUI/WorkerButtons"]
+layout_mode = 2
+theme_override_constants/separation = 35
+alignment = 1
+
+[node name="RangerProdctionButton" type="Button" parent="ProductionScreenGUI/WorkerButtons/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Produce units with the Ranger"
+theme = ExtResource("19_7bexq")
+text = "Ranger"
+
+[node name="ScorpionProductionButton" type="Button" parent="ProductionScreenGUI/WorkerButtons/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("19_7bexq")
+text = "Scorpion"
+
+[node name="HawkProductionButton" type="Button" parent="ProductionScreenGUI/WorkerButtons/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("19_7bexq")
+text = "Hawk"
+
+[node name="SpiderProductionButton" type="Button" parent="ProductionScreenGUI/WorkerButtons/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Produce units with the Spider"
+theme = ExtResource("19_7bexq")
+text = "Spider"
+
+[node name="BansheeProductionButton" type="Button" parent="ProductionScreenGUI/WorkerButtons/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("19_7bexq")
+text = "Banshee
+"
+
+[node name="SeerProductionButton" type="Button" parent="ProductionScreenGUI/WorkerButtons/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("19_7bexq")
+text = "Seer"
 
 [node name="ArchiveScreenGUI" type="Control" parent="."]
 unique_name_in_owner = true
@@ -734,25 +838,6 @@ offset_top = 576.0
 offset_right = 1152.0
 offset_bottom = 648.0
 script = ExtResource("9_gth8u")
-
-[node name="ToggleGuard" type="Button" parent="DebugScreenGUI"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 119.0
-offset_bottom = 39.0
-toggle_mode = true
-text = "Toggle Guard
-"
-
-[node name="ToggleSpider" type="Button" parent="DebugScreenGUI"]
-layout_mode = 0
-offset_left = 136.0
-offset_top = 8.0
-offset_right = 248.0
-offset_bottom = 39.0
-toggle_mode = true
-text = "Toggle Spider"
 
 [node name="ToggleEvents" type="Button" parent="DebugScreenGUI"]
 layout_mode = 0
@@ -786,11 +871,12 @@ autostart = true
 
 [node name="HintBox" type="Label" parent="HintSystem"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
-offset_left = 32.0
-offset_top = 512.0
-offset_right = 175.0
-offset_bottom = 535.0
+offset_left = 8.0
+offset_top = 592.0
+offset_right = 159.0
+offset_bottom = 615.0
 text = "Hints Appear Here. "
 
 [node name="EventSystem" type="Control" parent="."]
@@ -840,18 +926,27 @@ text = "BREED"
 [connection signal="pressed" from="ManagementScreenGUI/InfoBarGUI/EndTurnButton" to="ManagementScreenGUI/ManagementScreen" method="_on_end_turn_button_pressed"]
 [connection signal="pressed" from="UpgradeScreenGUI/ResetUpgradesButton" to="UpgradeScreenGUI" method="_on_reset_upgrades_button_pressed"]
 [connection signal="toggled" from="UpgradeScreenGUI/ResetUpgradesButton" to="UpgradeScreenGUI" method="_on_reset_upgrades_button_toggled"]
-[connection signal="pressed" from="UpgradeScreenGUI/ShooterUpgrade" to="UpgradeScreenGUI" method="_on_shooter_upgrade_pressed"]
-[connection signal="pressed" from="UpgradeScreenGUI/WarriorUpgrade" to="UpgradeScreenGUI" method="_on_warrior_upgrade_pressed"]
 [connection signal="pressed" from="UpgradeScreenGUI/Upgrade1" to="UpgradeScreenGUI" method="_on_upgrade_1_pressed"]
+[connection signal="pressed" from="UpgradeScreenGUI/UnitUnlocks/VBoxContainer/ShooterUpgrade" to="UpgradeScreenGUI" method="_on_shooter_upgrade_pressed"]
+[connection signal="pressed" from="UpgradeScreenGUI/UnitUnlocks/VBoxContainer/RippleUpgrade" to="UpgradeScreenGUI" method="_on_ripple_upgrade_pressed"]
+[connection signal="pressed" from="UpgradeScreenGUI/UnitUnlocks/VBoxContainer/WarriorUpgrade" to="UpgradeScreenGUI" method="_on_warrior_upgrade_pressed"]
+[connection signal="pressed" from="UpgradeScreenGUI/UnitUnlocks/VBoxContainer/StalkerUpgrade" to="UpgradeScreenGUI" method="_on_stalker_upgrade_pressed"]
+[connection signal="pressed" from="UpgradeScreenGUI/UnitUnlocks/VBoxContainer/PsyUpgrade" to="UpgradeScreenGUI" method="_on_psy_upgrade_pressed"]
 [connection signal="pressed" from="CombatScreenGUI/BattleButton1" to="CombatScreenGUI" method="_on_battle_button_1_pressed"]
-[connection signal="pressed" from="ProductionScreenGUI/ShooterProductionButton" to="ProductionScreenGUI" method="_on_shooter_production_button_pressed"]
-[connection signal="pressed" from="ProductionScreenGUI/StabberProductionButton" to="ProductionScreenGUI" method="_on_stabber_production_button_pressed"]
-[connection signal="pressed" from="ProductionScreenGUI/WarriorProductionButton" to="ProductionScreenGUI" method="_on_warrior_production_button_pressed"]
-[connection signal="item_activated" from="ProductionScreenGUI/PanelContainer/HBoxContainer/ProductionQueue" to="ProductionScreenGUI" method="_on_production_queue_item_activated"]
-[connection signal="pressed" from="ProductionScreenGUI/VBoxContainer/RangerProdctionButton" to="ProductionScreenGUI" method="_on_ranger_prodction_button_pressed"]
-[connection signal="pressed" from="ProductionScreenGUI/VBoxContainer/SpiderProductionButton" to="ProductionScreenGUI" method="_on_spider_production_button_pressed"]
-[connection signal="toggled" from="DebugScreenGUI/ToggleGuard" to="DebugScreenGUI" method="_on_toggle_guard_toggled"]
-[connection signal="toggled" from="DebugScreenGUI/ToggleSpider" to="DebugScreenGUI" method="_on_toggle_spider_toggled"]
+[connection signal="item_activated" from="ProductionScreenGUI/QueueDisplay/HBoxContainer/ProductionQueue" to="ProductionScreenGUI" method="_on_production_queue_item_activated"]
+[connection signal="pressed" from="ProductionScreenGUI/UnitButtons/VBoxContainer/StabberProductionButton" to="ProductionScreenGUI" method="_on_stabber_production_button_pressed"]
+[connection signal="pressed" from="ProductionScreenGUI/UnitButtons/VBoxContainer/ShooterProductionButton" to="ProductionScreenGUI" method="_on_shooter_production_button_pressed"]
+[connection signal="pressed" from="ProductionScreenGUI/UnitButtons/VBoxContainer/RippleProductionButton" to="ProductionScreenGUI" method="_on_ripple_production_button_pressed"]
+[connection signal="pressed" from="ProductionScreenGUI/UnitButtons/VBoxContainer/WarriorProductionButton" to="ProductionScreenGUI" method="_on_warrior_production_button_pressed"]
+[connection signal="pressed" from="ProductionScreenGUI/UnitButtons/VBoxContainer/StalkerProductionButton" to="ProductionScreenGUI" method="_on_stalker_production_button_pressed"]
+[connection signal="pressed" from="ProductionScreenGUI/UnitButtons/VBoxContainer/PsyProductionButton" to="ProductionScreenGUI" method="_on_psy_production_button_pressed"]
+[connection signal="pressed" from="ProductionScreenGUI/WorkerButtons/VBoxContainer/RangerProdctionButton" to="ProductionScreenGUI" method="_on_ranger_prodction_button_pressed"]
+[connection signal="pressed" from="ProductionScreenGUI/WorkerButtons/VBoxContainer/ScorpionProductionButton" to="ProductionScreenGUI" method="_on_scorpion_production_button_pressed"]
+[connection signal="pressed" from="ProductionScreenGUI/WorkerButtons/VBoxContainer/HawkProductionButton" to="ProductionScreenGUI" method="_on_hawk_production_button_pressed"]
+[connection signal="pressed" from="ProductionScreenGUI/WorkerButtons/VBoxContainer/SpiderProductionButton" to="ProductionScreenGUI" method="_on_spider_production_button_pressed"]
+[connection signal="pressed" from="ProductionScreenGUI/WorkerButtons/VBoxContainer/BansheeProductionButton" to="ProductionScreenGUI" method="_on_banshee_production_button_pressed"]
+[connection signal="pressed" from="ProductionScreenGUI/WorkerButtons/VBoxContainer/SeerProductionButton" to="ProductionScreenGUI" method="_on_seer_production_button_pressed"]
 [connection signal="toggled" from="DebugScreenGUI/ToggleEvents" to="DebugScreenGUI" method="_on_toggle_events_toggled"]
+[connection signal="pressed" from="DebugScreenGUI/ToggleDevMode" to="DebugScreenGUI" method="_on_toggle_dev_mode_pressed"]
 [connection signal="timeout" from="HintSystem/HintTimer" to="HintSystem" method="_on_hint_timer_timeout"]
 [connection signal="pressed" from="TextureRect/Button" to="." method="_on_button_pressed"]
