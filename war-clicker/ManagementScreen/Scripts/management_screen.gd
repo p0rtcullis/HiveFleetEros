@@ -15,7 +15,7 @@ var unit_list : Array = []
 	set(value):
 		total_green = value
 		%GreenPointsLabel.text = str(total_green)
-		%UpgradeScreenGUI.disable_unafforable_techs()
+		#%UpgradeScreenGUI.disable_unafforable_techs()
 		
 var green_mod : int = 0
 
@@ -23,7 +23,7 @@ var green_mod : int = 0
 	set(value):
 		total_brown = value
 		%BrownPointsLabel.text = str(total_brown)
-		%UpgradeScreenGUI.disable_unafforable_techs()
+		#%UpgradeScreenGUI.disable_unafforable_techs()
 		
 var brown_mod : int = 0
 
@@ -31,7 +31,7 @@ var brown_mod : int = 0
 	set(value):
 		total_magenta = value
 		%MagentaPointsLabel.text = str(total_magenta)
-		%UpgradeScreenGUI.disable_unafforable_techs()
+		#%UpgradeScreenGUI.disable_unafforable_techs()
 		
 var magenta_mod : int = 0
 
@@ -39,7 +39,7 @@ var magenta_mod : int = 0
 	set(value):
 		total_purple = value
 		%PurplePointsLabel.text = str(total_purple)
-		%UpgradeScreenGUI.disable_unafforable_techs()
+		#%UpgradeScreenGUI.disable_unafforable_techs()
 		
 var purple_mod : int = 0
 
@@ -73,17 +73,33 @@ var mass_hawk : int = 0:
 		mass_hawk = min(value,max_workers)
 		%MassHawkLabel.text = str(mass_hawk)
 	
+	
+var mass_worker_list : Array = [mass_ranger,mass_spider,mass_banshee,mass_scorpion,mass_hawk]
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Events.connect("question_box_gone",_on_question_box_gone)
+	Events.connect("points_change",_update_points)
+	Events.connect("unit_gain",_unit_gain)
 	%MaxWorkersLabel.text = "Max Workers: " +str(max_workers)
 	worker_list.append(%Ranger)
 	worker_list.append(%Spider)
+	worker_list.append(%Scorpion)
+	worker_list.append(%Hawk)
+	worker_list.append(%Banshee)
+	worker_list.append(%Farseer)
 	pass
 	
-#func _unhandled_input(event: InputEvent) -> void:
-#	if Input.is_action_just_pressed("ui_click"):
-#		print("yay")
+	
+func _unit_gain(unit):
+	unit_list.append(unit)
+
+func _mass_worker_point_count():
+	total_green += round(((mass_ranger*5*0.25)+(mass_scorpion*10*0.25))+(mass_hawk*5*0.25))
+	total_brown += round(((mass_spider*5*0.25)+(mass_banshee*10*0.25))+(mass_hawk*5*0.25))
+	total_magenta += round((mass_spider*5*0.25))
+	total_purple += round((mass_spider*5*0.25))
+	
 #Future use
 func _on_question_box_gone():
 	%EndTurnButton.disabled = false
@@ -103,12 +119,13 @@ func _worker_point_count(color : POINTS):
 				POINTS.PURPLE:
 					point_total += worker.stats.purple
 	return point_total
-	
-func update_max_workers(new_max: int):
+
+#update the numbers of mass workers
+func _update_max_workers(new_max: int):
 	max_workers += new_max
 	
 # For modifying point totals via upgrades
-func update_points(new_points: int, color : POINTS):
+func _update_points(new_points: int, color : POINTS):
 	match color:
 			POINTS.GREEN:
 				total_green += new_points
@@ -119,19 +136,32 @@ func update_points(new_points: int, color : POINTS):
 			POINTS.PURPLE:
 				total_purple += new_points
 				
-#Process end of turn updates
-func _on_end_turn_button_pressed() -> void:
+
+func total_points():
 	total_green += _worker_point_count(POINTS.GREEN)
 	total_brown += _worker_point_count(POINTS.BROWN)
 	total_magenta += _worker_point_count(POINTS.MAGENTA)
 	total_purple += _worker_point_count(POINTS.PURPLE)
-	%ProductionScreenGUI._production_update()
+
+
+#Process end of turn updates
+func _on_end_turn_button_pressed() -> void:
+	Events.end_turn.emit()
+	
+	total_points()
+
+	%ArmyLabel.text = "Army Size: " + str(unit_list.size())
+	
+	mass_worker_list = [mass_ranger,mass_spider,mass_banshee,mass_scorpion,mass_hawk]
+	
+	_mass_worker_point_count()
 	current_turn +=1
 	#print(current_turn)
-	for turn in %EventSystem.trigger_turns:
-		if turn == current_turn:
-			Events.emit_signal("trigger_event",current_turn)
-			break
-		else:
-			#print("false")
-			pass
+	if Events.enable_events:
+		for turn in %EventSystem.trigger_turns:
+			if turn == current_turn:
+				Events.emit_signal("trigger_event",current_turn)
+				break
+			else:
+				#print("false")
+				pass

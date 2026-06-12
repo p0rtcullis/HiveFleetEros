@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BaseUnitStrategy" load_steps=2 format=3 uid="uid://bo0minixt3swi"]
+
+[ext_resource type="Script" uid="uid://c236vyguht3h" path="res://Util/Strategy/base_unit_strategy.gd" id="1_vlevr"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_vlevr")
+unit_name = "Warrior"
+green_cost = 10
+brown_cost = 5
+cook_time = 10
+metadata/_custom_type_script = "uid://c236vyguht3h"
