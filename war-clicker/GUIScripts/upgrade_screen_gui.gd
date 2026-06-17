@@ -3,7 +3,7 @@ extends Control
 var upgrades_reset : bool = true
 var upgrade_effects = []
 
-@onready var all_upgrades = [%WarriorUpgrade,%RippleUpgrade,%StalkerUpgrade,%PsyUpgrade,%ShooterUpgrade,%Upgrade1,%Upgrade2,%Upgrade3,%Upgrade4,%Upgrade5,%Upgrade6]
+@onready var all_upgrades = [%Upgrade1]
 
 #region Upgrade Management Functions
 # Called when the node enters the scene tree for the first time.
@@ -20,40 +20,40 @@ func _end_turn_upgrade():
 #add or subtract from total points for each color. set true for additon, set false for subtraction
 func process_cost(upgrade,refund):
 	if refund:
-		Events.points_change.emit(upgrade.stats.green_cost,%ManagementScreen.POINTS.GREEN)
-		Events.points_change.emit(upgrade.stats.brown_cost,%ManagementScreen.POINTS.BROWN)
-		Events.points_change.emit(upgrade.stats.magenta_cost,%ManagementScreen.POINTS.MAGENTA)
-		Events.points_change.emit(upgrade.stats.purple_cost,%ManagementScreen.POINTS.PURPLE)
+		Events.points_change.emit(upgrade.green_cost,%ManagementScreen.POINTS.GREEN)
+		Events.points_change.emit(upgrade.brown_cost,%ManagementScreen.POINTS.BROWN)
+		Events.points_change.emit(upgrade.magenta_cost,%ManagementScreen.POINTS.MAGENTA)
+		Events.points_change.emit(upgrade.purple_cost,%ManagementScreen.POINTS.PURPLE)
 	else:
-		Events.points_change.emit(upgrade.stats.green_cost*-1,%ManagementScreen.POINTS.GREEN)
-		Events.points_change.emit(upgrade.stats.brown_cost*-1,%ManagementScreen.POINTS.BROWN)
-		Events.points_change.emit(upgrade.stats.magenta_cost*-1,%ManagementScreen.POINTS.MAGENTA)
-		Events.points_change.emit(upgrade.stats.purple_cost*-1,%ManagementScreen.POINTS.PURPLE)
+		Events.points_change.emit(upgrade.green_cost*-1,%ManagementScreen.POINTS.GREEN)
+		Events.points_change.emit(upgrade.brown_cost*-1,%ManagementScreen.POINTS.BROWN)
+		Events.points_change.emit(upgrade.magenta_cost*-1,%ManagementScreen.POINTS.MAGENTA)
+		Events.points_change.emit(upgrade.purple_cost*-1,%ManagementScreen.POINTS.PURPLE)
 
 		
 func is_purchased(upgrade):
-	return upgrade.stats.purchased == true	
+	return upgrade.purchased == true	
 	
 func is_not_purchased(upgrade):
-	return upgrade.stats.purchased == false	
+	return upgrade.purchased == false	
 
 func is_locked(upgrade):
-	return upgrade.stats.unlocked == false
+	return upgrade.unlocked == false
 
 func is_unlocked(upgrade):
-	return upgrade.stats.unlocked == true
+	return upgrade.unlocked == true
 
 #check if the upgrade can be afforded with all types of points
 func is_affordable(upgrade):
 	var cost_count : int = 0
 	var cost_check : int = 4
-	if upgrade.stats.green_cost <=  %ManagementScreen.total_green:
+	if upgrade.green_cost <=  %ManagementScreen.total_green:
 		cost_count +=1
-	if upgrade.stats.brown_cost <= %ManagementScreen.total_brown:
+	if upgrade.brown_cost <= %ManagementScreen.total_brown:
 		cost_count +=1
-	if upgrade.stats.magenta_cost <= %ManagementScreen.total_magenta:
+	if upgrade.magenta_cost <= %ManagementScreen.total_magenta:
 		cost_count +=1
-	if upgrade.stats.purple_cost <= %ManagementScreen.total_purple:
+	if upgrade.purple_cost <= %ManagementScreen.total_purple:
 		cost_count +=1
 	if cost_count == cost_check:
 		return true
@@ -74,28 +74,29 @@ func prereq_met(upgrade):
 func upgrade_processing():
 	for upgrade in all_upgrades.filter(is_basic):
 		if is_affordable(upgrade) and is_locked(upgrade):
-			upgrade.stats.unlocked = true
+			upgrade.unlocked = true
 			upgrade.disabled = false
 	for upgrade in all_upgrades.filter(is_advanced):
 		var pre_count = 0
 		var pre_limit = upgrade.prereq.size()
 		for pre in upgrade.prereq:
-			if pre.stats.purchased and upgrade.stats.purchased == false:
+			if pre.purchased and upgrade.stats.purchased == false:
 				pre_count+=1
 		if pre_count == pre_limit:
-			upgrade.stats.unlocked = true
+			upgrade.unlocked = true
 			upgrade.disabled = false
 			
 func _on_reset_upgrades_button_pressed() -> void:
-	#_process_upgrade_effects(upgrade_effects)
-	upgrade_effects.clear()
+	
 	if upgrades_reset == false:
 		for upgrade in all_upgrades.filter(is_purchased):
 			process_cost(upgrade,true)
 			upgrade.disabled = true
+			upgrade.purchased = false
+			upgrade._undo_upgrade()
 		for upgrade in all_upgrades.filter(is_basic):
 			if is_affordable(upgrade):
-				upgrade.stats.unlocked = true
+				upgrade.unlocked = true
 				upgrade.disabled = false
 		upgrades_reset = true
 
@@ -103,7 +104,8 @@ func buy_upgrade(upgrade):
 	process_cost(upgrade,false)
 	upgrade.disabled = true
 	upgrades_reset = false
-	upgrade.stats.purchased = true
+	upgrade.purchased = true
+	upgrade._apply_upgrade()
 	upgrade_processing()
 	
 func _process_upgrade_effects(effects):
@@ -142,12 +144,9 @@ func _on_psy_upgrade_pressed() -> void:
 
 func _on_upgrade_1_pressed() -> void:
 	buy_upgrade(%Upgrade1)
-	#upgrade_effects.append(%ManagementScreen._update_max_workers(-5))
-	
 	
 func _on_upgrade_2_pressed() -> void:
 	buy_upgrade(%Upgrade2)
-	#%ManagementScreen._update_max_workers(2)
 
 func _on_upgrade_3_pressed() -> void:
 	buy_upgrade(%Upgrade3)

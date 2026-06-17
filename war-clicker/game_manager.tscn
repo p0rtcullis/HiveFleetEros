@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://c0n6btegy48v1"]
+[gd_scene load_steps=31 format=3 uid="uid://c0n6btegy48v1"]
 
 [ext_resource type="PackedScene" uid="uid://bmg3wqjwo13dg" path="res://ManagementScreen/management_screen.tscn" id="1_70yv6"]
 [ext_resource type="Script" uid="uid://duchtboj7lubp" path="res://game_manager.gd" id="1_nvy02"]
@@ -7,9 +7,7 @@
 [ext_resource type="Script" uid="uid://ertesfb6senx" path="res://GUIScripts/upgrade_screen_gui.gd" id="2_smx3j"]
 [ext_resource type="Script" uid="uid://nwai5gntgmn1" path="res://GUIScripts/info_bar_gui.gd" id="3_d246e"]
 [ext_resource type="Script" uid="uid://c8veevrjckqal" path="res://Util/Strategy/base_worker_strategy.gd" id="3_gth8u"]
-[ext_resource type="PackedScene" uid="uid://dya763ecg0nbu" path="res://Upgrades/upgrade_button.tscn" id="3_o2178"]
 [ext_resource type="PackedScene" uid="uid://cuo63ymo6ofmr" path="res://Worker/banshee.tscn" id="4_anra8"]
-[ext_resource type="Script" uid="uid://do7phg52jpppn" path="res://Util/Strategy/base_upgrade_strategy.gd" id="4_d5upp"]
 [ext_resource type="PackedScene" uid="uid://de7db0m0ymybd" path="res://Worker/spider.tscn" id="4_dq8jp"]
 [ext_resource type="PackedScene" uid="uid://c4qpmv2lpt1oj" path="res://Worker/ranger.tscn" id="4_es4nv"]
 [ext_resource type="PackedScene" uid="uid://d4gx5jc7e70ih" path="res://Worker/farseer.tscn" id="4_s6dek"]
@@ -21,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://b36h6hgufjtnh" path="res://Worker/hawk.tscn" id="11_nvy02"]
 [ext_resource type="Script" uid="uid://37lyibncgijc" path="res://GUIScripts/hint_system.gd" id="13_2tadr"]
 [ext_resource type="Script" uid="uid://ke2r5ggj0cwr" path="res://GUIScripts/event_system.gd" id="14_tmn8n"]
+[ext_resource type="PackedScene" uid="uid://cj2vpyifw32h" path="res://Upgrades/upgrade.tscn" id="18_424ju"]
 [ext_resource type="Theme" uid="uid://di6ohiiwfn1m6" path="res://Resources/button_theme.tres" id="19_7bexq"]
 
 [sub_resource type="Resource" id="Resource_7bexq"]
@@ -75,111 +74,6 @@ script = ExtResource("3_gth8u")
 worker_name = "Swooping Hawk"
 brown = 5
 metadata/_custom_type_script = "uid://c8veevrjckqal"
-
-[sub_resource type="Resource" id="Resource_vk86k"]
-resource_local_to_scene = true
-script = ExtResource("4_d5upp")
-upgrade_name = "Expanded Broodchamber"
-upgrade_text = " Add space for 5 of each captive. Cost: 100 Green"
-green_cost = 100
-metadata/_custom_type_script = "uid://do7phg52jpppn"
-
-[sub_resource type="Resource" id="Resource_shwjl"]
-resource_local_to_scene = true
-script = ExtResource("4_d5upp")
-upgrade_name = "Deeper Broodchamber"
-upgrade_text = "Add space for 10 of each captive. Cost: 200 Green"
-green_cost = 200
-metadata/_custom_type_script = "uid://do7phg52jpppn"
-
-[sub_resource type="Resource" id="Resource_3alj7"]
-resource_local_to_scene = true
-script = ExtResource("4_d5upp")
-upgrade_name = "Barbed Cocks"
-upgrade_text = "Increases breeder pleasure and fertilization chance by locking the couple for several hours. Cost: 100 Green"
-green_cost = 100
-metadata/_custom_type_script = "uid://do7phg52jpppn"
-
-[sub_resource type="Resource" id="Resource_qmmi4"]
-resource_local_to_scene = true
-script = ExtResource("4_d5upp")
-upgrade_name = "Womb Latch"
-upgrade_text = "Snug against the cervic, tyranid cocks and now deliver potent seed directly to their partner's personal broodchamber. Cost: 100 Green 100 Brown"
-green_cost = 100
-brown_cost = 100
-metadata/_custom_type_script = "uid://do7phg52jpppn"
-
-[sub_resource type="Resource" id="Resource_oslct"]
-resource_local_to_scene = true
-script = ExtResource("4_d5upp")
-upgrade_name = "Chambered Testicles"
-upgrade_text = "Adapting to the Aeldari fertility, the twitching testes of the tyranids now come with a diversity of DNA.Cost: 100 Green 100 Brown and 100 Magenta"
-green_cost = 100
-brown_cost = 100
-magenta_cost = 100
-metadata/_custom_type_script = "uid://do7phg52jpppn"
-
-[sub_resource type="Resource" id="Resource_2x3uj"]
-resource_local_to_scene = true
-script = ExtResource("4_d5upp")
-upgrade_name = "Uterine-Bore Spermazoa"
-upgrade_text = "Adapted from the classic fleashborer weapon, tyranid penises are loaded with their own \"special ammo\". Even the toughest eggs will crack!Cost: 200 Brown"
-brown_cost = 200
-metadata/_custom_type_script = "uid://do7phg52jpppn"
-
-[sub_resource type="Resource" id="Resource_2tadr"]
-resource_local_to_scene = true
-script = ExtResource("4_d5upp")
-upgrade_name = "Unlock Termagant"
-upgrade_text = "Permanently Unlock Shooter Bugs. Cost: 100 Green"
-green_cost = 100
-metadata/_custom_type_script = "uid://do7phg52jpppn"
-
-[sub_resource type="Resource" id="Resource_jy3no"]
-resource_local_to_scene = true
-script = ExtResource("4_d5upp")
-upgrade_name = "Unlock Ripper"
-upgrade_text = "Unlock Rippers"
-green_cost = 100
-brown_cost = 100
-metadata/_custom_type_script = "uid://do7phg52jpppn"
-
-[sub_resource type="Resource" id="Resource_nvy02"]
-resource_local_to_scene = true
-script = ExtResource("4_d5upp")
-upgrade_name = "Unlock Warrior"
-upgrade_text = " Add Warrior Bugs. Cost: 200 Green"
-green_cost = 200
-brown_cost = 100
-magenta_cost = 100
-purple_cost = 100
-metadata/_custom_type_script = "uid://do7phg52jpppn"
-
-[sub_resource type="Resource" id="Resource_v8q4t"]
-resource_local_to_scene = true
-script = ExtResource("4_d5upp")
-upgrade_name = "Unlock Lictor"
-upgrade_text = " Add another worker slot. Cost: 100 Green"
-brown_cost = 100
-magenta_cost = 100
-metadata/_custom_type_script = "uid://do7phg52jpppn"
-
-[sub_resource type="Resource" id="Resource_otlv6"]
-resource_local_to_scene = true
-script = ExtResource("4_d5upp")
-upgrade_name = "Unlock Zoanthrope"
-upgrade_text = " Add another worker slot. Cost: 100 Green"
-green_cost = 100
-purple_cost = 200
-metadata/_custom_type_script = "uid://do7phg52jpppn"
-
-[sub_resource type="Resource" id="Resource_d246e"]
-resource_local_to_scene = true
-script = ExtResource("4_d5upp")
-upgrade_name = "Upgrade Max Workers +2"
-upgrade_text = " Add another worker slot. Cost: 100 Green"
-unlocked = true
-metadata/_custom_type_script = "uid://do7phg52jpppn"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7bexq"]
 bg_color = Color(0.6236472, 0.12244458, 0.73932815, 1)
@@ -522,67 +416,6 @@ offset_right = 193.0
 offset_bottom = 383.0
 text = "Reset Upgrades"
 
-[node name="Upgrade1" parent="UpgradeScreenGUI" instance=ExtResource("3_o2178")]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 64.0
-offset_top = 16.0
-offset_right = 197.0
-offset_bottom = 47.0
-text = "Upgrade1"
-stats = SubResource("Resource_vk86k")
-
-[node name="Upgrade2" parent="UpgradeScreenGUI" node_paths=PackedStringArray("prereq") instance=ExtResource("3_o2178")]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 64.0
-offset_top = 64.0
-offset_right = 206.0
-offset_bottom = 95.0
-text = "Upgrade2"
-stats = SubResource("Resource_shwjl")
-prereq = [NodePath("../Upgrade1")]
-
-[node name="Upgrade3" parent="UpgradeScreenGUI" instance=ExtResource("3_o2178")]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 64.0
-offset_top = 112.0
-offset_right = 167.0
-offset_bottom = 143.0
-text = "Upgrade3"
-stats = SubResource("Resource_3alj7")
-
-[node name="Upgrade4" parent="UpgradeScreenGUI" instance=ExtResource("3_o2178")]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 64.0
-offset_top = 160.0
-offset_right = 167.0
-offset_bottom = 191.0
-text = "Upgrade4"
-stats = SubResource("Resource_qmmi4")
-
-[node name="Upgrade5" parent="UpgradeScreenGUI" instance=ExtResource("3_o2178")]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 64.0
-offset_top = 208.0
-offset_right = 167.0
-offset_bottom = 239.0
-text = "Upgrade5"
-stats = SubResource("Resource_oslct")
-
-[node name="Upgrade6" parent="UpgradeScreenGUI" instance=ExtResource("3_o2178")]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 64.0
-offset_top = 256.0
-offset_right = 167.0
-offset_bottom = 287.0
-text = "Upgrade6"
-stats = SubResource("Resource_2x3uj")
-
 [node name="UpgradeNote" type="Label" parent="UpgradeScreenGUI"]
 layout_mode = 0
 offset_left = 456.0
@@ -593,6 +426,41 @@ text = "Upgrades are a major WIP. Features shown here are subject to change.
 
 Upgrades may or may not require prerequisities. Currently, only the \"Max Workers\" upgrades do, simply to demonstrate that it is possible."
 autowrap_mode = 2
+
+[node name="UpgradePanel" type="PanelContainer" parent="UpgradeScreenGUI"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 16.0
+offset_right = 231.0
+offset_bottom = 222.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradeScreenGUI/UpgradePanel"]
+layout_mode = 2
+
+[node name="Upgrade1" parent="UpgradeScreenGUI/UpgradePanel/VBoxContainer" instance=ExtResource("18_424ju")]
+unique_name_in_owner = true
+layout_mode = 2
+green_cost = 10
+
+[node name="Upgrade2" parent="UpgradeScreenGUI/UpgradePanel/VBoxContainer" instance=ExtResource("18_424ju")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Upgrade3" parent="UpgradeScreenGUI/UpgradePanel/VBoxContainer" instance=ExtResource("18_424ju")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Upgrade4" parent="UpgradeScreenGUI/UpgradePanel/VBoxContainer" instance=ExtResource("18_424ju")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Upgrade5" parent="UpgradeScreenGUI/UpgradePanel/VBoxContainer" instance=ExtResource("18_424ju")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Upgrade6" parent="UpgradeScreenGUI/UpgradePanel/VBoxContainer" instance=ExtResource("18_424ju")]
+unique_name_in_owner = true
+layout_mode = 2
 
 [node name="UnitUnlocks" type="PanelContainer" parent="UpgradeScreenGUI"]
 layout_mode = 0
@@ -605,43 +473,25 @@ offset_bottom = 70.0
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="ShooterUpgrade" parent="UpgradeScreenGUI/UnitUnlocks/VBoxContainer" instance=ExtResource("3_o2178")]
-unique_name_in_owner = true
+[node name="ShooterUpgrade" parent="UpgradeScreenGUI/UnitUnlocks/VBoxContainer" instance=ExtResource("18_424ju")]
 layout_mode = 2
-text = "Unlock Termagants"
-stats = SubResource("Resource_2tadr")
 
-[node name="RippleUpgrade" parent="UpgradeScreenGUI/UnitUnlocks/VBoxContainer" instance=ExtResource("3_o2178")]
-unique_name_in_owner = true
+[node name="RippleUpgrade" parent="UpgradeScreenGUI/UnitUnlocks/VBoxContainer" instance=ExtResource("18_424ju")]
 layout_mode = 2
-text = "Unlock Ripper"
-stats = SubResource("Resource_jy3no")
 
-[node name="WarriorUpgrade" parent="UpgradeScreenGUI/UnitUnlocks/VBoxContainer" instance=ExtResource("3_o2178")]
-unique_name_in_owner = true
+[node name="WarriorUpgrade" parent="UpgradeScreenGUI/UnitUnlocks/VBoxContainer" instance=ExtResource("18_424ju")]
 layout_mode = 2
-text = "Unlock Warrior"
-stats = SubResource("Resource_nvy02")
 
-[node name="StalkerUpgrade" parent="UpgradeScreenGUI/UnitUnlocks/VBoxContainer" instance=ExtResource("3_o2178")]
-unique_name_in_owner = true
+[node name="StalkerUpgrade" parent="UpgradeScreenGUI/UnitUnlocks/VBoxContainer" instance=ExtResource("18_424ju")]
 layout_mode = 2
-text = "Unlock Lictor"
-stats = SubResource("Resource_v8q4t")
 
-[node name="PsyUpgrade" parent="UpgradeScreenGUI/UnitUnlocks/VBoxContainer" instance=ExtResource("3_o2178")]
-unique_name_in_owner = true
+[node name="PsyUpgrade" parent="UpgradeScreenGUI/UnitUnlocks/VBoxContainer" instance=ExtResource("18_424ju")]
 layout_mode = 2
-text = "Unlock Zoanthrope"
-stats = SubResource("Resource_otlv6")
 
-[node name="StabberUpgrade" parent="UpgradeScreenGUI" instance=ExtResource("3_o2178")]
-unique_name_in_owner = true
+[node name="StabberUpgrade" parent="UpgradeScreenGUI" instance=ExtResource("18_424ju")]
 visible = false
 layout_mode = 0
-offset_right = 103.0
-offset_bottom = 31.0
-stats = SubResource("Resource_d246e")
+unlocked = true
 
 [node name="CombatScreenGUI" type="Control" parent="."]
 unique_name_in_owner = true
@@ -936,12 +786,12 @@ text = "End Turn"
 [connection signal="pressed" from="ManagementScreenGUI/SideBarGUI/ArchiveScreenToggle" to="ManagementScreenGUI/SideBarGUI" method="_on_archive_screen_toggle_pressed"]
 [connection signal="pressed" from="UpgradeScreenGUI/ResetUpgradesButton" to="UpgradeScreenGUI" method="_on_reset_upgrades_button_pressed"]
 [connection signal="toggled" from="UpgradeScreenGUI/ResetUpgradesButton" to="UpgradeScreenGUI" method="_on_reset_upgrades_button_toggled"]
-[connection signal="pressed" from="UpgradeScreenGUI/Upgrade1" to="UpgradeScreenGUI" method="_on_upgrade_1_pressed"]
-[connection signal="pressed" from="UpgradeScreenGUI/Upgrade2" to="UpgradeScreenGUI" method="_on_upgrade_2_pressed"]
-[connection signal="pressed" from="UpgradeScreenGUI/Upgrade3" to="UpgradeScreenGUI" method="_on_upgrade_3_pressed"]
-[connection signal="pressed" from="UpgradeScreenGUI/Upgrade4" to="UpgradeScreenGUI" method="_on_upgrade_4_pressed"]
-[connection signal="pressed" from="UpgradeScreenGUI/Upgrade5" to="UpgradeScreenGUI" method="_on_upgrade_5_pressed"]
-[connection signal="pressed" from="UpgradeScreenGUI/Upgrade6" to="UpgradeScreenGUI" method="_on_upgrade_6_pressed"]
+[connection signal="pressed" from="UpgradeScreenGUI/UpgradePanel/VBoxContainer/Upgrade1" to="UpgradeScreenGUI" method="_on_upgrade_1_pressed"]
+[connection signal="pressed" from="UpgradeScreenGUI/UpgradePanel/VBoxContainer/Upgrade2" to="UpgradeScreenGUI" method="_on_upgrade_2_pressed"]
+[connection signal="pressed" from="UpgradeScreenGUI/UpgradePanel/VBoxContainer/Upgrade3" to="UpgradeScreenGUI" method="_on_upgrade_3_pressed"]
+[connection signal="pressed" from="UpgradeScreenGUI/UpgradePanel/VBoxContainer/Upgrade4" to="UpgradeScreenGUI" method="_on_upgrade_4_pressed"]
+[connection signal="pressed" from="UpgradeScreenGUI/UpgradePanel/VBoxContainer/Upgrade5" to="UpgradeScreenGUI" method="_on_upgrade_5_pressed"]
+[connection signal="pressed" from="UpgradeScreenGUI/UpgradePanel/VBoxContainer/Upgrade6" to="UpgradeScreenGUI" method="_on_upgrade_6_pressed"]
 [connection signal="pressed" from="UpgradeScreenGUI/UnitUnlocks/VBoxContainer/ShooterUpgrade" to="UpgradeScreenGUI" method="_on_shooter_upgrade_pressed"]
 [connection signal="pressed" from="UpgradeScreenGUI/UnitUnlocks/VBoxContainer/RippleUpgrade" to="UpgradeScreenGUI" method="_on_ripple_upgrade_pressed"]
 [connection signal="pressed" from="UpgradeScreenGUI/UnitUnlocks/VBoxContainer/WarriorUpgrade" to="UpgradeScreenGUI" method="_on_warrior_upgrade_pressed"]

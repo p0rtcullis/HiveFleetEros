@@ -11,11 +11,11 @@ var worker_list : Array = []
 
 var unit_list : Array = []
 
+#region Point Variables
 @export var total_green : int = 0:
 	set(value):
 		total_green = value
 		%GreenPointsLabel.text = str(total_green)
-		#%UpgradeScreenGUI.disable_unafforable_techs()
 		
 var green_mod : int = 0
 
@@ -42,6 +42,8 @@ var magenta_mod : int = 0
 		#%UpgradeScreenGUI.disable_unafforable_techs()
 		
 var purple_mod : int = 0
+
+#endregion
 
 enum WORKERS {GUARD,REAPER,BANSHEE,SPIDER,DRAGON,AUTARCH,AVENGER,HAWK,SCORPION,SEER,WARLOCK}
 enum POINTS {GREEN,BROWN,MAGENTA,PURPLE}
@@ -146,7 +148,6 @@ func total_points():
 
 #Process end of turn updates
 func _on_end_turn_button_pressed() -> void:
-	Events.end_turn.emit()
 	
 	total_points()
 
@@ -165,3 +166,4 @@ func _on_end_turn_button_pressed() -> void:
 			else:
 				#print("false")
 				pass
+	Events.end_turn.emit()

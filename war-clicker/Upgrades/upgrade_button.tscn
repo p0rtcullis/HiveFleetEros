@@ -1,13 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://dya763ecg0nbu"]
+[gd_scene load_steps=3 format=3 uid="uid://bf4sx4a54e6rm"]
 
-[ext_resource type="Script" uid="uid://bn3vxl43sbv2m" path="res://Upgrades/upgrade_button.gd" id="1_8kimk"]
 [ext_resource type="Theme" uid="uid://ck035eblxw2gv" path="res://Resources/upgrade_tooltip.tres" id="1_jqcur"]
-[ext_resource type="Resource" uid="uid://cgtfwylou0wcf" path="res://Resources/upgrade.tres" id="2_jqcur"]
+
+[sub_resource type="GDScript" id="GDScript_8kimk"]
+script/source = "extends Button
+
+@export var stats : Resource
+@export var prereq : Array[Button] = []
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	disabled = true
+	text = stats.upgrade_name
+	tooltip_text = stats.upgrade_text
+"
 
 [node name="UpgradeButton" type="Button"]
 offset_right = 8.0
 offset_bottom = 8.0
 theme = ExtResource("1_jqcur")
 text = "Default Text"
-script = ExtResource("1_8kimk")
-stats = ExtResource("2_jqcur")
+script = SubResource("GDScript_8kimk")
