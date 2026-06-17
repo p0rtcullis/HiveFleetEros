@@ -12,7 +12,7 @@ grow_vertical = 2
 script = ExtResource("1_s3hhl")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
-custom_minimum_size = Vector2(200, 200)
+custom_minimum_size = Vector2(500, 300)
 layout_mode = 2
 theme = ExtResource("2_jwh8f")
 

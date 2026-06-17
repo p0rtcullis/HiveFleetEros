@@ -80,7 +80,7 @@ metadata/_custom_type_script = "uid://c8veevrjckqal"
 resource_local_to_scene = true
 script = ExtResource("4_d5upp")
 upgrade_name = "Expanded Broodchamber"
-upgrade_text = " Add space for 5 of each worker. Cost: 100 Green"
+upgrade_text = " Add space for 5 of each captive. Cost: 100 Green"
 green_cost = 100
 metadata/_custom_type_script = "uid://do7phg52jpppn"
 
@@ -88,7 +88,7 @@ metadata/_custom_type_script = "uid://do7phg52jpppn"
 resource_local_to_scene = true
 script = ExtResource("4_d5upp")
 upgrade_name = "Deeper Broodchamber"
-upgrade_text = "Add space for 10 of each worker. Cost: 200 Green"
+upgrade_text = "Add space for 10 of each captive. Cost: 200 Green"
 green_cost = 200
 metadata/_custom_type_script = "uid://do7phg52jpppn"
 
@@ -104,24 +104,27 @@ metadata/_custom_type_script = "uid://do7phg52jpppn"
 resource_local_to_scene = true
 script = ExtResource("4_d5upp")
 upgrade_name = "Womb Latch"
-upgrade_text = "Snug against the cervic, tyranid cocks and now deliver potent seed directly to their partner's personal broodchamber. Cost: 100 Green"
+upgrade_text = "Snug against the cervic, tyranid cocks and now deliver potent seed directly to their partner's personal broodchamber. Cost: 100 Green 100 Brown"
 green_cost = 100
+brown_cost = 100
 metadata/_custom_type_script = "uid://do7phg52jpppn"
 
 [sub_resource type="Resource" id="Resource_oslct"]
 resource_local_to_scene = true
 script = ExtResource("4_d5upp")
 upgrade_name = "Chambered Testicles"
-upgrade_text = "Adapting to the Aeldari fertility, the twitching testes of the tyranids now come with a diversity of DNA.Cost: 100 Green"
+upgrade_text = "Adapting to the Aeldari fertility, the twitching testes of the tyranids now come with a diversity of DNA.Cost: 100 Green 100 Brown and 100 Magenta"
 green_cost = 100
+brown_cost = 100
+magenta_cost = 100
 metadata/_custom_type_script = "uid://do7phg52jpppn"
 
 [sub_resource type="Resource" id="Resource_2x3uj"]
 resource_local_to_scene = true
 script = ExtResource("4_d5upp")
 upgrade_name = "Uterine-Bore Spermazoa"
-upgrade_text = "Adapted from the classic fleashborer weapon, tyranid penises are loaded with their own \"special ammo\". Even the toughest eggs will crack!Cost: 100 Green"
-green_cost = 100
+upgrade_text = "Adapted from the classic fleashborer weapon, tyranid penises are loaded with their own \"special ammo\". Even the toughest eggs will crack!Cost: 200 Brown"
+brown_cost = 200
 metadata/_custom_type_script = "uid://do7phg52jpppn"
 
 [sub_resource type="Resource" id="Resource_2tadr"]
@@ -265,16 +268,7 @@ anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 64.0
 script = ExtResource("3_d246e")
-
-[node name="EndTurnButton" type="Button" parent="ManagementScreenGUI/InfoBarGUI"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 1056.0
-offset_top = 16.0
-offset_right = 1134.0
-offset_bottom = 47.0
-theme = ExtResource("19_7bexq")
-text = "End Turn"
+metadata/_edit_lock_ = true
 
 [node name="MassWorkers" type="PanelContainer" parent="ManagementScreenGUI/InfoBarGUI"]
 layout_mode = 0
@@ -348,11 +342,19 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Hawks:"
 
+[node name="MassSeerTitle" type="Label" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/MassWorkersHBox/VBoxContainer5"]
+layout_mode = 2
+text = "Seers:"
+
 [node name="VBoxContainer6" type="VBoxContainer" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/MassWorkersHBox"]
 layout_mode = 2
 
 [node name="MassHawkLabel" type="Label" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/MassWorkersHBox/VBoxContainer6"]
 unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="MassSeerLabel" type="Label" parent="ManagementScreenGUI/InfoBarGUI/MassWorkers/MassWorkersHBox/VBoxContainer6"]
 layout_mode = 2
 text = "0"
 
@@ -919,14 +921,27 @@ offset_right = 603.0
 offset_bottom = 567.0
 text = "BREED"
 
+[node name="EndTurnButton" type="Button" parent="."]
+unique_name_in_owner = true
+offset_left = 920.0
+offset_top = 528.0
+offset_right = 998.0
+offset_bottom = 559.0
+theme = ExtResource("19_7bexq")
+text = "End Turn"
+
 [connection signal="pressed" from="ManagementScreenGUI/SideBarGUI/ProductionScreenToggle" to="ManagementScreenGUI/SideBarGUI" method="_on_production_screen_toggle_pressed"]
 [connection signal="pressed" from="ManagementScreenGUI/SideBarGUI/UpgradeScreeenToggle" to="ManagementScreenGUI/SideBarGUI" method="_on_upgrade_screeen_toggle_pressed"]
 [connection signal="pressed" from="ManagementScreenGUI/SideBarGUI/CombatScreenToggle" to="ManagementScreenGUI/SideBarGUI" method="_on_combat_screen_toggle_pressed"]
 [connection signal="pressed" from="ManagementScreenGUI/SideBarGUI/ArchiveScreenToggle" to="ManagementScreenGUI/SideBarGUI" method="_on_archive_screen_toggle_pressed"]
-[connection signal="pressed" from="ManagementScreenGUI/InfoBarGUI/EndTurnButton" to="ManagementScreenGUI/ManagementScreen" method="_on_end_turn_button_pressed"]
 [connection signal="pressed" from="UpgradeScreenGUI/ResetUpgradesButton" to="UpgradeScreenGUI" method="_on_reset_upgrades_button_pressed"]
 [connection signal="toggled" from="UpgradeScreenGUI/ResetUpgradesButton" to="UpgradeScreenGUI" method="_on_reset_upgrades_button_toggled"]
 [connection signal="pressed" from="UpgradeScreenGUI/Upgrade1" to="UpgradeScreenGUI" method="_on_upgrade_1_pressed"]
+[connection signal="pressed" from="UpgradeScreenGUI/Upgrade2" to="UpgradeScreenGUI" method="_on_upgrade_2_pressed"]
+[connection signal="pressed" from="UpgradeScreenGUI/Upgrade3" to="UpgradeScreenGUI" method="_on_upgrade_3_pressed"]
+[connection signal="pressed" from="UpgradeScreenGUI/Upgrade4" to="UpgradeScreenGUI" method="_on_upgrade_4_pressed"]
+[connection signal="pressed" from="UpgradeScreenGUI/Upgrade5" to="UpgradeScreenGUI" method="_on_upgrade_5_pressed"]
+[connection signal="pressed" from="UpgradeScreenGUI/Upgrade6" to="UpgradeScreenGUI" method="_on_upgrade_6_pressed"]
 [connection signal="pressed" from="UpgradeScreenGUI/UnitUnlocks/VBoxContainer/ShooterUpgrade" to="UpgradeScreenGUI" method="_on_shooter_upgrade_pressed"]
 [connection signal="pressed" from="UpgradeScreenGUI/UnitUnlocks/VBoxContainer/RippleUpgrade" to="UpgradeScreenGUI" method="_on_ripple_upgrade_pressed"]
 [connection signal="pressed" from="UpgradeScreenGUI/UnitUnlocks/VBoxContainer/WarriorUpgrade" to="UpgradeScreenGUI" method="_on_warrior_upgrade_pressed"]
@@ -950,3 +965,4 @@ text = "BREED"
 [connection signal="pressed" from="DebugScreenGUI/ToggleDevMode" to="DebugScreenGUI" method="_on_toggle_dev_mode_pressed"]
 [connection signal="timeout" from="HintSystem/HintTimer" to="HintSystem" method="_on_hint_timer_timeout"]
 [connection signal="pressed" from="TextureRect/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="EndTurnButton" to="ManagementScreenGUI/ManagementScreen" method="_on_end_turn_button_pressed"]

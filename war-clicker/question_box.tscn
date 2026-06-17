@@ -12,6 +12,7 @@ grow_vertical = 2
 script = ExtResource("1_d6ffd")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(500, 300)
 layout_mode = 2
 theme = ExtResource("2_c501m")
 
@@ -31,19 +32,20 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Event Placeholder Text"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 8
 
-[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Choice1"
 
-[node name="Button2" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Button2" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Choice2"
 
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer2/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer2/Button2" to="." method="_on_button_2_pressed"]

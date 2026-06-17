@@ -1,10 +1,11 @@
 extends Control
 
 var upgrades_reset : bool = true
-var active_upgrades = []
+var upgrade_effects = []
 
 @onready var all_upgrades = [%WarriorUpgrade,%RippleUpgrade,%StalkerUpgrade,%PsyUpgrade,%ShooterUpgrade,%Upgrade1,%Upgrade2,%Upgrade3,%Upgrade4,%Upgrade5,%Upgrade6]
 
+#region Upgrade Management Functions
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Events.connect("end_turn",_end_turn_upgrade)
@@ -75,9 +76,19 @@ func upgrade_processing():
 		if is_affordable(upgrade) and is_locked(upgrade):
 			upgrade.stats.unlocked = true
 			upgrade.disabled = false
+	for upgrade in all_upgrades.filter(is_advanced):
+		var pre_count = 0
+		var pre_limit = upgrade.prereq.size()
+		for pre in upgrade.prereq:
+			if pre.stats.purchased and upgrade.stats.purchased == false:
+				pre_count+=1
+		if pre_count == pre_limit:
+			upgrade.stats.unlocked = true
+			upgrade.disabled = false
 			
-
 func _on_reset_upgrades_button_pressed() -> void:
+	#_process_upgrade_effects(upgrade_effects)
+	upgrade_effects.clear()
 	if upgrades_reset == false:
 		for upgrade in all_upgrades.filter(is_purchased):
 			process_cost(upgrade,true)
@@ -93,7 +104,15 @@ func buy_upgrade(upgrade):
 	upgrade.disabled = true
 	upgrades_reset = false
 	upgrade.stats.purchased = true
+	upgrade_processing()
 	
+func _process_upgrade_effects(effects):
+	for effect in effects:
+		effect.call()
+	
+#endregion	
+	
+#region Unit Unlocks	
 func _on_shooter_upgrade_pressed() -> void:
 	process_cost(%ShooterUpgrade,false)
 	%ShooterUpgrade.disabled = true
@@ -118,7 +137,26 @@ func _on_psy_upgrade_pressed() -> void:
 	process_cost(%PsyUpgrade,false)
 	%PsyUpgrade.disabled = true
 	Events.unit_unlocked.emit("psy")
+#endregion
 
-	
+
 func _on_upgrade_1_pressed() -> void:
 	buy_upgrade(%Upgrade1)
+	#upgrade_effects.append(%ManagementScreen._update_max_workers(-5))
+	
+	
+func _on_upgrade_2_pressed() -> void:
+	buy_upgrade(%Upgrade2)
+	#%ManagementScreen._update_max_workers(2)
+
+func _on_upgrade_3_pressed() -> void:
+	buy_upgrade(%Upgrade3)
+
+func _on_upgrade_4_pressed() -> void:
+	buy_upgrade(%Upgrade4)
+
+func _on_upgrade_5_pressed() -> void:
+	buy_upgrade(%Upgrade5)
+
+func _on_upgrade_6_pressed() -> void:
+	buy_upgrade(%Upgrade6)

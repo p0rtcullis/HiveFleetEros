@@ -45,8 +45,8 @@ func _scout_encounter():
 	var question = question_box.instantiate()
 	question.event_title = "Scouting Party"
 	question.event_text = "Enemy Scouts have been spotted in the vicinity of the base. What shall we do?"
-	question.button1_text = "Dispatch a raiding party, fall on them with the utmost fury!"
-	question.button2_text = "A silent approach is best. With luck, we may recieve captives without tipping our hand."
+	question.button1_text = "Dispatch a raiding party, fall on them with the utmost fury! \n (Gain: 5 Ranger and 2 Scorpion Captives, but Gain 3 Hive Noise)"
+	question.button2_text = "A silent approach is best. With luck, we may recieve captives without tipping our hand. \n (Gain 3 Rangers, but Gain 1 Hive Noise)"
 	
 	canvas_layer.add_child(question)
 	#put the requirements for the buttons here
@@ -60,7 +60,7 @@ func _scout_results(choice):
 	if choice < 2:
 		%ManagementScreen.mass_ranger += 5
 		alert.alert_title = "AGGRESSIVE ACTION"
-		alert.alert_text = "Our forces sweep the enemy from the field. Our victory is great, but we have alerted the enemy to our presence."
+		alert.alert_text = "Our forces sweep the enemy from the field. Our victory is great, but we have alerted the enemy to our presence. "
 		alert.alert_button_text = "Let them come."
 	else:
 		%ManagementScreen.mass_ranger += 5
