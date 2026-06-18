@@ -12,6 +12,7 @@ var worker_list : Array = []
 var unit_list : Array = []
 
 #region Point Variables
+enum POINTS {GREEN,BROWN,MAGENTA,PURPLE}
 @export var total_green : int = 0:
 	set(value):
 		total_green = value
@@ -43,17 +44,6 @@ var magenta_mod : int = 0
 		
 var purple_mod : int = 0
 
-#endregion
-
-enum WORKERS {GUARD,REAPER,BANSHEE,SPIDER,DRAGON,AUTARCH,AVENGER,HAWK,SCORPION,SEER,WARLOCK}
-enum POINTS {GREEN,BROWN,MAGENTA,PURPLE}
-
-#How advanced your colony is
-var colony_level : int = 1
-
-#Determines how likely you are to be raided
-var colony_noise : int = 0
-
 var mass_ranger : int = 0:
 	set(value):
 		mass_ranger = min(value,max_workers)
@@ -74,8 +64,17 @@ var mass_hawk : int = 0:
 	set(value):
 		mass_hawk = min(value,max_workers)
 		%MassHawkLabel.text = str(mass_hawk)
-	
-	
+
+#endregion
+
+enum WORKERS {GUARD,REAPER,BANSHEE,SPIDER,DRAGON,AUTARCH,AVENGER,HAWK,SCORPION,SEER,WARLOCK}
+
+#How advanced your colony is
+var colony_level : int = 1
+
+#Determines how likely you are to be raided
+var colony_noise : int = 0
+
 var mass_worker_list : Array = [mass_ranger,mass_spider,mass_banshee,mass_scorpion,mass_hawk]
 
 # Called when the node enters the scene tree for the first time.

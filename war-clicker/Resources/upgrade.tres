@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="BaseUpgradeStrategy" load_steps=2 format=3 uid="uid://dhkrpxiqpqtum"]
+
+[ext_resource type="Script" uid="uid://do7phg52jpppn" path="res://Util/Strategy/base_upgrade_strategy.gd" id="1_tla6r"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_tla6r")
+metadata/_custom_type_script = "uid://do7phg52jpppn"

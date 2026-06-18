@@ -1,7 +1,8 @@
+class_name Upgrade
 extends Button
 
-@export var upgrade_name : String = "Upgrade Text Placeholder"
-@export var upgrade_text : String = "Upgrade Description Placeholder"
+@export var upgrade_name : String = "Upgrade Title Placeholder"
+@export_multiline var upgrade_text : String = "Upgrade Description Placeholder"
 
 @export var green_cost : int = 0
 @export var brown_cost : int = 0

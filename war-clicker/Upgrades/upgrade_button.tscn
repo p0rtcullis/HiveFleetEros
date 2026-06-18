@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bf4sx4a54e6rm"]
+[gd_scene load_steps=4 format=3 uid="uid://bf4sx4a54e6rm"]
 
 [ext_resource type="Theme" uid="uid://ck035eblxw2gv" path="res://Resources/upgrade_tooltip.tres" id="1_jqcur"]
+[ext_resource type="Resource" uid="uid://dhkrpxiqpqtum" path="res://Resources/upgrade.tres" id="2_8kimk"]
 
 [sub_resource type="GDScript" id="GDScript_8kimk"]
 script/source = "extends Button
@@ -21,3 +22,4 @@ offset_bottom = 8.0
 theme = ExtResource("1_jqcur")
 text = "Default Text"
 script = SubResource("GDScript_8kimk")
+stats = ExtResource("2_8kimk")

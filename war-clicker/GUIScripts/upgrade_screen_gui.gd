@@ -80,7 +80,7 @@ func upgrade_processing():
 		var pre_count = 0
 		var pre_limit = upgrade.prereq.size()
 		for pre in upgrade.prereq:
-			if pre.purchased and upgrade.stats.purchased == false:
+			if pre.purchased and upgrade.purchased == false:
 				pre_count+=1
 		if pre_count == pre_limit:
 			upgrade.unlocked = true
@@ -141,7 +141,7 @@ func _on_psy_upgrade_pressed() -> void:
 	Events.unit_unlocked.emit("psy")
 #endregion
 
-
+#region Upgrades
 func _on_upgrade_1_pressed() -> void:
 	buy_upgrade(%Upgrade1)
 	
@@ -159,3 +159,4 @@ func _on_upgrade_5_pressed() -> void:
 
 func _on_upgrade_6_pressed() -> void:
 	buy_upgrade(%Upgrade6)
+#endregion
