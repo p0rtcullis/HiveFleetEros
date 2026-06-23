@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b10g811p3k1vu"]
 
-[ext_resource type="Script" uid="uid://bkwy8kh6qyv1c" path="res://question_box.gd" id="1_d6ffd"]
+[ext_resource type="Script" uid="uid://bkwy8kh6qyv1c" path="res://QuestionBox/question_box.gd" id="1_d6ffd"]
 [ext_resource type="Theme" uid="uid://dneay71yfp5lo" path="res://Resources/alert_box_theme.tres" id="2_c501m"]
 
 [node name="QuestionBox" type="CenterContainer"]

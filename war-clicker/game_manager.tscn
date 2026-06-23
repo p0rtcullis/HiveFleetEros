@@ -26,12 +26,12 @@
 [ext_resource type="Theme" uid="uid://di6ohiiwfn1m6" path="res://Resources/button_theme.tres" id="19_7bexq"]
 [ext_resource type="Script" uid="uid://2j8lit7pt6eb" path="res://Upgrades/Scripts/upgrade4.gd" id="20_3alj7"]
 [ext_resource type="Script" uid="uid://doq1vn7l7kdr5" path="res://Upgrades/Scripts/upgrade5.gd" id="21_oslct"]
-[ext_resource type="Script" uid="uid://dql3fvywlsaxk" path="res://Upgrades/upgrade6.gd" id="22_2x3uj"]
-[ext_resource type="Script" uid="uid://cgx0k7nesssbh" path="res://Upgrades/shooter_upgrade.gd" id="23_jy3no"]
-[ext_resource type="Script" uid="uid://b8j13wveit053" path="res://Upgrades/ripple_upgrade.gd" id="24_v8q4t"]
-[ext_resource type="Script" uid="uid://dshgcijbfhuml" path="res://Upgrades/warrior_upgrade.gd" id="25_v8q4t"]
-[ext_resource type="Script" uid="uid://bbkm04x646tjp" path="res://Upgrades/stalker_upgrade.gd" id="26_3uuvb"]
-[ext_resource type="Script" uid="uid://topwmwn4r8o2" path="res://Upgrades/psy_upgrade.gd" id="27_brv2v"]
+[ext_resource type="Script" uid="uid://dql3fvywlsaxk" path="res://Upgrades/Scripts/upgrade6.gd" id="22_2x3uj"]
+[ext_resource type="Script" uid="uid://cgx0k7nesssbh" path="res://Upgrades/Scripts/shooter_upgrade.gd" id="23_jy3no"]
+[ext_resource type="Script" uid="uid://b8j13wveit053" path="res://Upgrades/Scripts/ripple_upgrade.gd" id="24_v8q4t"]
+[ext_resource type="Script" uid="uid://dshgcijbfhuml" path="res://Upgrades/Scripts/warrior_upgrade.gd" id="25_v8q4t"]
+[ext_resource type="Script" uid="uid://bbkm04x646tjp" path="res://Upgrades/Scripts/stalker_upgrade.gd" id="26_3uuvb"]
+[ext_resource type="Script" uid="uid://topwmwn4r8o2" path="res://Upgrades/Scripts/psy_upgrade.gd" id="27_brv2v"]
 
 [sub_resource type="Resource" id="Resource_7bexq"]
 resource_local_to_scene = true

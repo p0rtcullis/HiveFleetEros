@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dxgpitkgc5osk"]
 
-[ext_resource type="Script" uid="uid://5nu220i2qqfu" path="res://alert_box.gd" id="1_s3hhl"]
+[ext_resource type="Script" uid="uid://5nu220i2qqfu" path="res://Alert/alert_box.gd" id="1_s3hhl"]
 [ext_resource type="Theme" uid="uid://dneay71yfp5lo" path="res://Resources/alert_box_theme.tres" id="2_jwh8f"]
 
 [node name="AlertBox" type="CenterContainer"]

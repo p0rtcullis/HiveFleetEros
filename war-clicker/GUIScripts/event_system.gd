@@ -3,7 +3,7 @@ extends Control
 var trigger_turns : Array = [1,5]
 @onready var canvas_layer : CanvasLayer = %CanvasLayer
 var current_event = 0
-var alert_box = preload("res://alert_box.tscn")
+var alert_box = preload("res://Alert/alert_box.tscn")
 
 var event_lookup_table : Dictionary = {1:_first_event,5:_scout_encounter}
 var event_results_table : Dictionary = {5:_scout_results}
@@ -39,9 +39,9 @@ func _first_event():
 	alert.alert_button_text = "I understand."
 	canvas_layer.add_child(alert)
 	
-		
+#region Scout Ecounter
 func _scout_encounter():
-	var question_box = preload("res://question_box.tscn")
+	var question_box = preload("res://QuestionBox/question_box.tscn")
 	var question = question_box.instantiate()
 	question.event_title = "Scouting Party"
 	question.event_text = "Enemy Scouts have been spotted in the vicinity of the base. What shall we do?"
@@ -51,9 +51,6 @@ func _scout_encounter():
 	canvas_layer.add_child(question)
 	#put the requirements for the buttons here
 	#question.button1.disabled = true
-	
-	#print("box Created")
-	#print("scout"+str(choice))
 	
 func _scout_results(choice):
 	var alert = alert_box.instantiate()
@@ -69,3 +66,4 @@ func _scout_results(choice):
 		alert.alert_text = "We have captured the intruders, but their disappearance will undoubedly draw more."
 		alert.alert_button_text = "More for the broodchambers..."
 	canvas_layer.add_child(alert)
+#endregion

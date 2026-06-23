@@ -144,7 +144,11 @@ func total_points():
 	total_magenta += _worker_point_count(POINTS.MAGENTA)
 	total_purple += _worker_point_count(POINTS.PURPLE)
 
+func _update_colony_noise(new_noise:int):
+	colony_noise += new_noise
 
+func _update_colony_level(new_level:int):
+	colony_level += new_level
 #Process end of turn updates
 func _on_end_turn_button_pressed() -> void:
 	
