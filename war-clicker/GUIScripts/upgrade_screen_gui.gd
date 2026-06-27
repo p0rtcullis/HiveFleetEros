@@ -3,7 +3,7 @@ extends Control
 var upgrades_reset : bool = true
 var upgrade_effects = []
 
-@onready var all_upgrades = [%Upgrade1]
+@onready var all_upgrades = [%Upgrade1,%Upgrade2,%Upgrade3,%Upgrade4,%Upgrade5,%Upgrade6]
 
 #region Upgrade Management Functions
 # Called when the node enters the scene tree for the first time.
@@ -26,6 +26,7 @@ func process_cost(upgrade,refund):
 		Events.points_change.emit(upgrade.purple_cost,%ManagementScreen.POINTS.PURPLE)
 	else:
 		Events.points_change.emit(upgrade.green_cost*-1,%ManagementScreen.POINTS.GREEN)
+		#print(%ManagementScreen.total_green)
 		Events.points_change.emit(upgrade.brown_cost*-1,%ManagementScreen.POINTS.BROWN)
 		Events.points_change.emit(upgrade.magenta_cost*-1,%ManagementScreen.POINTS.MAGENTA)
 		Events.points_change.emit(upgrade.purple_cost*-1,%ManagementScreen.POINTS.PURPLE)
@@ -48,6 +49,7 @@ func is_affordable(upgrade):
 	var cost_count : int = 0
 	var cost_check : int = 4
 	if upgrade.green_cost <=  %ManagementScreen.total_green:
+		#print(%ManagementScreen.total_green)
 		cost_count +=1
 	if upgrade.brown_cost <= %ManagementScreen.total_brown:
 		cost_count +=1
@@ -55,8 +57,11 @@ func is_affordable(upgrade):
 		cost_count +=1
 	if upgrade.purple_cost <= %ManagementScreen.total_purple:
 		cost_count +=1
+	#print(upgrade.upgrade_name +" "+ str(cost_count) + " " + str(cost_check))
 	if cost_count == cost_check:
 		return true
+	else: 
+		return false
 		
 func is_basic(upgrade):
 	if upgrade.prereq.is_empty():
@@ -65,6 +70,8 @@ func is_basic(upgrade):
 func is_advanced(upgrade):
 	if upgrade.prereq:
 		return true
+	else:
+		return false
 		
 func prereq_met(upgrade):
 	var unlocked_upgrades = all_upgrades.filter(is_locked)
@@ -74,16 +81,19 @@ func prereq_met(upgrade):
 func upgrade_processing():
 	for upgrade in all_upgrades.filter(is_basic):
 		if is_affordable(upgrade) and is_locked(upgrade):
-			upgrade.unlocked = true
 			upgrade.disabled = false
+		else:
+			upgrade.disabled = true
+
+			
+			
 	for upgrade in all_upgrades.filter(is_advanced):
 		var pre_count = 0
 		var pre_limit = upgrade.prereq.size()
 		for pre in upgrade.prereq:
-			if pre.purchased and upgrade.purchased == false:
+			if pre.purchased and upgrade.purchased == false and is_affordable(upgrade):
 				pre_count+=1
 		if pre_count == pre_limit:
-			upgrade.unlocked = true
 			upgrade.disabled = false
 			
 func _on_reset_upgrades_button_pressed() -> void:
@@ -103,9 +113,11 @@ func _on_reset_upgrades_button_pressed() -> void:
 func buy_upgrade(upgrade):
 	process_cost(upgrade,false)
 	upgrade.disabled = true
+	upgrade.unlocked = true
 	upgrades_reset = false
 	upgrade.purchased = true
 	upgrade._apply_upgrade()
+	print(upgrade.upgrade_name)
 	upgrade_processing()
 	
 func _process_upgrade_effects(effects):

@@ -453,33 +453,61 @@ theme_override_constants/separation = 20
 unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("17_7bexq")
-upgrade_name = "New Title"
+upgrade_name = "Expanded Brood Chamber"
+upgrade_text = "Room for more captives. 100 Green"
 green_cost = 100
 
-[node name="Upgrade2" parent="UpgradeScreenGUI/UpgradePanel/VBoxContainer" instance=ExtResource("18_424ju")]
+[node name="Upgrade2" parent="UpgradeScreenGUI/UpgradePanel/VBoxContainer" node_paths=PackedStringArray("prereq") instance=ExtResource("18_424ju")]
 unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("18_agblk")
+upgrade_name = "Deeper Brood Chamber"
+upgrade_text = "Miles deep, tyranids chitter, hive resin drips, elves moan.
+200 Green"
+green_cost = 200
+prereq = [NodePath("../Upgrade1")]
 
 [node name="Upgrade3" parent="UpgradeScreenGUI/UpgradePanel/VBoxContainer" instance=ExtResource("18_424ju")]
 unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("19_3alj7")
+upgrade_name = "Womb Latch"
+upgrade_text = "Snug Against the cervix, tyranid cocks can now deliver potent seed directly to their partner's \"brood chamber\".
+100 Green"
+green_cost = 100
 
 [node name="Upgrade4" parent="UpgradeScreenGUI/UpgradePanel/VBoxContainer" instance=ExtResource("18_424ju")]
 unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("20_3alj7")
+upgrade_name = "Tentacle Grips"
+upgrade_text = "Sprouting from softer sections between chitin plates, these tender tendrils allow for struggle-free mating. 50 Green"
+green_cost = 50
 
 [node name="Upgrade5" parent="UpgradeScreenGUI/UpgradePanel/VBoxContainer" instance=ExtResource("18_424ju")]
 unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("21_oslct")
+upgrade_name = "Chambered Testicles"
+upgrade_text = "Adapting to Aeldari fertility, the twitching testes of the tyranids now come with a diversity of DNA.
+100 Green
+50 Brown"
+green_cost = 100
+brown_cost = 50
 
 [node name="Upgrade6" parent="UpgradeScreenGUI/UpgradePanel/VBoxContainer" instance=ExtResource("18_424ju")]
 unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("22_2x3uj")
+upgrade_name = "Uterine-Bore Spermazoa"
+upgrade_text = "Based on the flesh-borer weapon, tyranid penises are now armed with special ammo. 
+Not even the toughest eggs can resist these spiraling swimmers!
+150 Green
+100 Brown
+50 Magenta"
+green_cost = 150
+brown_cost = 100
+magenta_cost = 50
 
 [node name="UnitUnlocks" type="PanelContainer" parent="UpgradeScreenGUI"]
 layout_mode = 0
@@ -495,22 +523,50 @@ theme_override_constants/separation = 20
 [node name="ShooterUpgrade" parent="UpgradeScreenGUI/UnitUnlocks/VBoxContainer" instance=ExtResource("18_424ju")]
 layout_mode = 2
 script = ExtResource("23_jy3no")
+upgrade_name = "Termagant"
+upgrade_text = "Ranged Frontline Bioform
+100 Green"
+green_cost = 100
 
 [node name="RippleUpgrade" parent="UpgradeScreenGUI/UnitUnlocks/VBoxContainer" instance=ExtResource("18_424ju")]
 layout_mode = 2
 script = ExtResource("24_v8q4t")
+upgrade_name = "Rippers"
+upgrade_text = "Swarming Bioform
+100 Green"
+green_cost = 100
 
 [node name="WarriorUpgrade" parent="UpgradeScreenGUI/UnitUnlocks/VBoxContainer" instance=ExtResource("18_424ju")]
 layout_mode = 2
 script = ExtResource("25_v8q4t")
+upgrade_name = "Warrior"
+upgrade_text = "Squad Level Control Bioform
+100 green
+50 Brown
+50 Purple"
+green_cost = 100
+brown_cost = 50
+purple_cost = 50
 
 [node name="StalkerUpgrade" parent="UpgradeScreenGUI/UnitUnlocks/VBoxContainer" instance=ExtResource("18_424ju")]
 layout_mode = 2
 script = ExtResource("26_3uuvb")
+upgrade_name = "Lictor"
+upgrade_text = "Stealth Hunter Bioform
+100 Brown
+100 Magenta"
+brown_cost = 100
+magenta_cost = 100
 
 [node name="PsyUpgrade" parent="UpgradeScreenGUI/UnitUnlocks/VBoxContainer" instance=ExtResource("18_424ju")]
 layout_mode = 2
 script = ExtResource("27_brv2v")
+upgrade_name = "Zoanthrope"
+upgrade_text = "Force Commander Bioform
+100 Magenta
+200 purple"
+magenta_cost = 100
+purple_cost = 200
 
 [node name="StabberUpgrade" parent="UpgradeScreenGUI" instance=ExtResource("18_424ju")]
 visible = false
