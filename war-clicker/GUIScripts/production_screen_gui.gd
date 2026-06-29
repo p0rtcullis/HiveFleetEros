@@ -78,12 +78,19 @@ func _create_unit(template):
 func _display_queue(worker):
 	%ProductionQueue.clear()
 	var index = 0
+	var production_delay = 0
 	for unit in worker.production_queue:
-		if index == 0:
-			%ProductionQueue.add_item(unit.stats.unit_name + " turns remaining: " + str(unit.stats.cook_time-worker.stats.production_timer))
-		else:
-			%ProductionQueue.add_item(unit.stats.unit_name + " turns remaining: " + str(unit.stats.cook_time+unit.stats.cook_time-worker.stats.production_timer+index-1))
-		index +=1
+		%ProductionQueue.add_item(unit.stats.unit_name + " turns remaining: " + str(unit.stats.cook_time-worker.stats.production_timer+production_delay))
+		#%ProductionQueue.add_item(unit.stats.unit_name + " turns remaining: " + str(unit.stats.cook_time-worker.stats.production_timer))
+		#if index == 0:
+			#
+			#%ProductionQueue.add_item(unit.stats.unit_name + " turns remaining: " + str(unit.stats.cook_time-worker.stats.production_timer))
+		#else:
+			#unit.stats.cook_time-worker.stats.production_timer
+			#%ProductionQueue.add_item(unit.stats.unit_name + " turns remaining: " + str(unit.stats.cook_time-worker.stats.production_timer+production_delay))
+			##%ProductionQueue.add_item(unit.stats.unit_name + " turns remaining: " + str(unit.stats.cook_time+unit.stats.cook_time-worker.stats.production_timer+index-1))
+		#index +=1
+		production_delay += unit.stats.cook_time
 		
 func _on_production_queue_item_activated(index: int) -> void:
 	selected_worker.production_queue.pop_at(index)
