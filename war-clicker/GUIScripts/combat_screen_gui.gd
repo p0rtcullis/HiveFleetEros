@@ -15,6 +15,10 @@ func _ready() -> void:
 func _acknowledge_event():
 	%EndTurnButton.disabled = false
 
+
+
+#Old System
+#region
 func random_captive_drop():
 	var captive_count = randi_range(1,3)
 	var type_captured = randi_range(1,100)
@@ -57,3 +61,4 @@ func _on_battle_button_1_pressed() -> void:
 		combat_results.alert_button_text = "Failure!"
 	%EventSystem.canvas_layer.add_child(combat_results)	
 	
+	#endregion

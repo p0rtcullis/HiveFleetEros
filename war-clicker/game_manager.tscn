@@ -411,6 +411,7 @@ autowrap_mode = 2
 
 [node name="UpgradeScreenGUI" type="Control" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 192.0
@@ -574,7 +575,6 @@ layout_mode = 0
 
 [node name="CombatScreenGUI" type="Control" parent="."]
 unique_name_in_owner = true
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 192.0
